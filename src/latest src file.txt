@@ -1,0 +1,399 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BarChart3,
+  HeartHandshake,
+  Info,
+  Mail,
+  MapPin,
+  Phone,
+  Shield,
+  Users,
+} from "lucide-react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+// ------------------------------------------------------------
+// Basic reusable UI components
+// ------------------------------------------------------------
+const Card = ({ className = "", children }) => (
+  <div className={`rounded-2xl border border-slate-200 bg-white ${className}`}>{children}</div>
+);
+const CardContent = ({ className = "", children }) => (
+  <div className={`p-6 ${className}`}>{children}</div>
+);
+const Button = ({ className = "", children, ...props }) => (
+  <button
+    {...props}
+    className={`px-4 py-2 rounded-2xl bg-teal-600 text-white hover:bg-teal-700 transition ${className}`}
+  >
+    {children}
+  </button>
+);
+
+// ------------------------------------------------------------
+// Root Component
+// ------------------------------------------------------------
+export default function ElevateOrg() {
+  const [email, setEmail] = useState("");
+  const [form, setForm] = useState({ name: "", subject: "", message: "" });
+
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-slate-900">
+      <Header />
+      <Hero />
+      <Mission />
+      <Programs />
+      <Impact />
+      <GetInvolved />
+      <SurveyComparisonChart />
+      <Founder />
+      <Newsletter email={email} setEmail={setEmail} />
+      <Contact form={form} setForm={setForm} />
+      <Footer />
+    </main>
+  );
+}
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+function Header() {
+  return (
+    <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b">
+      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-2 font-semibold text-xl">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-teal-600 text-white">E</span>
+          <span>ELEVATE</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-6 text-sm">
+          <a href="#mission">Mission</a>
+          <a href="#programs">Programs</a>
+          <a href="#impact">Impact</a>
+          <a href="#get-involved">Get Involved</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+// ------------------------------------------------------------
+// Hero Section
+// ------------------------------------------------------------
+function Hero() {
+  return (
+    <section id="home" className="relative overflow-hidden bg-gradient-to-br from-teal-600 via-teal-500 to-slate-700 text-white py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-4 text-center">
+        <motion.h1
+          className="text-5xl md:text-6xl font-extrabold leading-tight"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Empowering Teens to Make
+          <span className="block text-teal-100">Healthier Choices Together</span>
+        </motion.h1>
+        <motion.p
+          className="mt-6 text-lg md:text-xl text-slate-100 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          ELEVATE works with schools and communities to raise awareness, collect insights, and empower youth to lead change.
+        </motion.p>
+        <motion.div
+          className="mt-10 flex flex-wrap justify-center gap-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <a href="#get-involved">
+            <Button className="bg-white text-teal-700 font-semibold hover:bg-slate-100 rounded-2xl">
+              Get Involved <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </a>
+          <a
+            href="#impact"
+            className="inline-flex items-center gap-2 rounded-2xl border border-white text-white px-4 py-2 hover:bg-white hover:text-teal-700"
+          >
+            <BarChart3 className="h-4 w-4" /> View Impact
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Mission
+// ------------------------------------------------------------
+function Mission() {
+  return (
+    <section id="mission" className="py-20">
+      <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-3 gap-6">
+        <InfoCard icon={<Info />} title="Our Mission" text="To reduce teen vaping by elevating awareness, empowering peer leaders, and partnering with families, schools, and health experts." />
+        <InfoCard icon={<Users />} title="What We Do" text="Workshops, surveys, and ambassador training empowering youth to lead." />
+        <InfoCard icon={<Shield />} title="Our Values" text="Science-first, student-centered, and compassion-driven." />
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Programs
+// ------------------------------------------------------------
+function Programs() {
+  const list = [
+    { title: "School Workshops", desc: "Interactive sessions led by youth and educators." },
+    { title: "Survey & Insights", desc: "Local data compared to national trends to guide action." },
+    { title: "Peer Ambassadors", desc: "Leadership pathway for mentoring younger students." },
+  ];
+  return (
+    <section id="programs" className="py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="text-3xl md:text-4xl font-bold">Programs</h2>
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
+          {list.map((p, i) => (
+            <InfoCard key={i} title={p.title} text={p.desc} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Impact Section
+// ------------------------------------------------------------
+function Impact() {
+  const stats = [
+    { label: "Students Reached", value: "4,200+" },
+    { label: "Schools Partnered", value: "18" },
+    { label: "Ambassadors Trained", value: "75" },
+  ];
+  return (
+    <section id="impact" className="py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">Impact & Data</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {stats.map((s, i) => (
+            <StatCard key={i} label={s.label} value={s.value} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Get Involved
+// ------------------------------------------------------------
+function GetInvolved() {
+  return (
+    <section id="get-involved" className="py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="text-3xl md:text-4xl font-bold">Get Involved</h2>
+        <div className="mt-8 grid md:grid-cols-2 gap-6">
+          <ActionCard title="Volunteer" icon={<HeartHandshake className="h-5 w-5" />}>
+            Become a mentor, event helper, or survey champion.
+            <div className="mt-4">
+              <Button className="rounded-2xl w-full" onClick={() => (location.hash = "#contact")}>
+                Sign up
+              </Button>
+            </div>
+          </ActionCard>
+          <ActionCard title="Partner with Us" icon={<Users className="h-5 w-5" />}>
+            Schools, PTAs, clinics — let us co-create programs that fit your students.
+            <div className="mt-4">
+              <Button className="rounded-2xl w-full" onClick={() => (location.hash = "#contact")}>
+                Start a conversation
+              </Button>
+            </div>
+          </ActionCard>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Survey Chart
+// ------------------------------------------------------------
+function SurveyComparisonChart() {
+  const data = [
+    { category: "Awareness", "ELEVATE Survey": 90, "National (Truth Initiative)": 87.6 },
+    { category: "Usage", "ELEVATE Survey": 10, "National (NYTS)": 5.9 },
+    { category: "Daily/Frequent Use", "ELEVATE Survey": 3, "National (NYTS)": 26.3 },
+  ];
+
+  return (
+    <section id="survey" className="py-20">
+      <div className="mx-auto max-w-7xl px-4">
+        <Card className="rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <CardContent className="p-6">
+            <h3 className="text-xl font-semibold text-slate-800">
+              Survey Comparison: Local vs. National
+            </h3>
+
+            <p className="mt-2 text-slate-600">
+              Comparison between ELEVATE&apos;s teen vaping survey and national statistics from NYTS
+              (2024) and Truth Initiative.
+            </p>
+
+            <div className="mt-6 h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+                  <XAxis dataKey="category" tick={{ fill: "#334155", fontSize: 12 }} />
+                  <YAxis tick={{ fill: "#334155", fontSize: 12 }} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "white",
+                      borderRadius: "0.75rem",
+                      border: "1px solid #E2E8F0",
+                    }}
+                  />
+                  <Legend />
+                  <Bar dataKey="ELEVATE Survey" fill="#0D9488" radius={[6, 6, 0, 0]} />
+                  <Bar dataKey="National (NYTS)" fill="#1E293B" radius={[6, 6, 0, 0]} />
+                  <Bar
+                    dataKey="National (Truth Initiative)"
+                    fill="#64748B"
+                    radius={[6, 6, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <p className="mt-4 text-sm text-slate-500">
+              *Sources: ELEVATE 2025 Survey, NYTS 2024 (FDA &amp; CDC), Truth Initiative 2024.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Founder Section
+// ------------------------------------------------------------
+function Founder() {
+  return (
+    <section id="founder" className="py-20 bg-white">
+      <div className="mx-auto max-w-5xl px-4 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-slate-800">Our Founder</h2>
+        <div className="flex flex-col items-center">
+          <img
+            src="/IMG_0390.jpg"
+            alt="Vihaan G Ganganala"
+            className="w-40 h-40 rounded-full object-cover shadow-md border-4 border-teal-600"
+          />
+          <h3 className="mt-4 text-2xl font-semibold text-teal-700">Vihaan G Ganganala</h3>
+          <p className="mt-3 max-w-2xl text-slate-600">
+            Vihaan founded ELEVATE to empower teens with knowledge and confidence to make healthier choices. As a
+            student leader and advocate, he combines data-driven insights and peer collaboration to create impactful
+            programs addressing vaping awareness and prevention across Kansas schools.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Newsletter
+// ------------------------------------------------------------
+function Newsletter({ email, setEmail }) {
+  return (
+    <section id="newsletter" className="py-16 text-center">
+      <div className="mx-auto max-w-3xl px-4">
+        <h3 className="text-2xl font-semibold">Stay Connected</h3>
+        <p className="mt-2 text-slate-600">Monthly updates and impact stories. No spam.</p>
+        <form
+          className="mt-6 flex gap-2 justify-center"
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert(`Subscribed: ${email}`);
+          }}
+        >
+          <input
+            type="email"
+            required
+            placeholder="you@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full max-w-md rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-teal-600"
+          />
+          <Button type="submit" className="rounded-2xl">Subscribe</Button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Contact
+// ------------------------------------------------------------
+function Contact({ form, setForm }) {
+  return (
+    <section id="contact" className="py-20">
+      <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold">Contact</h2>
+          <p className="mt-2 text-slate-600">Have a question or want to collaborate?</p>
+          <ul className="mt-6 space-y-2 text-sm text-slate-700">
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@elevate.org</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> (555) 123-4567</li>
+            <li className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Wichita, Kansas</li>
+          </ul>
+        </div>
+        <Card className="rounded-2xl">
+          <CardContent className="p-6">
+            <form
+              className="space-y-3"
+              onSubmit={(e) => {
+                e.preventDefault();
+                alert("Thanks! We'll get back to you.");
+              }}
+            >
+              <Input label="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+              <Input label="Subject" value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} />
+              <Textarea label="Message" value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
+              <Button type="submit" className="rounded-2xl w-full">Send</Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+// ------------------------------------------------------------
+// Footer
+// ------------------------------------------------------------
+function Footer() {
+  return (
+    <footer className="border-t bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
+        <p className="text-sm text-slate-600">
+          © {new Date().getFullYear()} ELEVATE. 501(c)(3) nonprofit. All rights reserved.
+        </p>
+        <div className="flex md:justify-end gap-4 text-sm">
+          <a href="#" className="underline">Privacy</a>
+          <a href="#" className="underline">Terms</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
