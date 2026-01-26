@@ -48,6 +48,7 @@ export default function ElevateOrg() {
       <Header />
       <Hero />
       <Mission />
+      <AboutUs />
       <Programs />
       <Impact />
       <GetInvolved />
@@ -70,6 +71,7 @@ function Header() {
         </a>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <a href="#mission">Mission</a>
+          <a href="#about">About</a>
           <a href="#programs">Programs</a>
           <a href="#impact">Impact</a>
           <a href="#get-involved">Get Involved</a>
@@ -142,6 +144,52 @@ function Mission() {
         <InfoCard icon={<Info />} title="Our Mission" text="To reduce teen vaping by elevating awareness, empowering peer leaders, and partnering with families, schools, and health experts." />
         <InfoCard icon={<Users />} title="What We Do" text="Workshops, surveys, and ambassador training empowering youth to lead." />
         <InfoCard icon={<Shield />} title="Our Values" text="Science-first, student-centered, and compassion-driven." />
+      </div>
+    </section>
+  );
+}
+function AboutUs() {
+  return (
+    <section id="about" className="py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
+        
+        {/* Left: Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop"
+            alt="About ELEVATE team"
+            className="rounded-3xl shadow-lg aspect-[4/3] object-cover border border-slate-200"
+          />
+        </motion.div>
+
+        {/* Right: Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold">About Us</h2>
+          <p className="mt-4 text-slate-600 text-lg leading-relaxed">
+            ELEVATE is a youth-led nonprofit focused on reducing teen vaping through
+            awareness, data-driven insights, and peer leadership. We believe students
+            create the strongest change when they lead the conversation, supported by
+            families, schools, and health experts.
+          </p>
+
+          <div className="mt-6">
+            <a href="#contact">
+              <Button className="rounded-2xl bg-slate-900 hover:bg-slate-700">
+                Reach out to our team <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
