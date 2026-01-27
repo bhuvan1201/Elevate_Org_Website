@@ -1,4 +1,4 @@
-import logo from "./src/assets/logo.jpeg";
+import logo from "./assets/logo.jpeg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -66,9 +66,12 @@ function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/70 backdrop-blur border-b">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2 font-semibold text-xl">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-slate-900 text-white">E</span>
-          <span>ELEVATE</span>
+        <a href="#home" className="flex items-center gap-3">
+          <img
+          src={logo}
+          alt="Elevate Logo"
+          className="h-10 w-auto"
+          />
         </a>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <a href="#mission">Mission</a>
