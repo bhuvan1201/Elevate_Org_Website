@@ -73,8 +73,8 @@ function Header() {
           className="h-16 w-auto drop-shadow-sm"
           />
         </a>
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          <a href="#mission">Mission</a>
+        <nav className="hidden md:flex items-center gap-6 text-base">
+          
           <a href="#about">About</a>
           <a href="#programs">Programs</a>
           <a href="#impact">Impact</a>
