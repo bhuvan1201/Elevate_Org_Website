@@ -70,7 +70,7 @@ function Header() {
           <img
           src={logo}
           alt="Elevate Logo"
-          className="h-10 w-auto"
+          className="h-14 w-auto"
           />
         </a>
         <nav className="hidden md:flex items-center gap-6 text-sm">
