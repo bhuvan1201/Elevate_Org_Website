@@ -1,3 +1,4 @@
+import logo from "./src/assets/logo.jpeg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
