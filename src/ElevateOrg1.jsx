@@ -99,10 +99,8 @@ function Hero() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-800">
-            Elevate teens above vaping—
-            <span className="block text-teal-700">
-              through awareness, data, and peer leadership.
-            </span>
+            Empowering youth through education, advocacy, and opportunity
+            
           </h1>
           <p className="mt-5 text-lg md:text-xl text-slate-600 max-w-prose">
             ELEVATE is a youth-led nonprofit helping students make informed
