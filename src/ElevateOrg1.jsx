@@ -75,7 +75,7 @@ function Header() {
         </a>
         <nav className="hidden md:flex items-center gap-6 text-base">
           
-          <a href="#about">About</a>
+          <a href="#about">About us</a>
           <a href="#programs">Programs</a>
           <a href="#impact">Impact</a>
           <a href="#get-involved">Get Involved</a>
