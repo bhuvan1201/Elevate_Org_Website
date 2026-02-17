@@ -1,9 +1,20 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart3, ClipboardList, HeartPulse, ShieldCheck } from "lucide-react";
-import flyerPdf from "../assets/elevate-foundation-pitch.pdf"; // ✅ add this
+import {
+  ArrowRight,
+  BarChart3,
+  ClipboardList,
+  HeartPulse,
+  ShieldCheck,
+  ExternalLink,
+} from "lucide-react";
+
+import flyerPdf from "../assets/elevate-foundation-pitch.pdf";
+import posterImg from "../assets/posters/vaping-poster.jpeg"; // ✅ your poster
 
 const Card = ({ className = "", children }) => (
-  <div className={"rounded-2xl border border-slate-200 bg-white " + className}>{children}</div>
+  <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
+    {children}
+  </div>
 );
 const CardContent = ({ className = "", children }) => (
   <div className={"p-6 " + className}>{children}</div>
@@ -52,7 +63,11 @@ export default function TeenVapingAwareness() {
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
       <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="text-sm font-semibold text-teal-700">Project</p>
             <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
               Teen Vaping Awareness
@@ -70,14 +85,8 @@ export default function TeenVapingAwareness() {
                 Ways to Help <ArrowRight className="h-4 w-4" />
               </a>
 
-              <a
-                href="#resources"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
-              >
-                View Resources
-              </a>
+              
 
-              {/* ✅ Flyer button (works from any route) */}
               <a
                 href={flyerPdf}
                 target="_blank"
@@ -86,10 +95,24 @@ export default function TeenVapingAwareness() {
               >
                 View Flyer (PDF)
               </a>
+
+              {/* ✅ KEEP: top View Poster button */}
+              <a
+                href={posterImg}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+              >
+                View Poster <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <Card className="rounded-3xl shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3">

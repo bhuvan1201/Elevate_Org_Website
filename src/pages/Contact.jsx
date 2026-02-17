@@ -24,11 +24,13 @@ const Button = ({ className = "", children, ...props }) => (
   </button>
 );
 
-function Input({ label, value, onChange }) {
+function Input({ label, name, value, onChange, type = "text" }) {
   return (
     <label className="block">
       <span className="text-sm text-slate-700">{label}</span>
       <input
+        name={name}
+        type={type}
         required
         className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900"
         value={value}
@@ -38,11 +40,12 @@ function Input({ label, value, onChange }) {
   );
 }
 
-function Textarea({ label, value, onChange }) {
+function Textarea({ label, name, value, onChange }) {
   return (
     <label className="block">
       <span className="text-sm text-slate-700">{label}</span>
       <textarea
+        name={name}
         required
         rows={6}
         className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900"
@@ -53,8 +56,48 @@ function Textarea({ label, value, onChange }) {
   );
 }
 
+// Netlify expects URL-encoded form data
+function encode(data) {
+  return Object.keys(data)
+    .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
+    .join("&");
+}
+
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", subject: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    "bot-field": "",
+  });
+
+  const [status, setStatus] = useState({ type: "idle", msg: "" }); // idle | sending | success | error
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus({ type: "sending", msg: "Sending..." });
+
+    try {
+      const body = encode({
+        "form-name": "contact",
+        ...form,
+      });
+
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+
+      if (!res.ok) throw new Error("Network response was not ok");
+
+      setStatus({ type: "success", msg: "Thanks! We'll get back to you soon." });
+      setForm({ name: "", email: "", subject: "", message: "", "bot-field": "" });
+    } catch (err) {
+      setStatus({ type: "error", msg: "Something went wrong. Please try again." });
+    }
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
@@ -68,7 +111,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Main contact layout (same style as Home.jsx Contact section) */}
+      {/* Main contact layout */}
       <section className="py-20">
         <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8">
           {/* Left info */}
@@ -110,35 +153,81 @@ export default function ContactPage() {
           {/* Right form */}
           <Card className="rounded-2xl">
             <CardContent>
+              {/* IMPORTANT: Netlify form attributes */}
               <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
                 className="space-y-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thanks! We'll get back to you.");
-                  setForm({ name: "", subject: "", message: "" });
-                }}
+                onSubmit={handleSubmit}
               >
+                {/* Required hidden input for Netlify */}
+                <input type="hidden" name="form-name" value="contact" />
+
+                {/* Honeypot field (hidden) */}
+                <p className="hidden">
+                  <label>
+                    Don’t fill this out:{" "}
+                    <input
+                      name="bot-field"
+                      value={form["bot-field"]}
+                      onChange={(e) => setForm({ ...form, "bot-field": e.target.value })}
+                    />
+                  </label>
+                </p>
+
                 <Input
                   label="Name"
+                  name="name"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                 />
 
                 <Input
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+
+                <Input
                   label="Subject"
+                  name="subject"
                   value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
                 />
 
                 <Textarea
                   label="Message"
+                  name="message"
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
 
-                <Button type="submit" className="w-full rounded-2xl">
-                  Send Message
+                <Button
+                  type="submit"
+                  className="w-full rounded-2xl"
+                  disabled={status.type === "sending"}
+                >
+                  {status.type === "sending" ? "Sending..." : "Send Message"}
                 </Button>
+
+                {status.type !== "idle" && (
+                  <div
+                    className={
+                      "text-sm mt-2 " +
+                      (status.type === "success"
+                        ? "text-teal-700"
+                        : status.type === "error"
+                        ? "text-red-600"
+                        : "text-slate-600")
+                    }
+                  >
+                    {status.msg}
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>

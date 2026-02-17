@@ -1,6 +1,12 @@
 import vihaanImg from "../assets/vihaan.jpeg";
 import hithaImg from "../assets/hitha.jpeg";
 
+// ✅ add resume PDFs
+import vihaanResume from "../assets/resumes/Vihaan-Resume.pdf";
+import hithaResume from "../assets/resumes/Hitha-Resume.pdf";
+
+import { ExternalLink, FileText } from "lucide-react";
+
 function FounderProfile({
   name,
   role,
@@ -9,6 +15,8 @@ function FounderProfile({
   mission,
   achievements,
   img,
+  resumePdf,          // ✅ new
+  resumeLabel = "View Resume (PDF)", // ✅ optional
   flip = false,
 }) {
   return (
@@ -21,13 +29,12 @@ function FounderProfile({
       >
         {/* Image */}
         <div className="relative bg-slate-50 flex items-center justify-center py-10">
-  <img
-    src={img}
-    alt={name}
-    className="w-[80%] max-w-[600px] object-cover rounded-xl shadow-md"
-  />
-</div>
-
+          <img
+            src={img}
+            alt={name}
+            className="w-[80%] max-w-[600px] object-cover rounded-xl shadow-md"
+          />
+        </div>
 
         {/* Content */}
         <div className="p-8 md:p-10">
@@ -47,6 +54,22 @@ function FounderProfile({
             {role}
           </p>
           <p className="mt-2 text-slate-600">{schoolLine}</p>
+
+          {/* ✅ Resume button */}
+          {resumePdf ? (
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href={resumePdf}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+              >
+                <FileText className="h-4 w-4" />
+                {resumeLabel}
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          ) : null}
 
           <div className="mt-6 space-y-6">
             {/* Bio */}
@@ -114,7 +137,7 @@ export default function MeetTheTeam() {
           </p>
 
           <div className="mt-10 space-y-8">
-            {/* Vihaan: image left, text right */}
+            {/* Vihaan */}
             <FounderProfile
               name="Vihaan Ganganala"
               role="Cofounder & President"
@@ -131,10 +154,12 @@ export default function MeetTheTeam() {
                 "Certified Nursing Assistant (CNA)",
               ]}
               img={vihaanImg}
+              resumePdf={vihaanResume} // ✅ add
+              resumeLabel="View Vihaan’s Resume (PDF)"
               flip={false}
             />
 
-            {/* Hitha: text left, image right */}
+            {/* Hitha */}
             <FounderProfile
               name="Hitha Ganganala"
               role="Cofounder & President"
@@ -150,6 +175,8 @@ export default function MeetTheTeam() {
                 "Tutor for Building Blocks Foundation (India)",
               ]}
               img={hithaImg}
+              resumePdf={hithaResume} // ✅ add
+              resumeLabel="View Hitha’s Resume (PDF)"
               flip={true}
             />
           </div>
@@ -160,4 +187,3 @@ export default function MeetTheTeam() {
     </main>
   );
 }
-
