@@ -93,7 +93,7 @@ export default function TeenVapingAwareness() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
               >
-                View Flyer (PDF)
+                View Pitch (PDF)
               </a>
 
               {/* ✅ KEEP: top View Poster button */}

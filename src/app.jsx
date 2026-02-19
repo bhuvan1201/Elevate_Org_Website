@@ -10,6 +10,8 @@ import TeenVapingAwareness from "./pages/TeenVapingAwareness";
 import AdolescentObesity from "./pages/AdolescentObesity";
 import GenesisFoundation from "./pages/GenesisFoundation";
 import BuildingBlocksFoundation from "./pages/BuildingBlocksFoundation";
+import TutoringEducation from "./pages/TutoringEducation";
+import Fitness from "./pages/Fitness";
 
 
 export default function App() {
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/projects/adolescent-obesity" element={<AdolescentObesity />} />
         <Route path="/partners/genesis-foundation" element={<GenesisFoundation />} />
         <Route path="/partners/building-blocks-foundation" element={<BuildingBlocksFoundation />} />
+        <Route path="/learn/tutoring-education" element={<TutoringEducation />} />
+        <Route path="/learn/fitness" element={<Fitness />} />
         <Route path="/learn" element={<Learn />} />
 
       </Routes>

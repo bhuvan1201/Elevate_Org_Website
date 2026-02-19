@@ -2,8 +2,9 @@ import logo from "../assets/logo-removebg.png";
 import h1 from "../assets/home/hero/h1.avif";
 import h2 from "../assets/home/hero/h2.avif";
 import h3 from "../assets/home/hero/h3.jpeg";
+import h4 from "../assets/partners/building-blocks/bb1.jpeg";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -41,47 +42,6 @@ const Button = ({ className = "", children, type = "button", ...props }) => (
   </button>
 );
 
-/* ================= HERO BACKGROUND SLIDER ================= */
-
-function HeroBackgroundSlider({ images, speed = 45 }) {
-  const track = [...images, ...images];
-
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      <div
-        className="absolute inset-0 flex w-max"
-        style={{ animation: `home-hero-slide ${speed}s linear infinite` }}
-      >
-        {track.map((src, i) => (
-          <div key={i} className="h-full w-[70vw] md:w-[55vw] shrink-0">
-            <img
-              src={src}
-              alt=""
-              className="h-full w-full object-cover"
-              loading="lazy"
-              draggable="false"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* overlay: lower numbers = more visible images */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-100/45 via-slate-100/25 to-slate-200/40" />
-
-      {/* top/bottom fade */}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-100 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-200 to-transparent" />
-
-      <style>{`
-        @keyframes home-hero-slide {
-          0% { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
-        }
-      `}</style>
-    </div>
-  );
-}
-
 /* ================= MAIN PAGE ================= */
 
 export default function Home() {
@@ -89,7 +49,7 @@ export default function Home() {
   const [form, setForm] = useState({ name: "", subject: "", message: "" });
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-100 to-slate-50 text-slate-900">
+    <main className="min-h-screen bg-white text-slate-900">
       <Hero />
       <Mission />
       <AboutUs />
@@ -103,51 +63,116 @@ export default function Home() {
   );
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (TFAH-STYLE) ================= */
 
 function Hero() {
-  const images = [h1, h2, h3];
+  const images = [h1, h2, h3, h4];
+  const [idx, setIdx] = useState(0);
+
+  // Optional: auto-rotate images (turn off by deleting this useEffect)
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIdx((v) => (v + 1) % images.length);
+    }, 4500);
+    return () => clearInterval(t);
+  }, [images.length]);
 
   return (
-    <section id="home" className="relative overflow-hidden py-20 md:py-28">
-      <HeroBackgroundSlider images={images} speed={45} />
+    <section id="home" className="border-b bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* LEFT: brand + message */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+          >
+            {/* small brand row (so the logo doesn't dominate) */}
+            <div className="flex items-center gap-5">
+  <img
+    src={logo}
+    alt="ELEVATE"
+    className="h-20 md:h-28 lg:h-32 w-auto object-contain"
+  />
+  <div className="leading-tight">
+    <div className="text-lg md:text-xl lg:text-2xl font-extrabold tracking-wide text-slate-900">
+      ELEVATE
+    </div>
+    <div className="text-base text-slate-500">Youth-led nonprofit</div>
+  </div>
+</div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-800">
-            Empowering youth through education, advocacy, and opportunity
-          </h1>
 
-          <p className="mt-5 text-lg md:text-xl text-slate-600 max-w-prose">
-            ELEVATE is a youth-led nonprofit helping students make informed
-            choices through education, surveys, and community action.
-          </p>
+            <h1 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
+              Empowering youth through education, advocacy, and opportunity
+            </h1>
 
-          <div className="mt-6 flex flex-wrap gap-4 items-center">
-            <a href="#get-involved">
-              <Button className="rounded-2xl bg-teal-600 hover:bg-teal-700 text-white">
-                Join the Movement <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
-          </div>
-        </motion.div>
+            <p className="mt-4 text-lg text-slate-600 max-w-prose">
+              ELEVATE is a youth-led nonprofit helping students make informed
+              choices through education, surveys, and community action.
+            </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex justify-center md:justify-end"
-        >
-          <img
-            src={logo}
-            alt="Elevate Logo"
-            className="w-[300px] md:w-[380px] lg:w-[450px] h-auto object-contain drop-shadow-xl"
-          />
-        </motion.div>
+            <div className="mt-7 flex flex-wrap gap-4 items-center">
+              <a href="#get-involved">
+                <Button className="bg-teal-600 hover:bg-teal-700">
+                  Join the Movement <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+
+              <a
+                href="#mission"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+              >
+                Learn more <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* RIGHT: contained hero image (so it doesn't overpower text) */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.08 }}
+          >
+            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100">
+              <div className="relative aspect-[16/10]">
+                {/* image */}
+                <img
+                  src={images[idx]}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                  draggable="false"
+                />
+
+                {/* subtle overlay for polish (NOT heavy) */}
+                <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/10" />
+
+                {/* small caption chip */}
+                <div className="absolute left-4 bottom-4">
+                  <span className="inline-flex items-center rounded-full bg-white/85 backdrop-blur px-3 py-1 text-xs font-semibold text-slate-800 border border-slate-200">
+                    Community impact in action
+                  </span>
+                </div>
+              </div>
+
+              {/* optional tiny dots */}
+              <div className="flex items-center justify-center gap-2 py-3 bg-white">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIdx(i)}
+                    className={
+                      "h-2 w-2 rounded-full transition " +
+                      (i === idx ? "bg-teal-600" : "bg-slate-300 hover:bg-slate-400")
+                    }
+                    aria-label={`Hero image ${i + 1}`}
+                    type="button"
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -157,7 +182,7 @@ function Hero() {
 
 function Mission() {
   return (
-    <section id="mission" className="py-20">
+    <section id="mission" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-3 gap-6">
         <InfoCard
           icon={<Info />}
@@ -252,7 +277,7 @@ function Impact() {
   ];
 
   return (
-    <section id="impact" className="py-20">
+    <section id="impact" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">Impact & Data</h2>
         <div className="grid md:grid-cols-3 gap-6">
@@ -298,7 +323,7 @@ function GetInvolved() {
 
 function Newsletter({ email, setEmail }) {
   return (
-    <section id="newsletter" className="py-16 text-center">
+    <section id="newsletter" className="py-16 text-center bg-slate-50">
       <div className="mx-auto max-w-3xl px-4">
         <h3 className="text-2xl font-semibold">Stay Connected</h3>
         <p className="mt-2 text-slate-600">Monthly updates and impact stories. No spam.</p>
@@ -327,7 +352,7 @@ function Newsletter({ email, setEmail }) {
 
 function Contact({ form, setForm }) {
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-20 bg-white">
       <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">Contact</h2>

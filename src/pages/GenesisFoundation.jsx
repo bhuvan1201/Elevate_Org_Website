@@ -1,7 +1,8 @@
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, HeartHandshake, ShieldCheck } from "lucide-react";
+import { ArrowRight, HeartHandshake, ShieldCheck, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
+
 import gfftFlyer from "../assets/gfft-flyer.pdf";
 
 import gfft1 from "../assets/partners/gfft/gfft1.jpeg";
@@ -34,58 +35,66 @@ function BulletList({ items }) {
   );
 }
 
-/* ---------- HERO BACKGROUND SLIDER ---------- */
-function HeroBackgroundSlider({ images, speed = 40 }) {
-  const track = [...images, ...images]; // seamless loop
+/* ---------- Home-style image slider card ---------- */
+function ImageCarouselCard({ images = [], caption = "Community impact in action" }) {
+  const slides = useMemo(() => images.filter(Boolean), [images]);
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    if (!slides.length) return;
+    const t = setInterval(() => setIdx((p) => (p + 1) % slides.length), 3500);
+    return () => clearInterval(t);
+  }, [slides.length]);
+
+  if (!slides.length) return null;
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* moving images */}
-      <div
-        className="absolute inset-0 flex w-max"
-        style={{ animation: `gfft-hero-slide ${speed}s linear infinite` }}
-      >
-        {track.map((src, i) => (
-          <div key={i} className="h-full w-[70vw] md:w-[55vw] shrink-0">
-            <img
-              src={src}
-              alt=""
-              className="h-full w-full object-cover contrast-110 saturate-110"
-              loading="lazy"
-              draggable="false"
-            />
-          </div>
-        ))}
+    <div className="rounded-3xl border border-slate-200 bg-white shadow-xl overflow-hidden">
+      <div className="relative aspect-[16/10] bg-slate-100">
+        <img
+          src={slides[idx]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          draggable="false"
+        />
+
+        <div className="absolute bottom-4 left-4">
+          <span className="inline-flex items-center rounded-full bg-white/90 border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm">
+            {caption}
+          </span>
+        </div>
       </div>
 
-      {/* overlay for readability (tweak these numbers if you want more/less image visibility) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/55 via-white/30 via-30% to-slate-200/15" />
-
-      {/* soft top/bottom fade */}
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-slate-100 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-200 to-transparent" />
-
-      <style>{`
-        /* LEFT → RIGHT */
-        @keyframes gfft-hero-slide {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0%); }
-        }
-      `}</style>
+      <div className="flex items-center justify-center gap-2 py-3">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIdx(i)}
+            className={
+              "h-2.5 w-2.5 rounded-full transition " +
+              (i === idx ? "bg-teal-600" : "bg-slate-300 hover:bg-slate-400")
+            }
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 export default function GenesisFoundation() {
-  const images = [gfft1, gfft2, gfft3, gfft4, gfft5]; // add more later
+  const images = [gfft1, gfft2, gfft3, gfft4, gfft5];
+
+  const primaryBtn =
+    "inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition";
+  const secondaryBtn =
+    "inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition";
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
-        <HeroBackgroundSlider images={images} speed={40} />
-
-        <div className="relative z-10 mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
+    <main className="min-h-screen bg-white text-slate-900">
+      {/* HERO (Home-style layout) */}
+      <section className="py-16 md:py-20 bg-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -94,86 +103,76 @@ export default function GenesisFoundation() {
           >
             <p className="text-sm font-semibold text-teal-700">Partner</p>
 
-            <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
+            <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
               Genesis Foundation for Fitness &amp; Tennis (GFFT)
             </h1>
 
-           
+            <p className="mt-4 text-lg text-slate-600 max-w-prose">
+              We partner with GFFT to expand access to tennis, mentorship, and opportunity for underserved youth.
+            </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="https://www.genesisfoundationwichita.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+                className={secondaryBtn}
               >
                 Visit GFFT Website ↗
               </a>
 
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
-              >
+              <Link to="/contact" className={secondaryBtn}>
                 Contact us
               </Link>
 
-              <a
-  href={gfftFlyer}   // change to gfftFlyer on GFFT page
-  target="_blank"
-  rel="noreferrer"
-  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl 
-             border border-slate-300 bg-white text-slate-800 
-             font-semibold hover:bg-slate-50 transition"
->
-  View Flyer (PDF)
-  <ExternalLink className="h-4 w-4" />
-</a>
-
+              <a href={gfftFlyer} target="_blank" rel="noreferrer" className={primaryBtn}>
+                View Flyer (PDF) <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
           </motion.div>
 
-          {/* RIGHT CARD */}
-          
+          {/* RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="lg:justify-self-end w-full"
+          >
+            <ImageCarouselCard images={images} caption="Community impact in action" />
+          </motion.div>
         </div>
       </section>
 
-      {/* TENNIS FOR GOOD CARD — floating below hero */}
-<section className="py-16 -mt-16 relative z-10">
-  <div className="mx-auto max-w-5xl px-4">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <Card className="rounded-3xl shadow-xl">
-        <CardContent className="p-10">
-          <div className="flex items-center gap-3 mb-4">
-            <HeartHandshake className="h-6 w-6 text-teal-700" />
-            <p className="font-semibold text-slate-800 text-xl">
-              Tennis for Good
-            </p>
-          </div>
+      {/* TENNIS FOR GOOD CARD */}
+      <section className="py-16 bg-gradient-to-b from-white to-slate-50">
+        <div className="mx-auto max-w-5xl px-4">
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <Card className="rounded-3xl shadow-xl">
+              <CardContent className="p-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <HeartHandshake className="h-6 w-6 text-teal-700" />
+                  <p className="font-semibold text-slate-900 text-xl">Tennis for Good</p>
+                </div>
 
-          <p className="mt-3 text-slate-600">
-            Elevate Foundation uses tennis as a tool for empowerment and education access.
-          </p>
+                <p className="mt-3 text-slate-600">
+                  Elevate Foundation uses tennis as a tool for empowerment and education access.
+                </p>
 
-          <BulletList
-            items={[
-              "Host tennis gear donation drives",
-              "Teach tennis to younger students",
-              "String tennis rackets and donate proceeds to education support",
-            ]}
-          />
-        </CardContent>
-      </Card>
-    </motion.div>
-  </div>
-</section>
-
+                <BulletList
+                  items={[
+                    "Host tennis gear donation drives",
+                    "Teach tennis to younger students",
+                    "String tennis rackets and donate proceeds to education support",
+                  ]}
+                />
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
       {/* LOWER SECTION */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-6">
           <Card className="rounded-2xl">
             <CardContent>

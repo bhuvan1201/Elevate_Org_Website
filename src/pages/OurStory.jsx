@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Users, BarChart3, HeartHandshake, ShieldCheck } from "lucide-react";
-
+import ourStory from "../assets/ourstory.png";
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
     {children}
@@ -48,9 +48,9 @@ function StoryHero() {
 
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop"
+            src={ourStory}
             alt="Students collaborating"
-            className="rounded-3xl shadow-xl aspect-[4/3] object-cover border border-slate-300"
+            className="rounded-3xl shadow-xl w-full h-auto object-contain border border-slate-300"
           />
         </motion.div>
       </div>
