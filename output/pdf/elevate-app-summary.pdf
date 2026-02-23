@@ -1,0 +1,64 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2988 >>
+stream
+BT /F2 18 Tf 1 0 0 1 42 760 Tm (ELEVATE.ORG App Summary) Tj ET
+BT /F2 11 Tf 1 0 0 1 42 736 Tm (What it is) Tj ET
+BT /F1 9 Tf 1 0 0 1 42 722 Tm (A React + Vite web app for ELEVATE, a youth-led nonprofit focused on teen health education) Tj ET
+BT /F1 9 Tf 1 0 0 1 42 710 Tm (and advocacy. The site presents mission, projects, partners, learning content, and contact paths.) Tj ET
+BT /F2 11 Tf 1 0 0 1 42 695 Tm (Who it's for) Tj ET
+BT /F1 9 Tf 1 0 0 1 42 681 Tm (Primary persona: students/teens and youth advocates; secondary audiences include parents,) Tj ET
+BT /F1 9 Tf 1 0 0 1 42 669 Tm (schools, and partner organizations.) Tj ET
+BT /F2 11 Tf 1 0 0 1 42 654 Tm (What it does) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 640 Tm (- Provides routed pages for Home, Our Story, Team, Contact, Projects, Partners, and Learn sections.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 629.5 Tm (- Highlights Teen Vaping Awareness and Adolescent Obesity initiative pages.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 619.0 Tm (- Shows partner profiles for Genesis Foundation and Building Blocks Foundation.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 608.5 Tm (- Offers learning tracks such as Tutoring & Education and Fitness.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 598.0 Tm (- Uses Framer Motion and Lucide icons for animated, mobile-friendly UI interactions.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 587.5 Tm (- Implements Netlify-compatible contact submission with URL-encoded POST and honeypot.) Tj ET
+BT /F2 11 Tf 1 0 0 1 42 574.0 Tm (How it works \(repo-evidenced architecture\)) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 560.0 Tm (- Entry/runtime: src/main.jsx mounts <App /> inside BrowserRouter under React StrictMode.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 549.5 Tm (- Composition: src/app.jsx renders persistent Header plus route-based page components.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 539.0 Tm (- Styling: Tailwind CSS utilities in JSX plus src/index.css and tailwind.config.js.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 528.5 Tm (- Content/data: static text/media from src/assets/*; no database models found in repo.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 518.0 Tm (- Service integration: contact form posts to '/' with Netlify attrs; backup form in public/netlify-forms.html.) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 507.5 Tm (- Backend/API/Auth: Not found in repo \(no server code, API client layer, or auth wiring detected\).) Tj ET
+BT /F2 11 Tf 1 0 0 1 42 494.0 Tm (How to run \(minimal\)) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 480.0 Tm (- From repo root: npm install) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 469.5 Tm (- Start dev server: npm run dev) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 459.0 Tm (- Open Vite local URL \(typically http://localhost:5173\)) Tj ET
+BT /F1 8.5 Tf 1 0 0 1 50 448.5 Tm (- Optional production check: npm run build then npm run preview) Tj ET
+BT /F1 8 Tf 1 0 0 1 42 433.0 Tm (Evidence basis: README.md, package.json, src/main.jsx, src/app.jsx, src/components/Header.jsx,) Tj ET
+BT /F1 8 Tf 1 0 0 1 42 423.0 Tm (src/pages/Home.jsx, src/pages/Contact.jsx, public/netlify-forms.html.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000003296 00000 n 
+0000003366 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3441
+%%EOF
