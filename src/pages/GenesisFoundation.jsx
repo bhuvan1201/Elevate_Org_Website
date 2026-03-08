@@ -10,6 +10,10 @@ import gfft2 from "../assets/partners/gfft/gfft2.jpeg";
 import gfft3 from "../assets/partners/gfft/gfft3.jpeg";
 import gfft4 from "../assets/partners/gfft/gfft4.jpeg";
 import gfft5 from "../assets/partners/gfft/gfft5.jpeg";
+import gfft6 from "../assets/partners/gfft/gfft6.jpeg";
+import gfft7 from "../assets/partners/gfft/gfft7.jpeg";
+import gfft8 from "../assets/partners/gfft/gfft8.jpeg";
+import gfft9 from "../assets/partners/gfft/gfft9.jpeg";
 
 /* ---------- UI helpers ---------- */
 const Card = ({ className = "", children }) => (
@@ -83,7 +87,7 @@ function ImageCarouselCard({ images = [], caption = "Community impact in action"
 }
 
 export default function GenesisFoundation() {
-  const images = [gfft1, gfft2, gfft3, gfft4, gfft5];
+  const images = [gfft1, gfft2, gfft3, gfft4, gfft5, gfft6, gfft7, gfft8, gfft9];
 
   const primaryBtn =
     "inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition";

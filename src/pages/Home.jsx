@@ -1,15 +1,17 @@
 import logo from "../assets/logo-removebg.png";
-import h1 from "../assets/home/hero/h1.avif";
-import h2 from "../assets/home/hero/h2.avif";
-import h3 from "../assets/home/hero/h3.jpeg";
-import h4 from "../assets/partners/building-blocks/bb1.jpeg";
+import h1 from "../assets/home/hero/h1.jpg";
+import h2 from "../assets/home/hero/h2.jpeg";
+// import h3 from "../assets/home/hero/h3.jpeg";
+import h3 from "../assets/partners/building-blocks/bb1.jpeg";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
+  Facebook,
   HeartHandshake,
   Info,
+  Instagram,
   Mail,
   MapPin,
   Phone,
@@ -66,8 +68,9 @@ export default function Home() {
 /* ================= HERO (TFAH-STYLE) ================= */
 
 function Hero() {
-  const images = [h1, h2, h3, h4];
+  const images = [h1, h2, h3];
   const [idx, setIdx] = useState(0);
+  const isH1Image = idx === 0;
 
   // Optional: auto-rotate images (turn off by deleting this useEffect)
   useEffect(() => {
@@ -140,12 +143,24 @@ function Hero() {
                 <img
                   src={images[idx]}
                   alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className={
+                    "absolute inset-0 h-full w-full object-cover " +
+                    (isH1Image
+                      ? "saturate-150 contrast-105 brightness-125"
+                      : "")
+                  }
                   draggable="false"
                 />
 
                 {/* subtle overlay for polish (NOT heavy) */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-white/10" />
+                <div
+                  className={
+                    "absolute inset-0 " +
+                    (isH1Image
+                      ? "bg-gradient-to-t from-transparent via-transparent to-transparent"
+                      : "bg-gradient-to-t from-white/20 via-transparent to-white/10")
+                  }
+                />
 
                 {/* small caption chip */}
                 <div className="absolute left-4 bottom-4">
@@ -404,13 +419,34 @@ function Contact({ form, setForm }) {
 }
 
 function Footer() {
+  const facebookUrl = "https://facebook.com/";
+  const instagramUrl = "https://instagram.com/elevatefoundation_official";
+
   return (
     <footer className="border-t bg-white">
       <div className="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
         <p className="text-sm text-slate-600">
           © {new Date().getFullYear()} ELEVATE. 501(c)(3) nonprofit. All rights reserved.
         </p>
-        <div className="flex md:justify-end gap-4 text-sm">
+        <div className="flex md:justify-end items-center gap-4 text-sm">
+          <a
+            href={facebookUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit our Facebook page"
+            className="text-[#1877F2] hover:opacity-80 transition"
+          >
+            <Facebook className="h-5 w-5" />
+          </a>
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit our Instagram page"
+            className="text-[#E4405F] hover:opacity-80 transition"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
           <a href="#" className="underline">Privacy</a>
           <a href="#" className="underline">Terms</a>
         </div>
