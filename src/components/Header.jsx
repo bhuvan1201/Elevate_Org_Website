@@ -71,13 +71,16 @@ export default function Header() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-12 text-base font-semibold text-slate-900 tracking-wide">
           {/* ABOUT US dropdown */}
+          <Link to="/" className="hover:text-black">
+            Home
+          </Link>
           <div
             className="relative"
             onMouseEnter={about.openMenu}
             onMouseLeave={about.closeMenu}
           >
             <button className="hover:text-black inline-flex items-center gap-1 py-2">
-              About Us <span className="text-xs">▼</span>
+              About <span className="text-xs">▼</span>
             </button>
 
             {about.open && (
@@ -115,6 +118,9 @@ export default function Header() {
                 onMouseEnter={projects.openMenu}
                 onMouseLeave={projects.closeMenu}
               >
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/tennis-for-good">
+                  Tennis for Good
+                </Link>
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/teen-vaping-awareness">
                   Teen Vaping Awareness
                 </Link>
@@ -152,35 +158,41 @@ export default function Header() {
           </div>
 
           {/* LEARN dropdown */}
-<div
-  className="relative"
-  onMouseEnter={learn.openMenu}
-  onMouseLeave={learn.closeMenu}
->
-  <button className="hover:text-black inline-flex items-center gap-1 py-2">
-    Learn <span className="text-xs">▼</span>
-  </button>
+          <div
+            className="relative"
+            onMouseEnter={learn.openMenu}
+            onMouseLeave={learn.closeMenu}
+          >
+            <button className="hover:text-black inline-flex items-center gap-1 py-2">
+              Learn <span className="text-xs">▼</span>
+            </button>
 
-  {learn.open && (
-    <div
-      className="absolute left-0 top-full mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden"
-      onMouseEnter={learn.openMenu}
-      onMouseLeave={learn.closeMenu}
-    >
-      <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/tutoring-education">
-        Tutoring &amp; Education
-      </Link>
-      <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/fitness">
-        Fitness
-      </Link>
-    </div>
-  )}
-</div>
+            {learn.open && (
+              <div
+                className="absolute left-0 top-full mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden"
+                onMouseEnter={learn.openMenu}
+                onMouseLeave={learn.closeMenu}
+              >
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/tutoring-education">
+                  Tutoring &amp; Education
+                </Link>
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/fitness">
+                  Fitness
+                </Link>
+              </div>
+            )}
+          </div>
 
 
-          <a href="/#get-involved" className="hover:text-black">
+          <Link to="/get-involved" className="hover:text-black">
             Get Involved
-          </a>
+          </Link>
+          <Link
+            to="/donate"
+            className="inline-flex items-center rounded-xl bg-teal-600 px-5 py-2.5 text-white font-semibold hover:bg-teal-700 transition shadow-sm"
+          >
+            Donate
+          </Link>
         </nav>
       </div>
 

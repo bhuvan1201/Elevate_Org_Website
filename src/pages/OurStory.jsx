@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Users, BarChart3, HeartHandshake, ShieldCheck } from "lucide-react";
+import { Users, BarChart3, HeartHandshake, ShieldCheck, Eye } from "lucide-react";
 import ourStory from "../assets/ourstory.png";
+
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
     {children}
@@ -15,7 +16,8 @@ export default function OurStory() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
       <StoryHero />
-      <MissionBlock />
+      <MissionVision />
+      <FounderStory />
       <WhatWeDo />
       <Timeline />
       <Partners />
@@ -23,8 +25,6 @@ export default function OurStory() {
     </main>
   );
 }
-
-/* ======================= Sections ======================= */
 
 function StoryHero() {
   return (
@@ -34,22 +34,24 @@ function StoryHero() {
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
             Our Story
           </h1>
+
           <p className="mt-4 text-lg text-slate-600 max-w-prose">
-            Elevate Foundation is a youth-led nonprofit dedicated to expanding access to education,
-            health awareness, and opportunity for underserved children—through research-driven advocacy,
-            community service, and sports-based empowerment.
+            ELEVATE was founded by siblings <span className="font-semibold text-slate-800">Vihaan Ganganala</span> and{" "}
+            <span className="font-semibold text-slate-800">Hitha Ganganala</span>, two high school students from Wichita
+            who believe young people can use their education, talents, and leadership to serve others.
           </p>
+
           <p className="mt-3 text-slate-600 max-w-prose">
-            Founded by high school students <span className="font-semibold">Vihaan Ganganala</span> and{" "}
-            <span className="font-semibold">Hitha Ganganala</span>, Elevate combines student-led research,
-            tutoring, and tennis-for-good initiatives to create measurable, community-centered impact.
+            As tennis players, HOSA participants, researchers, tutors, and student volunteers, Vihaan and Hitha created
+            ELEVATE to connect their passions for sports, health awareness, education, and service into one youth-led
+            mission serving communities in Wichita and India.
           </p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
           <img
             src={ourStory}
-            alt="Students collaborating"
+            alt="ELEVATE story"
             className="rounded-3xl shadow-xl w-full h-auto object-contain border border-slate-300"
           />
         </motion.div>
@@ -58,31 +60,79 @@ function StoryHero() {
   );
 }
 
-function MissionBlock() {
+function MissionVision() {
   return (
     <section className="py-16">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-6">
         <Card className="rounded-3xl">
-          <CardContent className="p-8 md:p-10">
+          <CardContent className="p-8">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-2xl bg-teal-600/10 flex items-center justify-center">
                 <ShieldCheck className="h-5 w-5 text-teal-700" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold">Mission</h2>
             </div>
-
-            <p className="mt-4 text-slate-600 text-lg leading-relaxed max-w-4xl">
-              Elevate Foundation expands access to education, strengthens youth health awareness,
-              and creates opportunity for underserved children through research, service, and sports-based empowerment.
+            <p className="mt-4 text-slate-600 text-lg leading-relaxed">
+              To empower youth through education, sports access, health awareness, and service-driven leadership.
             </p>
-
-            <div className="mt-6 grid md:grid-cols-3 gap-4">
-              <MiniPoint icon={<BarChart3 className="h-4 w-4" />} title="Research-driven" text="Student-led research initiatives on critical adolescent health issues." />
-              <MiniPoint icon={<Users className="h-4 w-4" />} title="Education access" text="Tutoring and learning support in Math and English." />
-              <MiniPoint icon={<HeartHandshake className="h-4 w-4" />} title="Community impact" text="Donation drives and partnerships that translate effort into outcomes." />
-            </div>
           </CardContent>
         </Card>
+
+        <Card className="rounded-3xl">
+          <CardContent className="p-8">
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-2xl bg-teal-600/10 flex items-center justify-center">
+                <Eye className="h-5 w-5 text-teal-700" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold">Vision</h2>
+            </div>
+            <p className="mt-4 text-slate-600 text-lg leading-relaxed">
+              A world where young people use their knowledge, talents, and leadership to create opportunity and positive
+              change for others.
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function FounderStory() {
+  return (
+    <section className="py-16 bg-white">
+      <div className="mx-auto max-w-7xl px-4">
+        <p className="text-sm font-semibold text-teal-700">The Founders</p>
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold">A sibling-led service mission</h2>
+
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          <Card className="rounded-3xl">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold">Vihaan Ganganala</h3>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                Vihaan is a high school student, tennis player, HOSA participant, and youth health advocate. His work
+                focuses on teen vaping awareness, public health education, sports access, and service leadership. Through
+                ELEVATE, he helps turn student research and community outreach into real programs for youth.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-3xl">
+            <CardContent className="p-8">
+              <h3 className="text-xl font-semibold">Hitha Ganganala</h3>
+              <p className="mt-3 text-slate-600 leading-relaxed">
+                Hitha is a high school student, tennis player, tutor, and public health researcher focused on food access,
+                nutrition equity, adolescent obesity, and education support. Her work connects data-driven research with
+                service projects that support students and families.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-4xl">
+          Together, Vihaan and Hitha built ELEVATE around a simple belief: students do not have to wait until adulthood
+          to make a difference. By combining tennis, tutoring, HOSA-inspired health awareness, and service projects,
+          ELEVATE supports youth locally in Wichita and globally through education-focused outreach in India.
+        </p>
       </div>
     </section>
   );
@@ -94,6 +144,7 @@ function WhatWeDo() {
     "Provide education support and tutoring in Math and English",
     "Run tennis gear and school supply drives",
     "Teach tennis and reinvest earnings from racket stringing into education",
+    "Support service projects in Wichita and education access initiatives connected to India",
     "Partner with organizations like Genesis Foundation for Fitness & Tennis (GFFT) and Building Blocks Foundation",
   ];
 
@@ -118,11 +169,11 @@ function WhatWeDo() {
           <div className="text-slate-600 text-lg leading-relaxed">
             <p>
               We believe students can lead meaningful change when research, service, and education come together.
-              Our programs are designed to be practical, community-centered, and measurable—so effort turns into real impact.
+              Our programs are designed to be practical, community-centered, and measurable.
             </p>
             <p className="mt-4">
-              As we grow, our focus stays the same: empower youth to learn, lead, and create opportunity—especially for those
-              who have the least access.
+              ELEVATE focuses on empowering youth to learn, lead, serve, and create opportunity—especially for students
+              and communities with limited access to resources.
             </p>
           </div>
         </div>
@@ -136,23 +187,23 @@ function Timeline() {
     {
       date: "2023–2024",
       title: "Teen vaping research & student survey",
-      desc: "Developed research and survey work focused on teen vaping and youth health awareness."
+      desc: "Developed student-led research and survey work focused on teen vaping and youth health awareness.",
     },
     {
       date: "2024",
-      title: "Started Elevate Foundation and Obesity research",
-      desc: "Launched Elevate to turn student-led research, service, and education into real-world impact and began adolescent obesity research"
+      title: "Started ELEVATE and expanded health research",
+      desc: "Launched ELEVATE to turn research, service, education, and sports access into real-world impact.",
     },
     {
       date: "2024–Present",
       title: "Sports and tutoring programs expanded",
-      desc: "Leads tennis gear drives (with GFFT) and supports weekly tutoring in Math and English."
+      desc: "Led tennis gear drives with GFFT and supported tutoring in Math and English through education partnerships.",
     },
     {
       date: "2025",
       title: "Community leadership & program growth",
-      desc: "Appointed to Wichita Mayor’s Youth Council and expanded Elevate’s education and service programs."
-    }
+      desc: "Expanded ELEVATE’s education, health awareness, sports access, and service programs in Wichita and beyond.",
+    },
   ];
 
   return (
@@ -160,11 +211,10 @@ function Timeline() {
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-3xl md:text-4xl font-bold">Journey through our history</h2>
         <p className="mt-3 text-slate-600 max-w-2xl">
-          Key milestones showing how Elevate has grown from research and service into measurable community impact.
+          Key milestones showing how ELEVATE has grown from student-led research into measurable community impact.
         </p>
 
         <div className="mt-10 relative">
-          {/* vertical line */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200" />
 
           <div className="space-y-10">
@@ -172,14 +222,9 @@ function Timeline() {
               const isLeft = idx % 2 === 0;
 
               return (
-                <div
-                  key={idx}
-                  className="relative grid md:grid-cols-2 gap-6 items-start"
-                >
-                  {/* dot */}
+                <div key={idx} className="relative grid md:grid-cols-2 gap-6 items-start">
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 h-3 w-3 rounded-full bg-teal-600 ring-4 ring-teal-50" />
 
-                  {/* left column */}
                   <div className={isLeft ? "md:pr-10" : "md:pr-10 md:order-2"}>
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
@@ -188,19 +233,12 @@ function Timeline() {
                       transition={{ duration: 0.45 }}
                       className="ml-10 md:ml-0 rounded-2xl border border-slate-200 bg-white shadow-sm p-6"
                     >
-                      <div className="text-sm font-semibold text-teal-700">
-                        {it.date}
-                      </div>
-                      <div className="mt-2 text-xl font-semibold text-slate-900">
-                        {it.title}
-                      </div>
-                      <p className="mt-2 text-slate-600 leading-relaxed">
-                        {it.desc}
-                      </p>
+                      <div className="text-sm font-semibold text-teal-700">{it.date}</div>
+                      <div className="mt-2 text-xl font-semibold text-slate-900">{it.title}</div>
+                      <p className="mt-2 text-slate-600 leading-relaxed">{it.desc}</p>
                     </motion.div>
                   </div>
 
-                  {/* right column spacer */}
                   <div className={isLeft ? "md:pl-10 hidden md:block" : "md:pl-10 hidden md:block md:order-1"} />
                 </div>
               );
@@ -254,7 +292,7 @@ function CTA() {
             <div>
               <h3 className="text-2xl font-bold">Want to collaborate or support our work?</h3>
               <p className="mt-2 text-slate-600">
-                Reach out to partner, volunteer, or help expand our programs.
+                Reach out to partner, volunteer, donate gear, or help expand our programs.
               </p>
             </div>
             <a
@@ -270,8 +308,6 @@ function CTA() {
   );
 }
 
-/* ======================= Small Components ======================= */
-
 function MiniPoint({ icon, title, text }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5">
@@ -281,17 +317,5 @@ function MiniPoint({ icon, title, text }) {
       </div>
       <p className="mt-2 text-sm text-slate-600">{text}</p>
     </div>
-  );
-}
-
-function FounderCard({ name, role, bio }) {
-  return (
-    <Card className="rounded-3xl">
-      <CardContent className="p-8">
-        <h3 className="text-xl font-semibold">{name}</h3>
-        <p className="mt-1 text-sm text-teal-700 font-medium">{role}</p>
-        <p className="mt-3 text-slate-600">{bio}</p>
-      </CardContent>
-    </Card>
   );
 }

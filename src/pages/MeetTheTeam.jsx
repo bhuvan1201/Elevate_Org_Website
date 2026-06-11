@@ -154,8 +154,8 @@ export default function MeetTheTeam() {
                 "Certified Nursing Assistant (CNA)",
               ]}
               img={vihaanImg}
-              resumePdf={vihaanResume} // ✅ add
-              resumeLabel="View Vihaan’s Resume (PDF)"
+              //resumePdf={vihaanResume} // ✅ add
+              //resumeLabel="View Vihaan’s Resume (PDF)"
               flip={false}
             />
 
@@ -175,8 +175,8 @@ export default function MeetTheTeam() {
                 "Tutor for Building Blocks Foundation (India)",
               ]}
               img={hithaImg}
-              resumePdf={hithaResume} // ✅ add
-              resumeLabel="View Hitha’s Resume (PDF)"
+              //resumePdf={hithaResume} // ✅ add
+              //resumeLabel="View Hitha’s Resume (PDF)"
               flip={true}
             />
           </div>

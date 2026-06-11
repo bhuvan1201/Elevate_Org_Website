@@ -12,6 +12,9 @@ import GenesisFoundation from "./pages/GenesisFoundation";
 import BuildingBlocksFoundation from "./pages/BuildingBlocksFoundation";
 import TutoringEducation from "./pages/TutoringEducation";
 import Fitness from "./pages/Fitness";
+import TennisForGood from "./pages/TennisForGood";
+import GetInvolved from "./pages/GetInvolved";
+import Donate from "./pages/Donate";
 
 
 export default function App() {
@@ -31,6 +34,10 @@ export default function App() {
         <Route path="/learn/tutoring-education" element={<TutoringEducation />} />
         <Route path="/learn/fitness" element={<Fitness />} />
         <Route path="/learn" element={<Learn />} />
+        <Route path="/projects/tennis-for-good" element={<TennisForGood />} />
+        <Route path="/get-involved" element={<GetInvolved />} />
+        <Route path="/donate" element={<Donate />} />
+
 
       </Routes>
     </>
