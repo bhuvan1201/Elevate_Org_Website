@@ -1,4 +1,5 @@
-# 🌍 ELEVATE.ORG — Youth Nonprofit Website (https://elevateglobal.org/)
+# 🌍 ELEVATE.ORG — Youth Nonprofit Website 
+(https://elevateglobal.org/)
 A modern, responsive landing site for **ELEVATE**, a youth-led nonprofit empowering teens to make informed choices about vaping.
 Built with **React + Vite + TailwindCSS + shadcn/ui + Framer Motion**.
 
