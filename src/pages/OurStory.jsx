@@ -37,14 +37,11 @@ function StoryHero() {
 
           <p className="mt-4 text-lg text-slate-600 max-w-prose">
             ELEVATE was founded by siblings <span className="font-semibold text-slate-800">Vihaan Ganganala</span> and{" "}
-            <span className="font-semibold text-slate-800">Hitha Ganganala</span>, two high school students from Wichita
-            who believe young people can use their education, talents, and leadership to serve others.
+            <span className="font-semibold text-slate-800">Hitha Ganganala</span>, two high school students from Wichita, Kansas, who wanted to turn their passion for service, education, tennis, and health awareness into meaningful community action.
           </p>
 
           <p className="mt-3 text-slate-600 max-w-prose">
-            As tennis players, HOSA participants, researchers, tutors, and student volunteers, Vihaan and Hitha created
-            ELEVATE to connect their passions for sports, health awareness, education, and service into one youth-led
-            mission serving communities in Wichita and India.
+            As competitive tennis players, they saw how sports can build discipline, confidence, and opportunity. As students involved in science and health programs such as HOSA, they also saw how issues like teen vaping, food access, and adolescent health affect young people. ELEVATE brings these interests together into one youth-led nonprofit platform.
           </p>
         </motion.div>
 

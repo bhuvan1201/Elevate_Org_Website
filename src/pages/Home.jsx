@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo-removebg.png";
 import h1 from "../assets/home/hero/h1.jpg";
 import h2 from "../assets/home/hero/h2.jpeg";
 import h3 from "../assets/partners/building-blocks/bb1.jpeg";
@@ -79,13 +78,11 @@ export default function Home() {
 function Hero() {
   const images = [h1, h2, h3];
   const [idx, setIdx] = useState(0);
+
   const captions = [
-    //"Youth leadership in action",
     "Tennis gear donation drive",
     "Tennis gear donation drive",
     "Online tutoring for students in India",
-    //"Health awareness led by students",
-    //"Building opportunity through service",
   ];
 
   useEffect(() => {
@@ -104,26 +101,15 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55 }}
           >
-            <div className="flex items-center gap-5">
-              <img
-                src={logo}
-                alt="ELEVATE"
-                className="h-20 md:h-28 lg:h-32 w-auto object-contain"
-              />
-              <div className="leading-tight">
-                <div className="text-lg md:text-xl lg:text-2xl font-extrabold tracking-wide text-slate-900">
-                  ELEVATE
-                </div>
-                <div className="text-base text-slate-500">Youth-led nonprofit</div>
-              </div>
-            </div>
-
-            <h1 className="mt-6 text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
               Youth Serving Youth Through Education, Sports, Health, and Service
             </h1>
 
             <p className="mt-4 text-lg text-slate-600 max-w-prose">
-              ELEVATE is a youth-led nonprofit founded by high school siblings Vihaan and Hitha Ganganala to empower young people through education, sports access, health awareness, and community service in the U.S. and India.
+              ELEVATE is a youth-led nonprofit founded by high school siblings
+              Vihaan and Hitha Ganganala to empower young people through
+              education, sports access, health awareness, and community service
+              in the U.S. and India.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -135,14 +121,14 @@ function Hero() {
               </a>
 
               <a
-                href="/partners/genesis-foundation"
+                href="/get-involved/#donate-gear"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
               >
                 Donate Tennis Gear
               </a>
 
               <a
-                href="/#get-involved"
+                href="/get-involved#volunteer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-900 text-white font-semibold hover:bg-slate-700 transition"
               >
                 Join as a Volunteer
@@ -178,7 +164,9 @@ function Hero() {
                     onClick={() => setIdx(i)}
                     className={
                       "h-2 w-2 rounded-full transition " +
-                      (i === idx ? "bg-teal-600" : "bg-slate-300 hover:bg-slate-400")
+                      (i === idx
+                        ? "bg-teal-600"
+                        : "bg-slate-300 hover:bg-slate-400")
                     }
                     aria-label={`Hero image ${i + 1}`}
                     type="button"
@@ -318,7 +306,7 @@ function FourPillars() {
     <section id="pillars" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
         <p className="text-sm font-semibold text-teal-700">Four Pillars</p>
-        <h2 className="mt-2 text-3xl md:text-4xl font-bold">What ELEVATE stands for</h2>
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold">What ELEVATE focuses on</h2>
 
         <div className="mt-8 grid md:grid-cols-4 gap-6">
           {pillars.map((p, i) => (
@@ -494,6 +482,7 @@ function GetInvolved() {
       <div className="mx-auto max-w-7xl px-4">
         <p className="text-sm font-semibold text-teal-700">Get Involved</p>
         <h2 className="mt-2 text-3xl md:text-4xl font-bold">Support the movement</h2>
+        <p className="mt-2 text-slate-600 max-w-3xl">Whether you are a student, parent, school, tennis academy, nonprofit, or sponsor, you can help ELEVATE create more opportunities for youth.</p>
 
         <div className="mt-8 grid md:grid-cols-4 gap-6">
           {actions.map((a, i) => (
@@ -504,7 +493,7 @@ function GetInvolved() {
         </div>
 
         <div className="mt-8">
-          <a href="#contact">
+          <a href="/get-involved/#donate-gear">
             <Button className="rounded-2xl bg-teal-600 hover:bg-teal-700">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

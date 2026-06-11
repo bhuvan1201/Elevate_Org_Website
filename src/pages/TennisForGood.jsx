@@ -42,13 +42,12 @@ export default function TennisForGood() {
                         </h1>
 
                         <p className="mt-4 text-lg text-slate-600 max-w-prose">
-                            ELEVATE collects gently used tennis gear and helps give it a second life
-                            by connecting equipment with students who need access to sports.
+                            Tennis can open doors, but equipment costs can make the sport difficult to access. Through Tennis for Good, ELEVATE collects gently used rackets, shoes, clothes, strings, bags, and other tennis gear from players, families, and tennis academies. The gear is redistributed through nonprofit partners to support youth who may not otherwise have access to the sport.
                         </p>
 
                         <div className="mt-6 flex flex-wrap gap-3">
                             <a
-                                href="#get-involved"
+                                href="/donate"
                                 className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition"
                             >
                                 Donate Gear <ArrowRight className="h-4 w-4" />

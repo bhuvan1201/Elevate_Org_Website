@@ -70,11 +70,10 @@ export default function TeenVapingAwareness() {
           >
             <p className="text-sm font-semibold text-teal-700">Project</p>
             <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
-              Teen Vaping Awareness
+              Teen Vaping Awareness Campaign
             </h1>
             <p className="mt-4 text-lg text-slate-600 max-w-prose">
-              Led by <span className="font-semibold text-slate-800">Vihaan Ganganala</span>. A research-driven initiative
-              to understand vaping behaviors and turn insights into prevention action.
+              Vihaan’s Teen Vaping Awareness project uses student surveys, research, and peer education to help teens understand the risks of vaping, nicotine addiction, and the impact of vaping on brain development. Through ELEVATE, this work can grow into school presentations, student campaigns, posters, videos, and community awareness events.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -85,7 +84,7 @@ export default function TeenVapingAwareness() {
                 Ways to Help <ArrowRight className="h-4 w-4" />
               </a>
 
-              
+
 
               <a
                 href={flyerPdf}

@@ -1,0 +1,76 @@
+import { motion } from "framer-motion";
+import { ArrowRight, Brain, HeartPulse, Apple, Cigarette } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Card = ({ className = "", children }) => (
+    <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
+        {children}
+    </div>
+);
+
+const CardContent = ({ className = "", children }) => (
+    <div className={"p-6 " + className}>{children}</div>
+);
+
+const RESOURCES = [
+    { title: "Teen vaping facts", icon: <Cigarette className="h-6 w-6" /> },
+    { title: "Nicotine addiction", icon: <HeartPulse className="h-6 w-6" /> },
+    { title: "Brain development", icon: <Brain className="h-6 w-6" /> },
+    { title: "Food access", icon: <Apple className="h-6 w-6" /> },
+    { title: "Nutrition", icon: <Apple className="h-6 w-6" /> },
+    { title: "Adolescent obesity", icon: <HeartPulse className="h-6 w-6" /> },
+];
+
+export default function HealthAwareness() {
+    return (
+        <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+            <section className="bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+                <div className="mx-auto max-w-7xl px-4">
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+                        <p className="text-sm font-semibold text-teal-700">Learn</p>
+                        <h1 className="mt-2 text-4xl md:text-5xl font-extrabold">
+                            Health Awareness
+                        </h1>
+                        <p className="mt-4 max-w-3xl text-lg text-slate-600">
+                            Student-friendly resources about teen vaping, nicotine addiction,
+                            brain development, food access, nutrition, and adolescent health.
+                        </p>
+
+                        <div className="mt-6">
+                            <Link
+                                to="/projects/teen-vaping-awareness"
+                                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition"
+                            >
+                                View Teen Vaping Project <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            <section className="py-16 bg-white">
+                <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {RESOURCES.map((item) => (
+                        <Card key={item.title} className="rounded-3xl">
+                            <CardContent className="p-7">
+                                <div className="h-12 w-12 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700">
+                                    {item.icon}
+                                </div>
+
+                                <h3 className="mt-4 text-xl font-bold">{item.title}</h3>
+                                <p className="mt-2 text-slate-600">
+                                    Resource coming soon.
+                                </p>
+
+                                <p className="mt-5 text-sm font-semibold text-teal-700">
+                                    Take Action: Volunteer, share this resource, start a campaign,
+                                    or contact ELEVATE.
+                                </p>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </div>
+            </section>
+        </main>
+    );
+}

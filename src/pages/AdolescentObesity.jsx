@@ -60,11 +60,10 @@ export default function AdolescentObesity() {
           >
             <p className="text-sm font-semibold text-teal-700">Project</p>
             <h1 className="mt-2 text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
-              The Impact of Poverty & Food Access on Adolescent Obesity
+              Food Access and Adolescent Health Awareness
             </h1>
             <p className="mt-4 text-lg text-slate-600 max-w-prose">
-              Led by <span className="font-semibold text-slate-800">Hitha Ganganala</span>. A data-driven look at how
-              affordability and structural barriers shape teen health outcomes.
+              Hitha’s research focuses on the connection between poverty, access to affordable nutritious food, and adolescent obesity. Through education and awareness, ELEVATE hopes to help students and families better understand barriers to healthy eating and support healthier communities.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -76,15 +75,15 @@ export default function AdolescentObesity() {
               </a>
 
               <a
-                              href={flyerPdf}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
-                            >
-                              View Pitch (PDF)
-                            </a>
+                href={flyerPdf}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+              >
+                View Pitch (PDF)
+              </a>
 
-             
+
 
               {/* ✅ KEEP: top View Poster button */}
               <a

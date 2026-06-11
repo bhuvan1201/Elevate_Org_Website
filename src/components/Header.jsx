@@ -54,22 +54,22 @@ export default function Header() {
         scrolled ? "shadow-sm" : "",
       ].join(" ")}
     >
-      <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div className="mx-auto max-w-7xl px-4 py-1 flex items-center justify-between">
         {/* Left brand */}
         <Link to="/" className="flex items-center gap-3">
           {/* ✅ Optional logo */}
           <img
             src={logo}
             alt="ELEVATE"
-            className="h-10 md:h-12 w-auto object-contain"
+            className="h-20 md:h-24 w-auto object-contain"
           />
-          <span className="font-extrabold tracking-wide text-slate-900">
+          <span className="text-2xl md:text-2xl font-extrabold tracking-wide text-slate-900">
             ELEVATE
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-12 text-base font-semibold text-slate-900 tracking-wide">
+        <nav className="hidden md:flex items-center gap-12 text-lg font-semibold text-slate-900 tracking-wide">
           {/* ABOUT US dropdown */}
           <Link to="/" className="hover:text-black">
             Home
@@ -93,11 +93,11 @@ export default function Header() {
                   Our Story
                 </Link>
                 <Link className="block px-4 py-2 hover:bg-slate-100" to="/about/team">
-                  Meet the Team
+                  Founders
                 </Link>
-                <Link className="block px-4 py-2 hover:bg-slate-100" to="/contact">
+                {/* <Link className="block px-4 py-2 hover:bg-slate-100" to="/contact">
                   Contact Us
-                </Link>
+                </Link> */}
               </div>
             )}
           </div>
@@ -114,18 +114,32 @@ export default function Header() {
 
             {projects.open && (
               <div
-                className="absolute left-0 top-full mt-2 w-72 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden"
+                className="absolute left-0 top-full mt-2 w-80 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden"
                 onMouseEnter={projects.openMenu}
                 onMouseLeave={projects.closeMenu}
               >
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/tennis-for-good">
                   Tennis for Good
                 </Link>
+
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/global-tutoring">
+                  Global Tutoring
+                </Link>
+
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/educational-video-library">
+                  Educational Video Library
+                </Link>
+
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/teen-vaping-awareness">
                   Teen Vaping Awareness
                 </Link>
+
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/adolescent-obesity">
-                  Adolescent Obesity
+                  Food Access & Adolescent Health
+                </Link>
+
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/sports-strength-training">
+                  Sports & Strength Training
                 </Link>
               </div>
             )}
@@ -153,6 +167,9 @@ export default function Header() {
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/partners/building-blocks-foundation">
                   Building Blocks Foundation
                 </Link>
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/partners/become-a-partner">
+                  Become a Partner
+                </Link>
               </div>
             )}
           </div>
@@ -163,9 +180,14 @@ export default function Header() {
             onMouseEnter={learn.openMenu}
             onMouseLeave={learn.closeMenu}
           >
-            <button className="hover:text-black inline-flex items-center gap-1 py-2">
-              Learn <span className="text-xs">▼</span>
-            </button>
+            <div className="hover:text-black inline-flex items-center gap-1 py-2">
+              <Link to="/learn" className="hover:text-black">
+                Learn
+              </Link>
+              <button type="button" className="text-xs">
+                ▼
+              </button>
+            </div>
 
             {learn.open && (
               <div
@@ -173,11 +195,24 @@ export default function Header() {
                 onMouseEnter={learn.openMenu}
                 onMouseLeave={learn.closeMenu}
               >
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn">
+                  Resource Library
+                </Link>
+
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/health-awareness">
+                  Health Awareness
+                </Link>
+
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/tutoring-education">
                   Tutoring &amp; Education
                 </Link>
+
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/fitness">
-                  Fitness
+                  Sports and Fitness
+                </Link>
+
+                <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/youth-leadership">
+                  Youth Leadership
                 </Link>
               </div>
             )}
