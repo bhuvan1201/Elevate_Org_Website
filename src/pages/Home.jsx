@@ -79,12 +79,6 @@ function Hero() {
   const images = [h1, h2, h3];
   const [idx, setIdx] = useState(0);
 
-  const captions = [
-    "Tennis gear donation drive",
-    "Tennis gear donation drive",
-    "Online tutoring for students in India",
-  ];
-
   useEffect(() => {
     const t = setInterval(() => {
       setIdx((v) => (v + 1) % images.length);
@@ -93,88 +87,79 @@ function Hero() {
   }, [images.length]);
 
   return (
-    <section id="home" className="border-b bg-white pt-24">
-      <div className="mx-auto max-w-7xl px-4 py-12 md:py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-900">
-              Youth Serving Youth Through Education, Sports, Health, and Service
-            </h1>
+    <section
+      id="home"
+      className="relative min-h-[720px] md:min-h-[780px] flex items-center justify-center overflow-hidden bg-slate-900 pt-24"
+    >
+      {/* Background image */}
+      <img
+        src={images[idx]}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
+        draggable="false"
+      />
 
-            <p className="mt-4 text-lg text-slate-600 max-w-prose">
-              ELEVATE is a youth-led nonprofit founded by high school siblings
-              Vihaan and Hitha Ganganala to empower young people through
-              education, sports access, health awareness, and community service
-              in the U.S. and India.
-            </p>
+      {/* Dark overlay so text is readable */}
+      <div className="absolute inset-0 bg-black/45" />
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#programs">
-                <Button className="bg-teal-600 hover:bg-teal-700">
-                  Explore Our Projects
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
+      {/* Soft bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
 
-              <a
-                href="/get-involved/#donate-gear"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
-              >
-                Donate Tennis Gear
-              </a>
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-6xl px-4 text-center text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">
+            Youth Serving Youth Through Education, Sports, Health, and Service
+          </h1>
 
-              <a
-                href="/get-involved#volunteer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-900 text-white font-semibold hover:bg-slate-700 transition"
-              >
-                Join as a Volunteer
-              </a>
-            </div>
-          </motion.div>
+          <p className="mt-6 mx-auto max-w-4xl text-lg md:text-xl text-white/90 leading-relaxed drop-shadow">
+            ELEVATE is a youth-led nonprofit founded by high school siblings
+            Vihaan and Hitha Ganganala to empower young people through education,
+            sports access, health awareness, and community service in the U.S. and India.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.08 }}
-          >
-            <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100">
-              <div className="relative aspect-[16/10]">
-                <img
-                  src={images[idx]}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                  draggable="false"
-                />
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <a
+              href="#programs"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-white text-slate-900 text-lg font-semibold hover:bg-slate-100 transition shadow-lg"
+            >
+              Explore Our Projects <ArrowRight className="h-5 w-5" />
+            </a>
 
-                <div className="absolute left-4 bottom-4">
-                  <span className="inline-flex items-center rounded-full bg-white/85 backdrop-blur px-3 py-1 text-xs font-semibold text-slate-800 border border-slate-200">
-                    {captions[idx]}
-                  </span>
-                </div>
-              </div>
+            <a
+              href="/get-involved/#donate-gear"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-white text-slate-900 text-lg font-semibold hover:bg-slate-100 transition shadow-lg"
+            >
+              Donate Tennis Gear
+            </a>
 
-              <div className="flex items-center justify-center gap-2 py-3 bg-white">
-                {images.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setIdx(i)}
-                    className={
-                      "h-2 w-2 rounded-full transition " +
-                      (i === idx
-                        ? "bg-teal-600"
-                        : "bg-slate-300 hover:bg-slate-400")
-                    }
-                    aria-label={`Hero image ${i + 1}`}
-                    type="button"
-                  />
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            <a
+              href="/get-involved#volunteer"
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-teal-600 text-white text-lg font-semibold hover:bg-teal-700 transition shadow-lg"
+            >
+              Join as a Volunteer
+            </a>
+          </div>
+        </motion.div>
+
+        {/* Dots */}
+        <div className="mt-10 flex justify-center gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className={
+                "h-3 w-3 rounded-full transition " +
+                (i === idx ? "bg-white" : "bg-white/40 hover:bg-white/70")
+              }
+              aria-label={`Hero image ${i + 1}`}
+              type="button"
+            />
+          ))}
         </div>
       </div>
     </section>
