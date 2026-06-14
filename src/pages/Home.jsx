@@ -131,7 +131,7 @@ function Hero() {
             </a>
 
             <a
-              href="/get-involved/#donate-gear"
+              href="/get-involved#donate-gear"
               className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-white text-slate-900 text-lg font-semibold hover:bg-slate-100 transition shadow-lg"
             >
               Donate Tennis Gear
