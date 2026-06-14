@@ -478,7 +478,7 @@ function GetInvolved() {
         </div>
 
         <div className="mt-8">
-          <a href="/get-involved/#donate-gear">
+          <a href="/get-involved#donate-gear">
             <Button className="rounded-2xl bg-teal-600 hover:bg-teal-700">
               Get Started <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
