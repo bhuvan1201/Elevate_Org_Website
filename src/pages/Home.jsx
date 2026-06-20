@@ -112,49 +112,101 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">
-            Youth Serving Youth Through Education, Sports, Health, and Service
-          </h1>
+          <div className="text-white uppercase font-semibold">
+            <div
+              className="text-left text-6xl md:text-8xl"
+              style={{
+                color: "#ffffff",
+                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
+                textShadow: `
+    0 1px 0 #d9d9d9,
+    0 2px 0 #cfcfcf,
+    0 3px 0 #c5c5c5,
+    0 6px 10px rgba(0,0,0,0.45),
+    0 15px 25px rgba(0,0,0,0.30)
+  `,
+              }}
+            >
+              YOUTH
+            </div>
 
-          <p className="mt-6 mx-auto max-w-4xl text-lg md:text-xl text-white/90 leading-relaxed drop-shadow">
-            ELEVATE is a youth-led nonprofit founded by high school siblings
-            Vihaan and Hitha Ganganala to empower young people through education,
-            sports access, health awareness, and community service in the U.S. and India.
-          </p>
+            <div
+              className="text-center text-6xl md:text-8xl mt-4"
+              style={{
+                color: "#ffffff",
+                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
+                textShadow: `
+    0 1px 0 #d9d9d9,
+    0 2px 0 #cfcfcf,
+    0 3px 0 #c5c5c5,
+    0 6px 10px rgba(0,0,0,0.45),
+    0 15px 25px rgba(0,0,0,0.30)
+  `,
+              }}
+            >
+              SERVING
+            </div>
 
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <div
+              className="text-right text-6xl md:text-8xl mt-4"
+              style={{
+                color: "#ffffff",
+                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
+                textShadow: `
+    0 1px 0 #d9d9d9,
+    0 2px 0 #cfcfcf,
+    0 3px 0 #c5c5c5,
+    0 6px 10px rgba(0,0,0,0.45),
+    0 15px 25px rgba(0,0,0,0.30)
+  `,
+              }}
+            >
+              YOUTH
+            </div>
+          </div>
+
+          {/* <h1 className="mx-auto max-w-5xl text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] tracking-tight text-white drop-shadow-[0_6px_10px_rgba(0,0,0,0.75)]">
+            Youth Serving Youth
+          </h1> */}
+
+          {/* <p className="mt-8 mx-auto max-w-4xl text-lg md:text-xl text-white/95 leading-relaxed drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)]">
+            ELEVATE is a youth-led nonprofit founded by high school siblings Vihaan
+            and Hitha Ganganala to empower young people through education, sports
+            access, health awareness, and community service in the U.S. and India.
+          </p> */}
+
+          <div className="mt-36 flex flex-wrap justify-center gap-5">
             <a
               href="#programs"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-white text-slate-900 text-lg font-semibold hover:bg-slate-100 transition shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-none bg-white text-slate-900 text-lg font-bold hover:bg-slate-100 transition shadow-xl"
             >
               Explore Our Projects <ArrowRight className="h-5 w-5" />
             </a>
 
             <a
               href="/get-involved#donate-gear"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-white text-slate-900 text-lg font-semibold hover:bg-slate-100 transition shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-none bg-white text-slate-900 text-lg font-bold hover:bg-slate-100 transition shadow-xl"
             >
               Donate Tennis Gear
             </a>
 
             <a
               href="/get-involved#volunteer"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-none bg-teal-600 text-white text-lg font-semibold hover:bg-teal-700 transition shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-none bg-teal-600 text-white text-lg font-bold hover:bg-teal-700 transition shadow-xl"
             >
               Join as a Volunteer
             </a>
           </div>
         </motion.div>
 
-        {/* Dots */}
-        <div className="mt-10 flex justify-center gap-2">
+        <div className="mt-12 flex justify-center gap-2">
           {images.map((_, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
               className={
                 "h-3 w-3 rounded-full transition " +
-                (i === idx ? "bg-white" : "bg-white/40 hover:bg-white/70")
+                (i === idx ? "bg-white" : "bg-white/45 hover:bg-white/75")
               }
               aria-label={`Hero image ${i + 1}`}
               type="button"

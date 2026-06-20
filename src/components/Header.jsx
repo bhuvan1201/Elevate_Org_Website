@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo-removebg.png"; // ✅ optional: remove if you don't want logo
-
+import logo from "../assets/logo-removebg2.png"; // ✅ optional: remove if you don't want logo
 function useHoverDropdown(delay = 180) {
   const [open, setOpen] = useState(false);
   const timer = useRef(null);
@@ -61,7 +60,7 @@ export default function Header() {
           <img
             src={logo}
             alt="ELEVATE"
-            className="h-20 md:h-24 w-auto object-contain"
+            className="h-28 md:h-28 w-auto object-contain"
           />
           <span className="text-2xl md:text-2xl font-extrabold tracking-wide text-slate-900">
             ELEVATE
