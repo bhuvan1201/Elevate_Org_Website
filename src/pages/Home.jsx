@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 //import h1 from "../assets/home/hero/h1.jpg";
 import h2 from "../assets/home/hero/h2.jpeg";
 import h3 from "../assets/partners/building-blocks/bb1.jpeg";
-import h4 from "../assets/home/hero/h4.jpg";
-import h5 from "../assets/home/hero/h5.jpg";
-import h6 from "../assets/home/hero/h6.jpg";
-import h7 from "../assets/home/hero/h7.jpg";
+import h4 from "../assets/home/hero/h4.JPG";
+import h5 from "../assets/home/hero/h5.JPG";
+import h6 from "../assets/home/hero/h6.JPG";
+import h7 from "../assets/home/hero/h7.JPG";
 import h8 from "../assets/home/hero/h8.jpg";
 import h9 from "../assets/home/hero/h9.jpg";
 import h10 from "../assets/home/hero/h10.jpg";
@@ -22,6 +22,7 @@ import h19 from "../assets/home/hero/h19.png";
 import h20 from "../assets/home/hero/h20.png";
 import h21 from "../assets/home/hero/h21.png";
 import h22 from "../assets/home/hero/h22.png";
+import h23 from "../assets/home/hero/h3.JPG";
 
 import h1Video from "../assets/home/hero/h1-video.mp4";
 import h2Video from "../assets/home/hero/h2-video.mp4";
@@ -124,6 +125,7 @@ function Hero() {
     { type: "image", src: h20 },
     { type: "image", src: h21 },
     { type: "image", src: h22 },
+    { type: "image", src: h23 },
   ];
 
   const [idx, setIdx] = useState(0);
