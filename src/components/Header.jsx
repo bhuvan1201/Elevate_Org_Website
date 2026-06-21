@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/logo-removebg2.png"; // ✅ optional: remove if you don't want logo
+import logo from "../assets/logo-removebg2.png";
+
 function useHoverDropdown(delay = 180) {
   const [open, setOpen] = useState(false);
   const timer = useRef(null);
@@ -23,11 +24,9 @@ export default function Header() {
   const partners = useHoverDropdown(180);
   const learn = useHoverDropdown(180);
 
-
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Close dropdowns on route change
   useEffect(() => {
     about.setOpen(false);
     projects.setOpen(false);
@@ -36,7 +35,6 @@ export default function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  // Add shadow when page scrolls
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
@@ -48,31 +46,28 @@ export default function Header() {
     <header
       className={[
         "fixed top-0 left-0 right-0 z-50",
-        "bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80",
+        "bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85",
         "border-b border-slate-200",
         scrolled ? "shadow-sm" : "",
       ].join(" ")}
     >
-      <div className="mx-auto max-w-7xl px-4 py-1 flex items-center justify-between">
-        {/* Left brand */}
+      <div className="mx-auto max-w-7xl px-4 h-[120px] flex items-center justify-between">
+        {/* LOGO */}
         <Link to="/" className="flex items-center gap-3">
-          {/* ✅ Optional logo */}
           <img
             src={logo}
             alt="ELEVATE"
-            className="h-28 md:h-28 w-auto object-contain"
+            className="ml-36 h-28 md:h-28 w-auto object-contain block"
           />
-          <span className="text-2xl md:text-2xl font-extrabold tracking-wide text-slate-900">
-            ELEVATE
-          </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-12 text-lg font-semibold text-slate-900 tracking-wide">
-          {/* ABOUT US dropdown */}
+        <nav className="hidden md:flex items-center gap-8 text-lg font-semibold text-slate-900 tracking-wide">
           <Link to="/" className="hover:text-black">
             Home
           </Link>
+
+          {/* ABOUT dropdown */}
           <div
             className="relative"
             onMouseEnter={about.openMenu}
@@ -94,9 +89,6 @@ export default function Header() {
                 <Link className="block px-4 py-2 hover:bg-slate-100" to="/about/team">
                   Founders
                 </Link>
-                {/* <Link className="block px-4 py-2 hover:bg-slate-100" to="/contact">
-                  Contact Us
-                </Link> */}
               </div>
             )}
           </div>
@@ -120,23 +112,18 @@ export default function Header() {
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/tennis-for-good">
                   Tennis for Good
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/global-tutoring">
                   Global Tutoring
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/educational-video-library">
                   Educational Video Library
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/teen-vaping-awareness">
                   Teen Vaping Awareness
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/adolescent-obesity">
                   Food Access & Adolescent Health
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/projects/sports-strength-training">
                   Sports & Strength Training
                 </Link>
@@ -197,19 +184,15 @@ export default function Header() {
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn">
                   Resource Library
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/health-awareness">
                   Health Awareness
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/tutoring-education">
                   Tutoring &amp; Education
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/fitness">
                   Sports and Fitness
                 </Link>
-
                 <Link className="block px-4 py-3 hover:bg-slate-100" to="/learn/youth-leadership">
                   Youth Leadership
                 </Link>
@@ -217,10 +200,10 @@ export default function Header() {
             )}
           </div>
 
-
           <Link to="/get-involved" className="hover:text-black">
             Get Involved
           </Link>
+
           <Link
             to="/donate"
             className="inline-flex items-center rounded-xl bg-teal-600 px-5 py-2.5 text-white font-semibold hover:bg-teal-700 transition shadow-sm"
@@ -229,9 +212,6 @@ export default function Header() {
           </Link>
         </nav>
       </div>
-
-      {/* IMPORTANT: add spacing so your page content doesn't hide behind fixed header */}
-      <div className="h-0" />
     </header>
   );
 }

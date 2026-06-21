@@ -28,7 +28,7 @@ function PartnerOption({ icon, title, text }) {
 export default function BecomePartner() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-            <section className="bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+            <section className="bg-gradient-to-r from-slate-100 to-slate-200 pt-40 md:pb-16">
                 <div className="mx-auto max-w-7xl px-4">
                     <p className="text-sm font-semibold text-teal-700">Partners</p>
                     <h1 className="mt-2 text-4xl md:text-5xl font-extrabold">

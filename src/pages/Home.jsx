@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
-import h1 from "../assets/home/hero/h1.jpg";
+
+//import h1 from "../assets/home/hero/h1.jpg";
 import h2 from "../assets/home/hero/h2.jpeg";
 import h3 from "../assets/partners/building-blocks/bb1.jpeg";
+import h4 from "../assets/home/hero/h4.jpg";
+import h5 from "../assets/home/hero/h5.jpg";
+import h6 from "../assets/home/hero/h6.jpg";
+import h7 from "../assets/home/hero/h7.jpg";
+import h8 from "../assets/home/hero/h8.jpg";
+import h9 from "../assets/home/hero/h9.jpg";
+import h10 from "../assets/home/hero/h10.jpg";
+import h11 from "../assets/home/hero/h11.jpg";
+import h12 from "../assets/home/hero/h12.jpg";
+import h13 from "../assets/home/hero/h13.png";
+import h14 from "../assets/home/hero/h14.png";
+import h15 from "../assets/home/hero/h15.png";
+import h16 from "../assets/home/hero/h16.png";
+import h17 from "../assets/home/hero/h17.png";
+import h18 from "../assets/home/hero/h18.png";
+import h19 from "../assets/home/hero/h19.png";
+import h20 from "../assets/home/hero/h20.png";
+import h21 from "../assets/home/hero/h21.png";
+import h22 from "../assets/home/hero/h22.png";
+
+import h1Video from "../assets/home/hero/h1-video.mp4";
+import h2Video from "../assets/home/hero/h2-video.mp4";
+
 import vihaanImg from "../assets/vihaan.jpeg";
 import hithaImg from "../assets/hitha.jpeg";
 
@@ -11,7 +35,6 @@ import {
   ArrowRight,
   Facebook,
   HeartHandshake,
-  Info,
   Instagram,
   Mail,
   MapPin,
@@ -76,36 +99,86 @@ export default function Home() {
 }
 
 function Hero() {
-  const images = [h1, h2, h3];
+  const slides = [
+    //{ type: "image", src: h1 },
+    { type: "image", src: h2 },
+    { type: "video", src: h1Video },
+    { type: "image", src: h3 },
+    { type: "image", src: h4 },
+    { type: "image", src: h5 },
+    { type: "image", src: h6 },
+    { type: "video", src: h2Video },
+    { type: "image", src: h7 },
+    { type: "image", src: h8 },
+    { type: "image", src: h9 },
+    { type: "image", src: h10 },
+    { type: "image", src: h11 },
+    { type: "image", src: h12 },
+    { type: "image", src: h13 },
+    { type: "image", src: h14 },
+    { type: "image", src: h15 },
+    { type: "image", src: h16 },
+    { type: "image", src: h17 },
+    { type: "image", src: h18 },
+    { type: "image", src: h19 },
+    { type: "image", src: h20 },
+    { type: "image", src: h21 },
+    { type: "image", src: h22 },
+  ];
+
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setIdx((v) => (v + 1) % images.length);
-    }, 4500);
-    return () => clearInterval(t);
-  }, [images.length]);
+    const currentSlide = slides[idx];
+    const delay = currentSlide.type === "video" ? 9000 : 4500;
+
+    const t = setTimeout(() => {
+      setIdx((v) => (v + 1) % slides.length);
+    }, delay);
+
+    return () => clearTimeout(t);
+  }, [idx, slides.length]);
+
+  const titleStyle = {
+    color: "#ffffff",
+    WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
+    textShadow: `
+      0 1px 0 #d9d9d9,
+      0 2px 0 #cfcfcf,
+      0 3px 0 #c5c5c5,
+      0 6px 10px rgba(0,0,0,0.45),
+      0 15px 25px rgba(0,0,0,0.30)
+    `,
+  };
 
   return (
     <section
       id="home"
       className="relative min-h-[720px] md:min-h-[780px] flex items-center justify-center overflow-hidden bg-slate-900 pt-24"
     >
-      {/* Background image */}
-      <img
-        src={images[idx]}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
-        draggable="false"
-      />
+      {slides[idx].type === "video" ? (
+        <video
+          key={slides[idx].src}
+          src={slides[idx].src}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <img
+          key={slides[idx].src}
+          src={slides[idx].src}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-[center_35%] transition-all duration-700"
+          draggable="false"
+        />
+      )}
 
-      {/* Dark overlay so text is readable */}
-      <div className="absolute inset-0 bg-black/45" />
-
-      {/* Soft bottom fade */}
+      <div className="absolute inset-0 bg-black/10" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
 
-      {/* Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 text-center text-white">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -113,67 +186,18 @@ function Hero() {
           transition={{ duration: 0.55 }}
         >
           <div className="text-white uppercase font-semibold">
-            <div
-              className="text-left text-6xl md:text-8xl"
-              style={{
-                color: "#ffffff",
-                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
-                textShadow: `
-    0 1px 0 #d9d9d9,
-    0 2px 0 #cfcfcf,
-    0 3px 0 #c5c5c5,
-    0 6px 10px rgba(0,0,0,0.45),
-    0 15px 25px rgba(0,0,0,0.30)
-  `,
-              }}
-            >
+            <div className="text-left text-6xl md:text-8xl" style={titleStyle}>
               YOUTH
             </div>
 
-            <div
-              className="text-center text-6xl md:text-8xl mt-4"
-              style={{
-                color: "#ffffff",
-                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
-                textShadow: `
-    0 1px 0 #d9d9d9,
-    0 2px 0 #cfcfcf,
-    0 3px 0 #c5c5c5,
-    0 6px 10px rgba(0,0,0,0.45),
-    0 15px 25px rgba(0,0,0,0.30)
-  `,
-              }}
-            >
+            <div className="text-center text-6xl md:text-8xl mt-4" style={titleStyle}>
               SERVING
             </div>
 
-            <div
-              className="text-right text-6xl md:text-8xl mt-4"
-              style={{
-                color: "#ffffff",
-                WebkitTextStroke: "0.5px rgba(180,180,180,0.7)",
-                textShadow: `
-    0 1px 0 #d9d9d9,
-    0 2px 0 #cfcfcf,
-    0 3px 0 #c5c5c5,
-    0 6px 10px rgba(0,0,0,0.45),
-    0 15px 25px rgba(0,0,0,0.30)
-  `,
-              }}
-            >
+            <div className="text-right text-6xl md:text-8xl mt-4" style={titleStyle}>
               YOUTH
             </div>
           </div>
-
-          {/* <h1 className="mx-auto max-w-5xl text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] tracking-tight text-white drop-shadow-[0_6px_10px_rgba(0,0,0,0.75)]">
-            Youth Serving Youth
-          </h1> */}
-
-          {/* <p className="mt-8 mx-auto max-w-4xl text-lg md:text-xl text-white/95 leading-relaxed drop-shadow-[0_3px_6px_rgba(0,0,0,0.8)]">
-            ELEVATE is a youth-led nonprofit founded by high school siblings Vihaan
-            and Hitha Ganganala to empower young people through education, sports
-            access, health awareness, and community service in the U.S. and India.
-          </p> */}
 
           <div className="mt-36 flex flex-wrap justify-center gap-5">
             <a
@@ -199,8 +223,8 @@ function Hero() {
           </div>
         </motion.div>
 
-        <div className="mt-12 flex justify-center gap-2">
-          {images.map((_, i) => (
+        <div className="mt-12 flex justify-center gap-2 flex-wrap max-w-lg mx-auto">
+          {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
@@ -208,7 +232,7 @@ function Hero() {
                 "h-3 w-3 rounded-full transition " +
                 (i === idx ? "bg-white" : "bg-white/45 hover:bg-white/75")
               }
-              aria-label={`Hero image ${i + 1}`}
+              aria-label={`Hero slide ${i + 1}`}
               type="button"
             />
           ))}
@@ -217,6 +241,7 @@ function Hero() {
     </section>
   );
 }
+
 
 function Mission() {
   return (

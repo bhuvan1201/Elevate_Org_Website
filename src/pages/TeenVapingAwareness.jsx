@@ -61,7 +61,7 @@ function Stat({ value, label }) {
 export default function TeenVapingAwareness() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-      <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 pt-40 md:pb-16">
         <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}

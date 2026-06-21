@@ -152,7 +152,7 @@ export default function BuildingBlocksFoundation() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       {/* HERO (Home-style layout) */}
-      <section className="py-16 md:py-20 bg-white border-b border-slate-200">
+      <section className="pt-40 md:pb-16 bg-white border-b border-slate-200">
         <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT */}
           <motion.div

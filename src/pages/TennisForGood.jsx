@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, HeartHandshake, Recycle, Users, Globe2 } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -5,6 +6,26 @@ import { Link } from "react-router-dom";
 import gfft1 from "../assets/partners/gfft/gfft1.jpeg";
 import gfft2 from "../assets/partners/gfft/gfft2.jpeg";
 import gfft3 from "../assets/partners/gfft/gfft3.jpeg";
+import gfft4 from "../assets/partners/gfft/gfft4.jpeg";
+import gfft5 from "../assets/partners/gfft/gfft5.jpeg";
+import gfft6 from "../assets/partners/gfft/gfft6.jpeg";
+import gfft7 from "../assets/partners/gfft/gfft7.jpeg";
+import gfft8 from "../assets/partners/gfft/gfft8.jpeg";
+import gfft9 from "../assets/partners/gfft/gfft9.jpeg";
+import gfft10 from "../assets/partners/gfft/gfft10.jpg";
+import gfft11 from "../assets/partners/gfft/gfft11.jpg";
+import gfft12 from "../assets/partners/gfft/gfft12.JPG";
+import gfft13 from "../assets/partners/gfft/gfft13.JPG";
+import gfft14 from "../assets/partners/gfft/gfft14.JPG";
+import gfft15 from "../assets/partners/gfft/gfft15.JPG";
+import gfft16 from "../assets/partners/gfft/gfft16.png";
+import gfft17 from "../assets/partners/gfft/gfft17.png";
+import gfft18 from "../assets/partners/gfft/gfft18.png";
+import gfft19 from "../assets/partners/gfft/gfft19.png";
+
+// Uncomment and rename if you add videos later
+// import gfftVideo1 from "../assets/partners/gfft/gfft-video1.mp4";
+// import gfftVideo2 from "../assets/partners/gfft/gfft-video2.mp4";
 
 const Card = ({ className = "", children }) => (
     <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -29,10 +50,69 @@ function BulletList({ items }) {
     );
 }
 
+function MediaSlider({ slides }) {
+    const [idx, setIdx] = useState(0);
+
+    useEffect(() => {
+        const current = slides[idx];
+        const delay = current.type === "video" ? 9000 : 4000;
+
+        const t = setTimeout(() => {
+            setIdx((v) => (v + 1) % slides.length);
+        }, delay);
+
+        return () => clearTimeout(t);
+    }, [idx, slides.length]);
+
+    return (
+        <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl">
+            <div className="relative aspect-[16/10] bg-black">
+                {slides[idx].type === "video" ? (
+                    <video
+                        key={slides[idx].src}
+                        src={slides[idx].src}
+                        className="h-full w-full object-contain bg-black"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                    />
+                ) : (
+                    <img
+                        key={slides[idx].src}
+                        src={slides[idx].src}
+                        alt={slides[idx].label}
+                        className="h-full w-full object-contain bg-black"
+                    />
+                )}
+
+                <div className="absolute left-4 bottom-4 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-slate-800 shadow">
+                    {slides[idx].label}
+                </div>
+            </div>
+
+            <div className="flex justify-center gap-2 py-3 bg-white">
+                {slides.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setIdx(i)}
+                        className={
+                            "h-2.5 w-2.5 rounded-full transition " +
+                            (i === idx ? "bg-teal-600" : "bg-slate-300")
+                        }
+                        type="button"
+                        aria-label={`Tennis media ${i + 1}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
+
 export default function TennisForGood() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-            <section className="bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+            <section className="bg-gradient-to-r from-slate-100 to-slate-200 pt-40 pb-16">
                 <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                         <p className="text-sm font-semibold text-teal-700">Project</p>
@@ -42,7 +122,11 @@ export default function TennisForGood() {
                         </h1>
 
                         <p className="mt-4 text-lg text-slate-600 max-w-prose">
-                            Tennis can open doors, but equipment costs can make the sport difficult to access. Through Tennis for Good, ELEVATE collects gently used rackets, shoes, clothes, strings, bags, and other tennis gear from players, families, and tennis academies. The gear is redistributed through nonprofit partners to support youth who may not otherwise have access to the sport.
+                            Tennis can open doors, but equipment costs can make the sport difficult to access.
+                            Through Tennis for Good, ELEVATE collects gently used rackets, shoes, clothes,
+                            strings, bags, and other tennis gear from players, families, and tennis academies.
+                            The gear is redistributed through nonprofit partners to support youth who may not
+                            otherwise have access to the sport.
                         </p>
 
                         <div className="mt-6 flex flex-wrap gap-3">
@@ -63,16 +147,68 @@ export default function TennisForGood() {
                     </motion.div>
 
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                        <div className="rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl">
-                            <img
-                                src={gfft1}
-                                alt="Tennis gear collection"
-                                className="w-full aspect-[16/10] object-cover"
-                            />
-                        </div>
+                        <MediaSlider
+                            slides={[
+                                { type: "image", src: gfft1, label: "Tennis for Good" },
+                                { type: "image", src: gfft2, label: "Tennis for Good" },
+                                { type: "image", src: gfft3, label: "Tennis for Good" },
+                                { type: "image", src: gfft4, label: "Tennis for Good" },
+                                { type: "image", src: gfft5, label: "Tennis for Good" },
+                                { type: "image", src: gfft6, label: "Tennis for Good" },
+                                { type: "image", src: gfft7, label: "Tennis for Good" },
+                                { type: "image", src: gfft8, label: "Tennis for Good" },
+                                { type: "image", src: gfft9, label: "Tennis for Good" },
+                                { type: "image", src: gfft10, label: "Tennis for Good" },
+                                { type: "image", src: gfft11, label: "Tennis for Good" },
+                                { type: "image", src: gfft12, label: "Tennis for Good" },
+                                { type: "image", src: gfft13, label: "Tennis for Good" },
+                                { type: "image", src: gfft14, label: "Tennis for Good" },
+                                { type: "image", src: gfft15, label: "Tennis for Good" },
+                                { type: "image", src: gfft16, label: "Tennis for Good" },
+                                { type: "image", src: gfft17, label: "Tennis for Good" },
+                                { type: "image", src: gfft18, label: "Tennis for Good" },
+                                { type: "image", src: gfft19, label: "Tennis for Good" },
+                                // Uncomment if you add video imports above
+                                // { type: "video", src: gfftVideo1, label: "Donation drive in action" },
+                                // { type: "video", src: gfftVideo2, label: "Youth sports access" },
+                            ]}
+                        />
                     </motion.div>
                 </div>
             </section>
+
+            <section className="py-16 bg-white">
+                <div className="mx-auto max-w-7xl px-4">
+                    <div className="text-center">
+                        <p className="text-sm font-semibold text-teal-700">
+                            Founder's Action
+                        </p>
+
+                        <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+                            See Tennis for Good in Action
+                        </h2>
+
+                        <p className="mt-4 max-w-3xl mx-auto text-lg text-slate-600">
+                            Watch how ELEVATE collects, organizes, and redistributes tennis gear
+                            to create opportunities for youth through sports.
+                        </p>
+                    </div>
+
+                    <div className="mt-10 rounded-3xl overflow-hidden shadow-xl border border-slate-200">
+                        <div className="aspect-video">
+                            <iframe
+                                className="w-full h-full"
+                                src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID"
+                                title="Tennis For Good"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
 
             <section className="py-16 bg-white">
                 <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-6">

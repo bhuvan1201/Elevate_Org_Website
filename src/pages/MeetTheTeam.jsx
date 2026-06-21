@@ -126,7 +126,7 @@ export default function MeetTheTeam() {
     <main className="min-h-screen bg-white">
       {/* keep your existing header/nav wrapper */}
 
-      <section className="py-16 bg-white">
+      <section className="pt-40 md:pb-16">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
             Meet the Team

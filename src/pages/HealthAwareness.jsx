@@ -24,7 +24,7 @@ const RESOURCES = [
 export default function HealthAwareness() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
-            <section className="bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+            <section className="bg-gradient-to-r from-slate-100 to-slate-200 pt-40 md:pb-16">
                 <div className="mx-auto max-w-7xl px-4">
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                         <p className="text-sm font-semibold text-teal-700">Learn</p>

@@ -51,7 +51,7 @@ export default function AdolescentObesity() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 pt-28 pb-16 md:pt-32 md:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-r from-slate-100 to-slate-200 pt-40 md:pb-16">
         <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}

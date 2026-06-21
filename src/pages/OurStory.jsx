@@ -28,7 +28,7 @@ export default function OurStory() {
 
 function StoryHero() {
   return (
-    <section className="bg-gradient-to-r from-slate-100 to-slate-200 py-16 md:py-20">
+    <section className="bg-gradient-to-r from-slate-100 to-slate-200 pt-40 md:pb-16">
       <div className="mx-auto max-w-7xl px-4 grid md:grid-cols-2 gap-10 items-center">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-slate-800">
