@@ -339,7 +339,7 @@ export default function RallyForChange() {
                             <ul className="mt-5 space-y-4 text-slate-700">
                                 {[
                                     "A fun tennis lesson taught by junior players",
-                                    "Summer prizes",
+                                    "Elevate shirts",
                                     "Free racquet giveaways",
                                     "Drinks and snacks",
                                 ].map((item) => (
