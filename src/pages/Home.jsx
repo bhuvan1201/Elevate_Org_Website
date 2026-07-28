@@ -268,7 +268,7 @@ function RallyBanner() {
 
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
                 Join ELEVATE's Tennis for Good initiative for a fun evening of
-                tennis instruction, prizes, racquet giveaways, snacks, and
+                tennis instruction, cool elevate t-shirts, racquet giveaways, snacks, and
                 community. Open to students in Grades 1–12.
               </p>
 
