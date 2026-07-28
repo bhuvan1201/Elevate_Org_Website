@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import mathVideo from "../assets/videos/math1.mov";
+import mathVideo from "../assets/optimized-videos/math1.mp4";
 
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>

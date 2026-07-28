@@ -12,25 +12,25 @@ import {
     MapPin,
     CheckCircle2,
 } from "lucide-react";
-import gfft1 from "../assets/partners/gfft/gfft1.jpeg";
-import gfft2 from "../assets/partners/gfft/gfft2.jpeg";
-import gfft3 from "../assets/partners/gfft/gfft3.jpeg";
-import gfft4 from "../assets/partners/gfft/gfft4.jpeg";
-import gfft5 from "../assets/partners/gfft/gfft5.jpeg";
-import gfft6 from "../assets/partners/gfft/gfft6.jpeg";
-import gfft7 from "../assets/partners/gfft/gfft7.jpeg";
-import gfft8 from "../assets/partners/gfft/gfft8.jpeg";
-import gfft9 from "../assets/partners/gfft/gfft9.jpeg";
-import gfft10 from "../assets/partners/gfft/gfft10.jpg";
-import gfft11 from "../assets/partners/gfft/gfft11.jpg";
-import gfft12 from "../assets/partners/gfft/gfft12.JPG";
-import gfft13 from "../assets/partners/gfft/gfft13.JPG";
-import gfft14 from "../assets/partners/gfft/gfft14.JPG";
-import gfft15 from "../assets/partners/gfft/gfft15.JPG";
-import gfft16 from "../assets/partners/gfft/gfft16.png";
-import gfft17 from "../assets/partners/gfft/gfft17.png";
-import gfft18 from "../assets/partners/gfft/gfft18.png";
-import gfft19 from "../assets/partners/gfft/gfft19.png";
+import gfft1 from "../assets/partners/gfft/optimized/gfft1.webp";
+import gfft2 from "../assets/partners/gfft/optimized/gfft2.webp";
+import gfft3 from "../assets/partners/gfft/optimized/gfft3.webp";
+import gfft4 from "../assets/partners/gfft/optimized/gfft4.webp";
+import gfft5 from "../assets/partners/gfft/optimized/gfft5.webp";
+import gfft6 from "../assets/partners/gfft/optimized/gfft6.webp";
+import gfft7 from "../assets/partners/gfft/optimized/gfft7.webp";
+import gfft8 from "../assets/partners/gfft/optimized/gfft8.webp";
+import gfft9 from "../assets/partners/gfft/optimized/gfft9.webp";
+import gfft10 from "../assets/partners/gfft/optimized/gfft10.webp";
+import gfft11 from "../assets/partners/gfft/optimized/gfft11.webp";
+import gfft12 from "../assets/partners/gfft/optimized/gfft12.webp";
+import gfft13 from "../assets/partners/gfft/optimized/gfft13.webp";
+import gfft14 from "../assets/partners/gfft/optimized/gfft14.webp";
+import gfft15 from "../assets/partners/gfft/optimized/gfft15.webp";
+import gfft16 from "../assets/partners/gfft/optimized/gfft16.webp";
+import gfft17 from "../assets/partners/gfft/optimized/gfft17.webp";
+import gfft18 from "../assets/partners/gfft/optimized/gfft18.webp";
+import gfft19 from "../assets/partners/gfft/optimized/gfft19.webp";
 import rallyFlyer from "../assets/events/rally-for-change.jpeg";
 
 // Uncomment and rename if you add videos later
@@ -92,6 +92,8 @@ function MediaSlider({ slides }) {
                         key={slides[idx].src}
                         src={slides[idx].src}
                         alt={slides[idx].label}
+                        loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-contain bg-black"
                     />
                 )}
