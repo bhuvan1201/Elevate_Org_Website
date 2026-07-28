@@ -46,6 +46,8 @@ import {
   Dumbbell,
   HeartPulse,
   Gift,
+  CalendarDays,
+  Clock3
 } from "lucide-react";
 
 const Card = ({ className = "", children }) => (
@@ -84,6 +86,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Hero />
+      <RallyBanner />
       <Mission />
       <FoundersStory />
       <FourPillars />
@@ -244,7 +247,113 @@ function Hero() {
   );
 }
 
+function RallyBanner() {
+  return (
+    <section className="bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-700 py-10">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="overflow-hidden rounded-3xl bg-white shadow-2xl">
+          <div className="grid lg:grid-cols-[2fr_1fr]">
+            <div className="p-8 md:p-10">
+              <span className="inline-flex items-center rounded-full bg-yellow-100 px-4 py-1 text-sm font-bold text-yellow-800">
+                🎾 Upcoming Community Event
+              </span>
 
+              <h2 className="mt-5 text-4xl font-extrabold text-slate-900 md:text-5xl">
+                Rally for Change
+              </h2>
+
+              <p className="mt-3 text-2xl font-bold text-teal-700">
+                Free Tennis Event for Kids
+              </p>
+
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+                Join ELEVATE's Tennis for Good initiative for a fun evening of
+                tennis instruction, prizes, racquet giveaways, snacks, and
+                community. Open to students in Grades 1–12.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-5 text-slate-700">
+                <div className="flex items-center gap-2">
+                  <CalendarDays className="h-5 w-5 text-teal-600" />
+                  <span className="font-semibold">
+                    Sunday, August 16, 2026
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Clock3 className="h-5 w-5 text-teal-600" />
+                  <span className="font-semibold">
+                    5:00–7:00 PM
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-teal-600" />
+                  <span className="font-semibold">
+                    Eastview Park, Wichita
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  to="/rally-for-change"
+                  className="inline-flex items-center gap-2 rounded-2xl bg-teal-600 px-7 py-4 text-lg font-bold text-white transition hover:bg-teal-700"
+                >
+                  Register Now
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+
+                <Link
+                  to="/projects/tennis-for-good"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 px-7 py-4 text-lg font-bold text-slate-900 transition hover:bg-slate-50"
+                >
+                  Learn More
+                </Link>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center bg-gradient-to-br from-teal-700 to-cyan-700 p-10 text-center text-white">
+              <div className="text-6xl">🎾</div>
+
+              <h3 className="mt-4 text-3xl font-bold">
+                Rally for Change
+              </h3>
+
+              <p className="mt-2 text-teal-100">
+                Free Tennis Event
+              </p>
+
+              <div className="mt-8 w-full rounded-2xl bg-white/10 px-8 py-6 backdrop-blur">
+                <div className="text-5xl font-extrabold">
+                  FREE
+                </div>
+
+                <div className="mt-2 text-lg">
+                  Grades 1–12
+                </div>
+
+                <div className="mt-5 border-t border-white/20 pt-5">
+                  <div className="text-2xl font-bold">
+                    Choose Your Session
+                  </div>
+
+                  <div className="mt-2 text-sm">
+                    5:00–6:00 PM
+                    <br />
+                    or
+                    <br />
+                    6:00–7:00 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 function Mission() {
   return (
     <section id="mission" className="py-20 bg-slate-50">

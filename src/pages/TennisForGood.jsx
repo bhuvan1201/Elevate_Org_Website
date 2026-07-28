@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, HeartHandshake, Recycle, Users, Globe2 } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import {
+    ArrowRight,
+    HeartHandshake,
+    Recycle,
+    Users,
+    Globe2,
+    CalendarDays,
+    Clock3,
+    MapPin,
+    CheckCircle2,
+} from "lucide-react";
 import gfft1 from "../assets/partners/gfft/gfft1.jpeg";
 import gfft2 from "../assets/partners/gfft/gfft2.jpeg";
 import gfft3 from "../assets/partners/gfft/gfft3.jpeg";
@@ -22,6 +31,7 @@ import gfft16 from "../assets/partners/gfft/gfft16.png";
 import gfft17 from "../assets/partners/gfft/gfft17.png";
 import gfft18 from "../assets/partners/gfft/gfft18.png";
 import gfft19 from "../assets/partners/gfft/gfft19.png";
+import rallyFlyer from "../assets/events/rally-for-change.jpeg";
 
 // Uncomment and rename if you add videos later
 // import gfftVideo1 from "../assets/partners/gfft/gfft-video1.mp4";
@@ -109,6 +119,153 @@ function MediaSlider({ slides }) {
     );
 }
 
+function RallyForChangeEvent() {
+    return (
+        <section className="py-16 bg-gradient-to-br from-teal-50 via-white to-yellow-50">
+            <div className="mx-auto max-w-7xl px-4">
+                <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5 }}
+                    className="overflow-hidden rounded-3xl border border-teal-200 bg-white shadow-xl"
+                >
+                    <div className="grid items-stretch lg:grid-cols-[1.1fr_0.9fr]">
+                        {/* Event information */}
+                        <div className="p-7 md:p-10 lg:p-12">
+                            <span className="inline-flex items-center rounded-full border border-yellow-200 bg-yellow-100 px-4 py-2 text-sm font-bold uppercase tracking-wide text-yellow-800">
+                                🎾 Upcoming Tennis for Good Event
+                            </span>
+
+                            <h2 className="mt-5 text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl">
+                                Rally for Change
+                            </h2>
+
+                            <p className="mt-3 text-2xl font-bold text-teal-700">
+                                Free Tennis Event for Kids
+                            </p>
+
+                            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
+                                Rally for Change brings young players and youth volunteers
+                                together for tennis instruction, confidence building, community
+                                service, prizes, racquet giveaways, drinks, and snacks.
+                            </p>
+
+                            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                                <div className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <CalendarDays className="mt-0.5 h-6 w-6 shrink-0 text-teal-700" />
+
+                                    <div>
+                                        <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                                            Date
+                                        </p>
+
+                                        <p className="mt-1 font-bold text-slate-900">
+                                            Sunday, August 16, 2026
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <Clock3 className="mt-0.5 h-6 w-6 shrink-0 text-teal-700" />
+
+                                    <div>
+                                        <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                                            Sessions
+                                        </p>
+
+                                        <p className="mt-1 font-bold text-slate-900">
+                                            5:00–6:00 PM
+                                        </p>
+
+                                        <p className="font-bold text-slate-900">
+                                            6:00–7:00 PM
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:col-span-2">
+                                    <MapPin className="mt-0.5 h-6 w-6 shrink-0 text-teal-700" />
+
+                                    <div>
+                                        <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+                                            Location
+                                        </p>
+
+                                        <p className="mt-1 font-bold text-slate-900">
+                                            Eastview Park Tennis Court
+                                        </p>
+
+                                        <p className="text-sm text-slate-600">
+                                            Wichita, Kansas
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-7">
+                                <h3 className="text-lg font-bold text-slate-900">
+                                    Event highlights
+                                </h3>
+
+                                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                                    {[
+                                        "Tennis lessons led by junior players",
+                                        "Open to children in Grades 1–12",
+                                        "Free racquet giveaways",
+                                        "Summer prizes, drinks, and snacks",
+                                    ].map((item) => (
+                                        <li key={item} className="flex items-start gap-2">
+                                            <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-teal-600" />
+                                            <span className="text-slate-700">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="mt-8 flex flex-wrap gap-4">
+                                <Link
+                                    to="/rally-for-change"
+                                    className="inline-flex items-center gap-2 rounded-2xl bg-teal-600 px-7 py-4 text-lg font-bold text-white transition hover:bg-teal-700"
+                                >
+                                    Register for the Event
+                                    <ArrowRight className="h-5 w-5" />
+                                </Link>
+
+                                <a
+                                    href={rallyFlyer}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-7 py-4 text-lg font-bold text-slate-800 transition hover:bg-slate-50"
+                                >
+                                    View Full Flyer
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Flyer */}
+                        <div className="flex items-center justify-center border-t border-slate-200 bg-slate-100 p-5 lg:border-l lg:border-t-0 md:p-8">
+                            <a
+                                href={rallyFlyer}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="group block"
+                                aria-label="Open the Rally for Change flyer"
+                            >
+                                <img
+                                    src={rallyFlyer}
+                                    alt="Rally for Change free tennis event flyer"
+                                    className="max-h-[720px] w-full rounded-2xl object-contain shadow-xl transition duration-300 group-hover:scale-[1.01]"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
 export default function TennisForGood() {
     return (
         <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
@@ -176,6 +333,8 @@ export default function TennisForGood() {
                     </motion.div>
                 </div>
             </section>
+
+            <RallyForChangeEvent />
 
             <section className="py-16 bg-white">
                 <div className="mx-auto max-w-7xl px-4">

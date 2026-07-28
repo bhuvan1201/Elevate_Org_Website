@@ -21,35 +21,90 @@ import SportsStrengthTraining from "./pages/SportsStrengthTraining";
 import BecomePartner from "./pages/BecomePartner";
 import HealthAwareness from "./pages/HealthAwareness";
 import YouthLeadership from "./pages/YouthLeadership";
+import RallyForChange from "./pages/RallyForChange";
 
 export default function App() {
   return (
     <>
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route path="/about/story" element={<OurStory />} />
         <Route path="/about/team" element={<MeetTheTeam />} />
         <Route path="/contact" element={<Contact />} />
 
-        <Route path="/projects/teen-vaping-awareness" element={<TeenVapingAwareness />} />
-        <Route path="/projects/adolescent-obesity" element={<AdolescentObesity />} />
-        <Route path="/partners/genesis-foundation" element={<GenesisFoundation />} />
-        <Route path="/partners/building-blocks-foundation" element={<BuildingBlocksFoundation />} />
-        <Route path="/learn/tutoring-education" element={<TutoringEducation />} />
+        <Route
+          path="/projects/teen-vaping-awareness"
+          element={<TeenVapingAwareness />}
+        />
+
+        <Route
+          path="/projects/adolescent-obesity"
+          element={<AdolescentObesity />}
+        />
+
+        <Route
+          path="/projects/tennis-for-good"
+          element={<TennisForGood />}
+        />
+
+        <Route
+          path="/projects/global-tutoring"
+          element={<GlobalTutoring />}
+        />
+
+        <Route
+          path="/projects/educational-video-library"
+          element={<EducationalVideoLibrary />}
+        />
+
+        <Route
+          path="/projects/sports-strength-training"
+          element={<SportsStrengthTraining />}
+        />
+
+        <Route
+          path="/partners/genesis-foundation"
+          element={<GenesisFoundation />}
+        />
+
+        <Route
+          path="/partners/building-blocks-foundation"
+          element={<BuildingBlocksFoundation />}
+        />
+
+        <Route
+          path="/partners/become-a-partner"
+          element={<BecomePartner />}
+        />
+
+        <Route
+          path="/learn/tutoring-education"
+          element={<TutoringEducation />}
+        />
+
         <Route path="/learn/fitness" element={<Fitness />} />
         <Route path="/learn" element={<Learn />} />
-        <Route path="/projects/tennis-for-good" element={<TennisForGood />} />
+
+        <Route
+          path="/learn/health-awareness"
+          element={<HealthAwareness />}
+        />
+
+        <Route
+          path="/learn/youth-leadership"
+          element={<YouthLeadership />}
+        />
+
         <Route path="/get-involved" element={<GetInvolved />} />
         <Route path="/donate" element={<Donate />} />
-        <Route path="/projects/global-tutoring" element={<GlobalTutoring />} />
-        <Route path="/projects/educational-video-library" element={<EducationalVideoLibrary />} />
-        <Route path="/projects/sports-strength-training" element={<SportsStrengthTraining />} />
-        <Route path="/partners/become-a-partner" element={<BecomePartner />} />
-        <Route path="/learn/health-awareness" element={<HealthAwareness />} />
-        <Route path="/learn/youth-leadership" element={<YouthLeadership />} />
 
-
+        <Route
+          path="/rally-for-change"
+          element={<RallyForChange />}
+        />
       </Routes>
     </>
   );
