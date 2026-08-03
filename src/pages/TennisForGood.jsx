@@ -163,7 +163,7 @@ function RallyForChangeEvent() {
                                         </p>
 
                                         <p className="mt-1 font-bold text-slate-900">
-                                            Sunday, August 16, 2026
+                                            Saturday, September 12, 2026
                                         </p>
                                     </div>
                                 </div>

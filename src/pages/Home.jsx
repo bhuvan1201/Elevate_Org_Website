@@ -105,28 +105,28 @@ export default function Home() {
 function Hero() {
   const slides = [
     //{ type: "image", src: h1 },
+    { type: "image", src: h8 },
     { type: "image", src: h2 },
     { type: "video", src: h1Video },
     { type: "image", src: h3 },
     { type: "image", src: h4 },
     { type: "image", src: h5 },
-    { type: "image", src: h6 },
+    //{ type: "image", src: h6 },
     { type: "video", src: h2Video },
-    { type: "image", src: h7 },
-    { type: "image", src: h8 },
+    //{ type: "image", src: h7 },
     { type: "image", src: h9 },
     { type: "image", src: h10 },
     { type: "image", src: h11 },
     { type: "image", src: h12 },
     { type: "image", src: h13 },
     { type: "image", src: h14 },
-    { type: "image", src: h15 },
+    //{ type: "image", src: h15 },
     { type: "image", src: h16 },
     { type: "image", src: h17 },
     { type: "image", src: h18 },
     { type: "image", src: h19 },
     { type: "image", src: h20 },
-    { type: "image", src: h21 },
+    //{ type: "image", src: h21 },
     { type: "image", src: h22 },
     { type: "image", src: h23 },
   ];
@@ -177,7 +177,7 @@ function Hero() {
           key={slides[idx].src}
           src={slides[idx].src}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[center_35%] transition-all duration-700"
+          className="absolute inset-0 h-full w-full object-cover object-[center_25%] transition-all duration-700"
           draggable="false"
         />
       )}
@@ -277,7 +277,7 @@ function RallyBanner() {
                 <div className="flex items-center gap-2">
                   <CalendarDays className="h-5 w-5 text-teal-600" />
                   <span className="font-semibold">
-                    Sunday, August 16, 2026
+                    Saturday, September 12, 2026
                   </span>
                 </div>
 

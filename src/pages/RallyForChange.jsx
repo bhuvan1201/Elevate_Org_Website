@@ -184,7 +184,7 @@ export default function RallyForChange() {
 
                                     <p className="mt-1 text-xl font-bold">Sunday</p>
                                     <p className="text-lg text-slate-700">
-                                        August 16
+                                        September 12
                                     </p>
                                 </div>
 
@@ -291,7 +291,7 @@ export default function RallyForChange() {
 
                                 <div>
                                     <p className="font-bold">
-                                        Sunday, August 16, 2026
+                                        Saturday, September 12, 2026
                                     </p>
 
                                     <p className="text-sm text-slate-600">
