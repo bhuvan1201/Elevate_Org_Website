@@ -104,38 +104,196 @@ export default function Home() {
 
 function Hero() {
   const slides = [
-    //{ type: "image", src: h1 },
-    { type: "image", src: h8 },
-    { type: "image", src: h2 },
-    { type: "video", src: h1Video },
-    { type: "image", src: h3 },
-    { type: "image", src: h4 },
-    { type: "image", src: h5 },
-    //{ type: "image", src: h6 },
-    { type: "video", src: h2Video },
-    //{ type: "image", src: h7 },
-    { type: "image", src: h9 },
-    { type: "image", src: h10 },
-    { type: "image", src: h11 },
-    { type: "image", src: h12 },
-    { type: "image", src: h13 },
-    { type: "image", src: h14 },
-    //{ type: "image", src: h15 },
-    { type: "image", src: h16 },
-    { type: "image", src: h17 },
-    { type: "image", src: h18 },
-    { type: "image", src: h19 },
-    { type: "image", src: h20 },
-    //{ type: "image", src: h21 },
-    { type: "image", src: h22 },
-    { type: "image", src: h23 },
+    // brightness:
+    // 1.00 = original
+    // 1.10 = slightly brighter
+    // 1.20 = brighter
+    // 1.30 = noticeably brighter
+    // 1.40+ = very bright
+
+    // position controls which part of the photo stays visible:
+    // "center 25%" = more of the upper part
+    // "center center" = normal center
+    // "center 15%" = even higher
+
+    {
+      type: "image",
+      src: h8,
+      brightness: 1.00,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h2,
+      brightness: 1.00,
+      position: "center 25%",
+    },
+
+    {
+      type: "video",
+      src: h1Video,
+      brightness: 1.00,
+      position: "center center",
+    },
+
+    {
+      type: "image",
+      src: h3,
+      brightness: 1.15,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h4,
+      brightness: 1.0,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h5,
+      brightness: 1.0,
+      position: "center 25%",
+    },
+
+    // {
+    //   type: "image",
+    //   src: h6,
+    //   brightness: 1.15,
+    //   position: "center 25%",
+    // },
+
+    {
+      type: "video",
+      src: h2Video,
+      brightness: 1.00,
+      position: "center center",
+    },
+
+    // {
+    //   type: "image",
+    //   src: h7,
+    //   brightness: 1.15,
+    //   position: "center 25%",
+    // },
+
+    {
+      type: "image",
+      src: h9,
+      brightness: 1.0,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h10,
+      brightness: 1.1,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h11,
+      brightness: 1.0,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h12,
+      brightness: 1.0,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h13,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h14,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    // {
+    //   type: "image",
+    //   src: h15,
+    //   brightness: 1.2,
+    //   position: "center 25%",
+    // },
+
+    {
+      type: "image",
+      src: h16,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h17,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h18,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h19,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h20,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    // {
+    //   type: "image",
+    //   src: h21,
+    //   brightness: 1.2,
+    //   position: "center 25%",
+    // },
+
+    {
+      type: "image",
+      src: h22,
+      brightness: 1.4,
+      position: "center 25%",
+    },
+
+    {
+      type: "image",
+      src: h23,
+      brightness: 1.0,
+      position: "center 25%",
+    },
   ];
 
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     const currentSlide = slides[idx];
-    const delay = currentSlide.type === "video" ? 9000 : 4500;
+
+    const delay =
+      currentSlide.type === "video"
+        ? 9000
+        : 4500;
 
     const t = setTimeout(() => {
       setIdx((v) => (v + 1) % slides.length);
@@ -143,6 +301,8 @@ function Hero() {
 
     return () => clearTimeout(t);
   }, [idx, slides.length]);
+
+  const currentSlide = slides[idx];
 
   const titleStyle = {
     color: "#ffffff",
@@ -161,11 +321,17 @@ function Hero() {
       id="home"
       className="relative min-h-[720px] md:min-h-[780px] flex items-center justify-center overflow-hidden bg-slate-900 pt-24"
     >
-      {slides[idx].type === "video" ? (
+      {/* HERO MEDIA */}
+
+      {currentSlide.type === "video" ? (
         <video
-          key={slides[idx].src}
-          src={slides[idx].src}
-          className="absolute inset-0 h-full w-full object-cover"
+          key={currentSlide.src}
+          src={currentSlide.src}
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
+          style={{
+            filter: `brightness(${currentSlide.brightness ?? 1})`,
+            objectPosition: currentSlide.position ?? "center center",
+          }}
           autoPlay
           muted
           loop
@@ -174,16 +340,25 @@ function Hero() {
         />
       ) : (
         <img
-          key={slides[idx].src}
-          src={slides[idx].src}
+          key={currentSlide.src}
+          src={currentSlide.src}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-[center_25%] transition-all duration-700"
+          className="absolute inset-0 h-full w-full object-cover transition-all duration-700"
+          style={{
+            filter: `brightness(${currentSlide.brightness ?? 1})`,
+            objectPosition: currentSlide.position ?? "center 25%",
+          }}
           draggable="false"
         />
       )}
 
+      {/* LIGHT DARK OVERLAY FOR TEXT READABILITY */}
       <div className="absolute inset-0 bg-black/10" />
+
+      {/* DARKER BOTTOM GRADIENT FOR BUTTON VISIBILITY */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
+
+      {/* HERO CONTENT */}
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 text-center text-white">
         <motion.div
@@ -192,25 +367,37 @@ function Hero() {
           transition={{ duration: 0.55 }}
         >
           <div className="text-white uppercase font-semibold">
-            <div className="text-left text-6xl md:text-8xl" style={titleStyle}>
+            <div
+              className="text-left text-6xl md:text-8xl"
+              style={titleStyle}
+            >
               YOUTH
             </div>
 
-            <div className="text-center text-6xl md:text-8xl mt-4" style={titleStyle}>
+            <div
+              className="text-center text-6xl md:text-8xl mt-4"
+              style={titleStyle}
+            >
               SERVING
             </div>
 
-            <div className="text-right text-6xl md:text-8xl mt-4" style={titleStyle}>
+            <div
+              className="text-right text-6xl md:text-8xl mt-4"
+              style={titleStyle}
+            >
               YOUTH
             </div>
           </div>
+
+          {/* BUTTONS */}
 
           <div className="mt-36 flex flex-wrap justify-center gap-5">
             <a
               href="#programs"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-none bg-white text-slate-900 text-lg font-bold hover:bg-slate-100 transition shadow-xl"
             >
-              Explore Our Projects <ArrowRight className="h-5 w-5" />
+              Explore Our Projects
+              <ArrowRight className="h-5 w-5" />
             </a>
 
             <a
@@ -229,6 +416,8 @@ function Hero() {
           </div>
         </motion.div>
 
+        {/* SLIDE DOTS */}
+
         <div className="mt-12 flex justify-center gap-2 flex-wrap max-w-lg mx-auto">
           {slides.map((_, i) => (
             <button
@@ -236,7 +425,9 @@ function Hero() {
               onClick={() => setIdx(i)}
               className={
                 "h-3 w-3 rounded-full transition " +
-                (i === idx ? "bg-white" : "bg-white/45 hover:bg-white/75")
+                (i === idx
+                  ? "bg-white"
+                  : "bg-white/45 hover:bg-white/75")
               }
               aria-label={`Hero slide ${i + 1}`}
               type="button"
