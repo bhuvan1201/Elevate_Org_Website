@@ -98,10 +98,64 @@ const TRAINING_VIDEOS = [
     url: "https://www.youtube.com/watch?v=yu822384fB4",
   },
 
+  {
+    id: 5,
+    title: "Overhead Cable Tricep Extension | Build Stronger Arms",
+    type: "video",
+    category: "Upper Body Strength",
+    focus: "Triceps",
+    difficulty: "Intermediate",
+    duration: "0:16",
+    description:
+      "An overhead cable exercise focused on developing tricep strength and controlled arm extension.",
+    url: "https://www.youtube.com/watch?v=bXhHp05ltoQ&list=PLKHETpXCwfvs&index=1",
+  },
+
+  {
+    id: 6,
+    title: "Cable Rope Bicep Curl | Build Stronger Arms",
+    type: "video",
+    category: "Upper Body Strength",
+    focus: "Biceps",
+    difficulty: "Beginner",
+    duration: "0:16",
+    description:
+      "A cable-based bicep curl that helps build arm strength while encouraging controlled movement.",
+    url: "https://www.youtube.com/watch?v=hVxAa4-oHN0&list=PLKHETpXCwfvs&index=2",
+  },
+
+  {
+    id: 7,
+    title: "Cable Tricep Pushdown | Build Stronger Arms",
+    type: "video",
+    category: "Upper Body Strength",
+    focus: "Triceps",
+    difficulty: "Beginner",
+    duration: "0:17",
+    description:
+      "A tricep pushdown exercise for developing upper-arm strength and elbow-extension control.",
+    url: "https://www.youtube.com/watch?v=Ca4HGwMNpMw&list=PLKHETpXCwfvs&index=3",
+  },
+
+  {
+    id: 8,
+    title: "Barbell Bicep Curl | Build Stronger Arms",
+    type: "video",
+    category: "Upper Body Strength",
+    focus: "Biceps",
+    difficulty: "Intermediate",
+    duration: "0:14",
+    description:
+      "A barbell curl exercise focused on building bicep strength with controlled lifting technique.",
+    url: "https://www.youtube.com/watch?v=JdjtU3gHYNc&list=PLKHETpXCwfvs&index=4",
+  },
+
+
+
   /* ======================== SHORTS ======================== */
 
   {
-    id: 5,
+    id: 9,
     title: "Ski Erg Workout | Improve Cardio & Conditioning",
     type: "short",
     category: "Cardio & Conditioning",
@@ -114,7 +168,7 @@ const TRAINING_VIDEOS = [
   },
 
   {
-    id: 6,
+    id: 10,
     title: "Wide-Grip Lat Pulldown | Upper Body Strength for Athletes",
     type: "short",
     category: "Upper Body Strength",
@@ -127,7 +181,7 @@ const TRAINING_VIDEOS = [
   },
 
   {
-    id: 7,
+    id: 11,
     title: "Leg Press | Build Lower Body Strength",
     type: "short",
     category: "Lower Body Strength",
@@ -136,11 +190,11 @@ const TRAINING_VIDEOS = [
     duration: "Short",
     description:
       "Develop lower-body strength through the quadriceps, hamstrings, and glutes using the leg press.",
-    url: "https://www.youtube.com/shorts/BtR0j3jpXdo",
+    url: "https://www.youtube.com/shorts/cE_UB16gOJ4",
   },
 
   {
-    id: 8,
+    id: 12,
     title: "Lat Pulldown | Build a Strong Back",
     type: "short",
     category: "Upper Body Strength",
