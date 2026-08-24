@@ -743,7 +743,7 @@ function Impact() {
     { label: "Gear Collected", value: "100+" },
     { label: "Students Supported", value: "600+" },
     { label: "Tutoring Hours", value: "50+" },
-    { label: "Videos Created", value: "1" },
+    { label: "Videos Created", value: "20+" },
     { label: "Youth Reached", value: "600+" },
     { label: "Partner Organizations", value: "2" },
   ];
