@@ -150,12 +150,38 @@ const TRAINING_VIDEOS = [
     url: "https://www.youtube.com/watch?v=JdjtU3gHYNc&list=PLKHETpXCwfvs&index=4",
   },
 
+  {
+    id: 9,
+    title: "Seated Rowing Machine Workout | Proper Form & Technique",
+    type: "video",
+    category: "Cardio & Conditioning",
+    focus: "Full Body",
+    difficulty: "Beginner",
+    duration: "0:17",
+    description:
+      "A seated rowing-machine exercise focused on proper form, controlled movement, and full-body conditioning.",
+    url: "https://www.youtube.com/watch?v=uAHWPz59HYs",
+  },
+
+  {
+    id: 10,
+    title: "Close-Grip Lat Pulldown Workout | Proper Form & Technique",
+    type: "video",
+    category: "Upper Body Strength",
+    focus: "Back",
+    difficulty: "Beginner",
+    duration: "0:16",
+    description:
+      "A close-grip lat pulldown demonstration focused on proper technique, back engagement, and controlled upper-body strength training.",
+    url: "https://www.youtube.com/watch?v=tS5LRJzxWfI",
+  },
+
 
 
   /* ======================== SHORTS ======================== */
 
   {
-    id: 9,
+    id: 11,
     title: "Ski Erg Workout | Improve Cardio & Conditioning",
     type: "short",
     category: "Cardio & Conditioning",
@@ -168,7 +194,7 @@ const TRAINING_VIDEOS = [
   },
 
   {
-    id: 10,
+    id: 12,
     title: "Wide-Grip Lat Pulldown | Upper Body Strength for Athletes",
     type: "short",
     category: "Upper Body Strength",
@@ -181,7 +207,7 @@ const TRAINING_VIDEOS = [
   },
 
   {
-    id: 11,
+    id: 13,
     title: "Leg Press | Build Lower Body Strength",
     type: "short",
     category: "Lower Body Strength",
@@ -194,7 +220,7 @@ const TRAINING_VIDEOS = [
   },
 
   {
-    id: 12,
+    id: 14,
     title: "Lat Pulldown | Build a Strong Back",
     type: "short",
     category: "Upper Body Strength",
@@ -205,6 +231,8 @@ const TRAINING_VIDEOS = [
       "A controlled lat pulldown exercise for strengthening the back and supporting upper-body stability.",
     url: "https://www.youtube.com/shorts/BtR0j3jpXdo",
   },
+
+
 ];
 
 /* =========================================================
