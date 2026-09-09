@@ -31,6 +31,10 @@ import gfft16 from "../assets/partners/gfft/optimized/gfft16.webp";
 import gfft17 from "../assets/partners/gfft/optimized/gfft17.webp";
 import gfft18 from "../assets/partners/gfft/optimized/gfft18.webp";
 import gfft19 from "../assets/partners/gfft/optimized/gfft19.webp";
+import gfft20 from "../assets/partners/gfft/optimized/gfft20.webp";
+import gfft21 from "../assets/partners/gfft/optimized/gfft21.webp";
+import gfft22 from "../assets/partners/gfft/optimized/gfft22.webp";
+import gfft23 from "../assets/partners/gfft/optimized/gfft23.webp";
 import rallyFlyer from "../assets/events/rally-for-change.jpeg";
 
 // Uncomment and rename if you add videos later
@@ -327,6 +331,10 @@ export default function TennisForGood() {
                                 { type: "image", src: gfft17, label: "Tennis for Good" },
                                 { type: "image", src: gfft18, label: "Tennis for Good" },
                                 { type: "image", src: gfft19, label: "Tennis for Good" },
+                                { type: "image", src: gfft20, label: "Tennis for Good" },
+                                { type: "image", src: gfft21, label: "Tennis for Good" },
+                                { type: "image", src: gfft22, label: "Tennis for Good" },
+                                { type: "image", src: gfft23, label: "Tennis for Good" },
                                 // Uncomment if you add video imports above
                                 // { type: "video", src: gfftVideo1, label: "Donation drive in action" },
                                 // { type: "video", src: gfftVideo2, label: "Youth sports access" },
