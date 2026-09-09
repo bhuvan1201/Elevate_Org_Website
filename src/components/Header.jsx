@@ -87,7 +87,7 @@ export default function Header() {
                   Our Story
                 </Link>
                 <Link className="block px-4 py-2 hover:bg-slate-100" to="/about/team">
-                  Founders
+                  Meet the Team
                 </Link>
               </div>
             )}
