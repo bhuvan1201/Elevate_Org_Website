@@ -468,7 +468,7 @@ function RallyBanner() {
                 <div className="flex items-center gap-2">
                   <CalendarDays className="h-5 w-5 text-teal-600" />
                   <span className="font-semibold">
-                    Saturday, September 12, 2026
+                    Saturday, September 26, 2026
                   </span>
                 </div>
 
