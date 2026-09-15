@@ -7,7 +7,9 @@ import {
   ExternalLink,
   Instagram,
   Facebook,
-} from "lucide-react"; import { Link } from "react-router-dom";
+  Youtube,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 import gfftFlyer from "../assets/gfft-flyer.pdf";
 
@@ -22,6 +24,34 @@ import instagramPost from "../assets/partners/gfft/optimized/instagram.webp";
 // import gfft7 from "../assets/partners/gfft/gfft7.jpeg";
 // import gfft8 from "../assets/partners/gfft/gfft8.jpeg";
 // import gfft9 from "../assets/partners/gfft/gfft9.jpeg";
+
+
+const GFFT_DONATION_VIDEO_URL =
+  "https://www.youtube.com/watch?v=oRAzUIMtPRQ&list=PLbXAyz4II3yY&index=1";
+
+function getYouTubeId(url) {
+  if (!url || url.includes("PASTE_")) return null;
+
+  try {
+    const parsed = new URL(url);
+
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.slice(1).split("/")[0];
+    }
+
+    if (parsed.pathname.includes("/shorts/")) {
+      return parsed.pathname.split("/shorts/")[1].split("/")[0];
+    }
+
+    if (parsed.pathname.includes("/embed/")) {
+      return parsed.pathname.split("/embed/")[1].split("/")[0];
+    }
+
+    return parsed.searchParams.get("v");
+  } catch {
+    return null;
+  }
+}
 
 /* ---------- UI helpers ---------- */
 const Card = ({ className = "", children }) => (
@@ -91,6 +121,85 @@ function ImageCarouselCard({ images = [], caption = "Community impact in action"
         ))}
       </div>
     </div>
+  );
+}
+
+
+function DonationStoryVideo() {
+  const videoId = getYouTubeId(GFFT_DONATION_VIDEO_URL);
+
+  return (
+    <section className="py-16 bg-slate-50">
+      <div className="mx-auto max-w-6xl px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700">
+            <Youtube className="h-4 w-4" />
+            Partnership in Action
+          </div>
+
+          <h2 className="mt-5 text-3xl md:text-4xl font-extrabold text-slate-900">
+            From Donation to Opportunity
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-600">
+            See how donated tennis gear can become an opportunity for young
+            athletes through ELEVATE&apos;s partnership with Genesis Foundation
+            for Fitness &amp; Tennis.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 overflow-hidden rounded-3xl border border-slate-200 bg-black shadow-xl"
+        >
+          {videoId ? (
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="From Donation to Opportunity"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <div className="flex aspect-video items-center justify-center p-8 text-center text-white">
+              <div>
+                <Youtube className="mx-auto h-14 w-14 text-white/60" />
+                <p className="mt-4 text-slate-300">
+                  Add the GFFT donation YouTube URL in
+                  GFFT_DONATION_VIDEO_URL.
+                </p>
+              </div>
+            </div>
+          )}
+        </motion.div>
+
+        {videoId && (
+          <div className="mt-5 text-center">
+            <a
+              href={GFFT_DONATION_VIDEO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-semibold text-teal-700 hover:text-teal-800 transition"
+            >
+              Watch on YouTube
+              <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -182,6 +291,8 @@ export default function GenesisFoundation() {
           </motion.div>
         </div>
       </section>
+
+      <DonationStoryVideo />
 
       {/* LOWER SECTION */}
 

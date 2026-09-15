@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Users, BarChart3, HeartHandshake, ShieldCheck, Eye } from "lucide-react";
 import ourStory from "../assets/ourstory.png";
+import rally1 from "../assets/partners/gfft/optimized/gfftevent1.webp";
 
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -47,7 +48,7 @@ function StoryHero() {
 
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
           <img
-            src={ourStory}
+            src={rally1}
             alt="ELEVATE story"
             className="rounded-3xl shadow-xl w-full h-auto object-contain border border-slate-300"
           />
@@ -201,14 +202,23 @@ function Timeline() {
       title: "Community leadership & program growth",
       desc: "Expanded ELEVATE’s education, health awareness, sports access, and service programs in Wichita and beyond.",
     },
+    {
+      date: "2026",
+      title: "Tennis for Good & Youth Initiatives Launched",
+      desc: "Launched Tennis for Good with 20+ young participants and expanded youth-led programs in sports, health, education, and community service.",
+    },
   ];
 
   return (
     <section className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-3xl md:text-4xl font-bold">Journey through our history</h2>
+        <h2 className="text-3xl md:text-4xl font-bold">
+          Journey through our history
+        </h2>
+
         <p className="mt-3 text-slate-600 max-w-2xl">
-          Key milestones showing how ELEVATE has grown from student-led research into measurable community impact.
+          Key milestones showing how ELEVATE has grown from student-led
+          research into measurable community impact.
         </p>
 
         <div className="mt-10 relative">
@@ -219,10 +229,19 @@ function Timeline() {
               const isLeft = idx % 2 === 0;
 
               return (
-                <div key={idx} className="relative grid md:grid-cols-2 gap-6 items-start">
+                <div
+                  key={idx}
+                  className="relative grid md:grid-cols-2 gap-6 items-start"
+                >
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 mt-2 h-3 w-3 rounded-full bg-teal-600 ring-4 ring-teal-50" />
 
-                  <div className={isLeft ? "md:pr-10" : "md:pr-10 md:order-2"}>
+                  <div
+                    className={
+                      isLeft
+                        ? "md:pr-10"
+                        : "md:pr-10 md:order-2"
+                    }
+                  >
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -230,13 +249,27 @@ function Timeline() {
                       transition={{ duration: 0.45 }}
                       className="ml-10 md:ml-0 rounded-2xl border border-slate-200 bg-white shadow-sm p-6"
                     >
-                      <div className="text-sm font-semibold text-teal-700">{it.date}</div>
-                      <div className="mt-2 text-xl font-semibold text-slate-900">{it.title}</div>
-                      <p className="mt-2 text-slate-600 leading-relaxed">{it.desc}</p>
+                      <div className="text-sm font-semibold text-teal-700">
+                        {it.date}
+                      </div>
+
+                      <div className="mt-2 text-xl font-semibold text-slate-900">
+                        {it.title}
+                      </div>
+
+                      <p className="mt-2 text-slate-600 leading-relaxed">
+                        {it.desc}
+                      </p>
                     </motion.div>
                   </div>
 
-                  <div className={isLeft ? "md:pl-10 hidden md:block" : "md:pl-10 hidden md:block md:order-1"} />
+                  <div
+                    className={
+                      isLeft
+                        ? "md:pl-10 hidden md:block"
+                        : "md:pl-10 hidden md:block md:order-1"
+                    }
+                  />
                 </div>
               );
             })}

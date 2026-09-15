@@ -24,6 +24,9 @@ import h21 from "../assets/home/hero/optimized/h21.webp";
 import h22 from "../assets/home/hero/optimized/h22.webp";
 import h23 from "../assets/home/hero/optimized/h3.webp";
 
+import rally1 from "../assets/partners/gfft/optimized/gfftevent1.webp";
+import rally10 from "../assets/partners/gfft/optimized/gfftevent10.webp";
+
 import h1Video from "../assets/home/hero/optimized-videos/h1-video.mp4";
 import h2Video from "../assets/home/hero/optimized-videos/h2-video.mp4";
 
@@ -47,8 +50,37 @@ import {
   HeartPulse,
   Gift,
   CalendarDays,
-  Clock3
+  Clock3,
+  Youtube,
 } from "lucide-react";
+
+
+const ELEVATE_INTRO_VIDEO_URL =
+  "https://www.youtube.com/shorts/bkgJDz9S8-s";
+
+function getYouTubeId(url) {
+  if (!url || url.includes("PASTE_")) return null;
+
+  try {
+    const parsed = new URL(url);
+
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.slice(1).split("/")[0];
+    }
+
+    if (parsed.pathname.includes("/shorts/")) {
+      return parsed.pathname.split("/shorts/")[1].split("/")[0];
+    }
+
+    if (parsed.pathname.includes("/embed/")) {
+      return parsed.pathname.split("/embed/")[1].split("/")[0];
+    }
+
+    return parsed.searchParams.get("v");
+  } catch {
+    return null;
+  }
+}
 
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -75,6 +107,7 @@ const Button = ({ className = "", children, type = "button", ...props }) => (
 
 export default function Home() {
   const [email, setEmail] = useState("");
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -93,6 +126,7 @@ export default function Home() {
       <FeaturedProjects />
       <Impact />
       <Partners />
+      <ElevateIntroduction />
       <GetInvolved />
       <FinalCTA />
       <Newsletter email={email} setEmail={setEmail} />
@@ -119,21 +153,21 @@ function Hero() {
     {
       type: "image",
       src: h8,
-      brightness: 1.00,
+      brightness: 1.0,
       position: "center 25%",
     },
 
     {
       type: "image",
       src: h2,
-      brightness: 1.00,
+      brightness: 1.0,
       position: "center 25%",
     },
 
     {
       type: "video",
       src: h1Video,
-      brightness: 1.00,
+      brightness: 1.0,
       position: "center center",
     },
 
@@ -168,7 +202,7 @@ function Hero() {
     {
       type: "video",
       src: h2Video,
-      brightness: 1.00,
+      brightness: 1.0,
       position: "center center",
     },
 
@@ -183,6 +217,14 @@ function Hero() {
       type: "image",
       src: h9,
       brightness: 1.0,
+      position: "center 25%",
+    },
+
+    // RALLY FOR CHANGE
+    {
+      type: "image",
+      src: rally1,
+      brightness: 1.1,
       position: "center 25%",
     },
 
@@ -246,6 +288,14 @@ function Hero() {
       type: "image",
       src: h18,
       brightness: 1.4,
+      position: "center 25%",
+    },
+
+    // RALLY FOR CHANGE
+    {
+      type: "image",
+      src: rally10,
+      brightness: 1.1,
       position: "center 25%",
     },
 
@@ -460,13 +510,14 @@ function RallyBanner() {
 
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
                 Join ELEVATE's Tennis for Good initiative for a fun evening of
-                tennis instruction, cool elevate t-shirts, racquet giveaways, snacks, and
-                community. Open to students in Grades 1–12.
+                tennis instruction, cool elevate t-shirts, racquet giveaways,
+                snacks, and community. Open to students in Grades 1–12.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-5 text-slate-700">
                 <div className="flex items-center gap-2">
                   <CalendarDays className="h-5 w-5 text-teal-600" />
+
                   <span className="font-semibold">
                     Saturday, September 26, 2026
                   </span>
@@ -474,6 +525,7 @@ function RallyBanner() {
 
                 <div className="flex items-center gap-2">
                   <Clock3 className="h-5 w-5 text-teal-600" />
+
                   <span className="font-semibold">
                     5:00–7:00 PM
                   </span>
@@ -481,6 +533,7 @@ function RallyBanner() {
 
                 <div className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-teal-600" />
+
                   <span className="font-semibold">
                     Eastview Park, Wichita
                   </span>
@@ -546,18 +599,23 @@ function RallyBanner() {
     </section>
   );
 }
+
 function Mission() {
   return (
     <section id="mission" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Mission</p>
+        <p className="text-sm font-semibold text-teal-700">
+          Mission
+        </p>
+
         <h2 className="mt-2 text-3xl md:text-4xl font-bold">
           Empowering students to lead meaningful change.
         </h2>
+
         <p className="mt-4 max-w-4xl text-lg text-slate-600 leading-relaxed">
-          ELEVATE connects education, health awareness, sports access, and service
-          leadership to support underserved students and help young people build
-          confidence, opportunity, and community impact.
+          ELEVATE connects education, health awareness, sports access, and
+          service leadership to support underserved students and help young
+          people build confidence, opportunity, and community impact.
         </p>
       </div>
     </section>
@@ -568,16 +626,20 @@ function FoundersStory() {
   return (
     <section id="founders" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Founder Story</p>
+        <p className="text-sm font-semibold text-teal-700">
+          Founder Story
+        </p>
 
         <div className="mt-2 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Led by students, built for students.
             </h2>
+
             <p className="mt-4 max-w-3xl text-lg text-slate-600 leading-relaxed">
               Founded by Vihaan and Hitha Ganganala, ELEVATE turns student-led
-              research, tutoring, tennis, and service into real community impact.
+              research, tutoring, tennis, and service into real community
+              impact.
             </p>
           </div>
 
@@ -585,7 +647,8 @@ function FoundersStory() {
             to="/about/team"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-900 text-white font-semibold hover:bg-slate-700 transition"
           >
-            Meet the Team <ArrowRight className="h-4 w-4" />
+            Meet the Team
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -609,7 +672,12 @@ function FoundersStory() {
   );
 }
 
-function FounderCard({ name, title, img, bio }) {
+function FounderCard({
+  name,
+  title,
+  img,
+  bio,
+}) {
   return (
     <Card className="rounded-3xl overflow-hidden hover:shadow-lg transition">
       <div className="grid sm:grid-cols-[220px_1fr] gap-0">
@@ -626,16 +694,24 @@ function FounderCard({ name, title, img, bio }) {
             Founder
           </span>
 
-          <h3 className="mt-4 text-2xl font-bold text-slate-900">{name}</h3>
-          <p className="mt-1 text-sm font-semibold text-teal-700">{title}</p>
+          <h3 className="mt-4 text-2xl font-bold text-slate-900">
+            {name}
+          </h3>
 
-          <p className="mt-4 text-slate-600 leading-relaxed">{bio}</p>
+          <p className="mt-1 text-sm font-semibold text-teal-700">
+            {title}
+          </p>
+
+          <p className="mt-4 text-slate-600 leading-relaxed">
+            {bio}
+          </p>
 
           <Link
             to="/about/team"
             className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-teal-800"
           >
-            Read full profile <ArrowRight className="h-4 w-4" />
+            Read full profile
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </CardContent>
       </div>
@@ -670,12 +746,22 @@ function FourPillars() {
   return (
     <section id="pillars" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Four Pillars</p>
-        <h2 className="mt-2 text-3xl md:text-4xl font-bold">What ELEVATE focuses on</h2>
+        <p className="text-sm font-semibold text-teal-700">
+          Four Pillars
+        </p>
+
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+          What ELEVATE focuses on
+        </h2>
 
         <div className="mt-8 grid md:grid-cols-4 gap-6">
           {pillars.map((p, i) => (
-            <InfoCard key={i} icon={p.icon} title={p.title} text={p.text} />
+            <InfoCard
+              key={i}
+              icon={p.icon}
+              title={p.title}
+              text={p.text}
+            />
           ))}
         </div>
       </div>
@@ -710,10 +796,17 @@ function FeaturedProjects() {
   return (
     <section id="programs" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Programs</p>
-        <h2 className="mt-2 text-3xl md:text-4xl font-bold">Featured Projects</h2>
+        <p className="text-sm font-semibold text-teal-700">
+          Programs
+        </p>
+
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+          Featured Projects
+        </h2>
+
         <p className="mt-3 text-slate-600 max-w-3xl">
-          Our work combines education, health research, sports access, and service partnerships.
+          Our work combines education, health research, sports access, and
+          service partnerships.
         </p>
 
         <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -724,9 +817,14 @@ function FeaturedProjects() {
                   <h3 className="text-xl font-bold group-hover:text-teal-700 transition">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-slate-600">{p.desc}</p>
+
+                  <p className="mt-2 text-slate-600">
+                    {p.desc}
+                  </p>
+
                   <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-teal-700">
-                    Learn more <ArrowRight className="h-4 w-4" />
+                    Learn more
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </CardContent>
               </Card>
@@ -740,31 +838,55 @@ function FeaturedProjects() {
 
 function Impact() {
   const stats = [
-    { label: "Gear Collected", value: "100+" },
-    { label: "Students Supported", value: "600+" },
-    { label: "Tutoring Hours", value: "50+" },
-    { label: "Videos Created", value: "20+" },
-    { label: "Youth Reached", value: "600+" },
-    { label: "Partner Organizations", value: "2" },
+    {
+      label: "Gear Collected",
+      value: "100+",
+    },
+    {
+      label: "Students Supported",
+      value: "600+",
+    },
+    {
+      label: "Tutoring Hours",
+      value: "100+",
+    },
+    {
+      label: "Videos Created",
+      value: "20+",
+    },
+    {
+      label: "Youth Reached",
+      value: "600+",
+    },
+    {
+      label: "Partner Organizations",
+      value: "2",
+    },
   ];
 
   return (
     <section id="impact" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Impact</p>
+        <p className="text-sm font-semibold text-teal-700">
+          Impact
+        </p>
 
         <h2 className="mt-2 text-3xl md:text-4xl font-bold mb-4">
           Our Growing Impact
         </h2>
 
         <p className="max-w-3xl text-slate-600 text-lg">
-          ELEVATE is growing through youth-led service, tutoring, sports access,
-          health education, and community partnerships.
+          ELEVATE is growing through youth-led service, tutoring, sports
+          access, health education, and community partnerships.
         </p>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {stats.map((s, i) => (
-            <StatCard key={i} label={s.label} value={s.value} />
+            <StatCard
+              key={i}
+              label={s.label}
+              value={s.value}
+            />
           ))}
         </div>
       </div>
@@ -794,25 +916,113 @@ function Partners() {
   return (
     <section id="partners" className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Partners</p>
+        <p className="text-sm font-semibold text-teal-700">
+          Partners
+        </p>
+
         <h2 className="mt-2 text-3xl md:text-4xl font-bold">
           Collaboration that expands opportunity
         </h2>
 
         <div className="mt-8 grid md:grid-cols-3 gap-6">
           {partners.map((p, i) => (
-            <Link key={i} to={p.to} className="group">
+            <Link
+              key={i}
+              to={p.to}
+              className="group"
+            >
               <Card className="rounded-3xl h-full hover:shadow-lg transition">
                 <CardContent>
                   <h3 className="text-xl font-bold group-hover:text-teal-700 transition">
                     {p.title}
                   </h3>
-                  <p className="mt-2 text-slate-600">{p.text}</p>
+
+                  <p className="mt-2 text-slate-600">
+                    {p.text}
+                  </p>
                 </CardContent>
               </Card>
             </Link>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+
+function ElevateIntroduction() {
+  const videoId = getYouTubeId(ELEVATE_INTRO_VIDEO_URL);
+
+  return (
+    <section className="py-20 bg-slate-900 text-white">
+      <div className="mx-auto max-w-6xl px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="text-center"
+        >
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-teal-200">
+            <Youtube className="h-4 w-4" />
+            Meet ELEVATE
+          </div>
+
+          <h2 className="mt-5 text-3xl md:text-5xl font-extrabold">
+            Our Mission &amp; Goals
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-3xl text-lg leading-relaxed text-slate-300">
+            Learn what ELEVATE stands for, the values behind our work, and how
+            youth-led service can create meaningful and lasting community impact.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
+        >
+          {videoId ? (
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="ELEVATE - Our Mission & Goals"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <div className="flex aspect-video items-center justify-center p-8 text-center">
+              <div>
+                <Youtube className="mx-auto h-14 w-14 text-white/60" />
+                <p className="mt-4 text-slate-300">
+                  Add the ELEVATE introduction YouTube URL in
+                  ELEVATE_INTRO_VIDEO_URL.
+                </p>
+              </div>
+            </div>
+          )}
+        </motion.div>
+
+        {videoId && (
+          <div className="mt-5 text-center">
+            <a
+              href={ELEVATE_INTRO_VIDEO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-semibold text-teal-300 transition hover:text-teal-200"
+            >
+              Watch on YouTube
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -845,13 +1055,27 @@ function GetInvolved() {
   return (
     <section id="get-involved" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4">
-        <p className="text-sm font-semibold text-teal-700">Get Involved</p>
-        <h2 className="mt-2 text-3xl md:text-4xl font-bold">Support the movement</h2>
-        <p className="mt-2 text-slate-600 max-w-3xl">Whether you are a student, parent, school, tennis academy, nonprofit, or sponsor, you can help ELEVATE create more opportunities for youth.</p>
+        <p className="text-sm font-semibold text-teal-700">
+          Get Involved
+        </p>
+
+        <h2 className="mt-2 text-3xl md:text-4xl font-bold">
+          Support the movement
+        </h2>
+
+        <p className="mt-2 text-slate-600 max-w-3xl">
+          Whether you are a student, parent, school, tennis academy,
+          nonprofit, or sponsor, you can help ELEVATE create more
+          opportunities for youth.
+        </p>
 
         <div className="mt-8 grid md:grid-cols-4 gap-6">
           {actions.map((a, i) => (
-            <ActionCard key={i} title={a.title} icon={a.icon}>
+            <ActionCard
+              key={i}
+              title={a.title}
+              icon={a.icon}
+            >
               {a.text}
             </ActionCard>
           ))}
@@ -860,7 +1084,8 @@ function GetInvolved() {
         <div className="mt-8">
           <a href="/get-involved#donate-gear">
             <Button className="rounded-2xl bg-teal-600 hover:bg-teal-700">
-              Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              Get Started
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </a>
         </div>
@@ -873,17 +1098,24 @@ function FinalCTA() {
   return (
     <section className="py-20 bg-slate-900 text-white">
       <div className="mx-auto max-w-7xl px-4 text-center">
-        <h2 className="text-3xl md:text-5xl font-extrabold">Join the Movement</h2>
+        <h2 className="text-3xl md:text-5xl font-extrabold">
+          Join the Movement
+        </h2>
+
         <p className="mt-4 text-slate-300 max-w-3xl mx-auto text-lg">
-          Help ELEVATE expand tutoring, tennis access, health education, and youth-led service.
+          Help ELEVATE expand tutoring, tennis access, health education, and
+          youth-led service.
         </p>
+
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <a
             href="#contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition"
           >
-            Contact Us <ArrowRight className="h-4 w-4" />
+            Contact Us
+            <ArrowRight className="h-4 w-4" />
           </a>
+
           <Link
             to="/about/team"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white text-slate-900 font-semibold hover:bg-slate-100 transition"
@@ -896,12 +1128,23 @@ function FinalCTA() {
   );
 }
 
-function Newsletter({ email, setEmail }) {
+function Newsletter({
+  email,
+  setEmail,
+}) {
   return (
-    <section id="newsletter" className="py-16 text-center bg-white">
+    <section
+      id="newsletter"
+      className="py-16 text-center bg-white"
+    >
       <div className="mx-auto max-w-3xl px-4">
-        <h3 className="text-2xl font-semibold">Stay Connected</h3>
-        <p className="mt-2 text-slate-600">Monthly updates and impact stories. No spam.</p>
+        <h3 className="text-2xl font-semibold">
+          Stay Connected
+        </h3>
+
+        <p className="mt-2 text-slate-600">
+          Monthly updates and impact stories. No spam.
+        </p>
 
         <form
           className="mt-6 flex flex-col sm:flex-row gap-2 justify-center"
@@ -918,7 +1161,11 @@ function Newsletter({ email, setEmail }) {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full max-w-md rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900 bg-white"
           />
-          <Button type="submit" className="rounded-2xl">
+
+          <Button
+            type="submit"
+            className="rounded-2xl"
+          >
             Subscribe
           </Button>
         </form>
@@ -927,15 +1174,23 @@ function Newsletter({ email, setEmail }) {
   );
 }
 
-function Contact({ form, setForm }) {
+function Contact({
+  form,
+  setForm,
+}) {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8">
-        {/* Left info */}
+
+        {/* LEFT INFO */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold">Get in touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Get in touch
+          </h2>
+
           <p className="mt-2 text-slate-600">
-            We’d love to hear from students, parents, schools, donors, partners, and community organizations.
+            We’d love to hear from students, parents, schools, donors,
+            partners, and community organizations.
           </p>
 
           <div className="mt-6 space-y-3 text-sm text-slate-700">
@@ -943,10 +1198,12 @@ function Contact({ form, setForm }) {
               <Mail className="h-4 w-4" />
               <span>admin@elevate.org</span>
             </div>
+
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
               <span>(316) 559-0845</span>
             </div>
+
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
               <span>Wichita, Kansas</span>
@@ -955,7 +1212,10 @@ function Contact({ form, setForm }) {
 
           <Card className="rounded-2xl mt-10">
             <CardContent>
-              <h3 className="text-lg font-semibold">Contact categories</h3>
+              <h3 className="text-lg font-semibold">
+                Contact categories
+              </h3>
+
               <ul className="mt-3 list-disc pl-5 text-slate-600 space-y-1">
                 <li>Donate gear</li>
                 <li>Volunteer</li>
@@ -968,61 +1228,120 @@ function Contact({ form, setForm }) {
           </Card>
         </div>
 
-        {/* Right card */}
+        {/* RIGHT CARD */}
         <Card className="rounded-2xl">
           <CardContent>
             <form
               className="space-y-4"
               onSubmit={(e) => {
                 e.preventDefault();
+
                 alert("Thanks! We'll get back to you.");
-                setForm({ name: "", email: "", category: "", subject: "", message: "" });
+
+                setForm({
+                  name: "",
+                  email: "",
+                  category: "",
+                  subject: "",
+                  message: "",
+                });
               }}
             >
               <Input
                 label="Name"
                 value={form.name || ""}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    name: e.target.value,
+                  })
+                }
               />
 
               <Input
                 label="Email"
                 type="email"
                 value={form.email || ""}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    email: e.target.value,
+                  })
+                }
               />
 
               <label className="block">
-                <span className="text-sm">Contact Category</span>
+                <span className="text-sm">
+                  Contact Category
+                </span>
+
                 <select
                   required
                   className="mt-1 w-full rounded-2xl border px-4 py-3 bg-white"
                   value={form.category || ""}
-                  onChange={(e) => setForm({ ...form, category: e.target.value })}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      category: e.target.value,
+                    })
+                  }
                 >
-                  <option value="">Select a category</option>
-                  <option>Donate gear</option>
-                  <option>Volunteer</option>
-                  <option>Partner</option>
-                  <option>Sponsor</option>
-                  <option>Media / speaking request</option>
-                  <option>General question</option>
+                  <option value="">
+                    Select a category
+                  </option>
+
+                  <option>
+                    Donate gear
+                  </option>
+
+                  <option>
+                    Volunteer
+                  </option>
+
+                  <option>
+                    Partner
+                  </option>
+
+                  <option>
+                    Sponsor
+                  </option>
+
+                  <option>
+                    Media / speaking request
+                  </option>
+
+                  <option>
+                    General question
+                  </option>
                 </select>
               </label>
 
               <Input
                 label="Subject"
                 value={form.subject || ""}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    subject: e.target.value,
+                  })
+                }
               />
 
               <Textarea
                 label="Message"
                 value={form.message || ""}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    message: e.target.value,
+                  })
+                }
               />
 
-              <Button type="submit" className="rounded-2xl w-full">
+              <Button
+                type="submit"
+                className="rounded-2xl w-full"
+              >
                 Send Message
               </Button>
             </form>
@@ -1035,59 +1354,112 @@ function Contact({ form, setForm }) {
 
 function Footer() {
   const facebookUrl = "https://facebook.com/";
-  const instagramUrl = "https://instagram.com/elevatefoundation_official";
+  const instagramUrl =
+    "https://instagram.com/elevatefoundation_official";
 
   return (
     <footer className="border-t bg-white">
       <div className="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-2 gap-6 items-center">
         <p className="text-sm text-slate-600">
-          © {new Date().getFullYear()} ELEVATE. 501(c)(3) nonprofit. All rights reserved.
+          © {new Date().getFullYear()} ELEVATE. 501(c)(3) nonprofit. All
+          rights reserved.
         </p>
+
         <div className="flex md:justify-end items-center gap-4 text-sm">
-          <a href={facebookUrl} target="_blank" rel="noreferrer" className="text-[#1877F2]">
+          <a
+            href={facebookUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#1877F2]"
+          >
             <Facebook className="h-5 w-5" />
           </a>
-          <a href={instagramUrl} target="_blank" rel="noreferrer" className="text-[#E4405F]">
+
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#E4405F]"
+          >
             <Instagram className="h-5 w-5" />
           </a>
-          <a href="#" className="underline">Privacy</a>
-          <a href="#" className="underline">Terms</a>
+
+          <a
+            href="#"
+            className="underline"
+          >
+            Privacy
+          </a>
+
+          <a
+            href="#"
+            className="underline"
+          >
+            Terms
+          </a>
         </div>
       </div>
     </footer>
   );
 }
 
-function StatCard({ label, value }) {
+function StatCard({
+  label,
+  value,
+}) {
   return (
     <Card className="rounded-2xl">
       <CardContent>
-        <div className="text-3xl font-bold">{value}</div>
-        <div className="text-sm text-slate-600">{label}</div>
+        <div className="text-3xl font-bold">
+          {value}
+        </div>
+
+        <div className="text-sm text-slate-600">
+          {label}
+        </div>
       </CardContent>
     </Card>
   );
 }
 
-function ActionCard({ title, icon, children }) {
+function ActionCard({
+  title,
+  icon,
+  children,
+}) {
   return (
     <Card className="rounded-2xl h-full">
       <CardContent>
         <div className="flex items-center gap-2">
           {icon}
-          <h3 className="text-lg font-semibold">{title}</h3>
+
+          <h3 className="text-lg font-semibold">
+            {title}
+          </h3>
         </div>
-        <p className="mt-2 text-slate-600">{children}</p>
+
+        <p className="mt-2 text-slate-600">
+          {children}
+        </p>
       </CardContent>
     </Card>
   );
 }
 
-function Input({ label, value, onChange }) {
+function Input({
+  label,
+  value,
+  onChange,
+  type = "text",
+}) {
   return (
     <label className="block">
-      <span className="text-sm">{label}</span>
+      <span className="text-sm">
+        {label}
+      </span>
+
       <input
+        type={type}
         required
         className="mt-1 w-full rounded-2xl border px-4 py-3 bg-white"
         value={value}
@@ -1097,10 +1469,17 @@ function Input({ label, value, onChange }) {
   );
 }
 
-function Textarea({ label, value, onChange }) {
+function Textarea({
+  label,
+  value,
+  onChange,
+}) {
   return (
     <label className="block">
-      <span className="text-sm">{label}</span>
+      <span className="text-sm">
+        {label}
+      </span>
+
       <textarea
         required
         rows={5}
@@ -1112,13 +1491,27 @@ function Textarea({ label, value, onChange }) {
   );
 }
 
-function InfoCard({ icon, title, text }) {
+function InfoCard({
+  icon,
+  title,
+  text,
+}) {
   return (
     <Card className="rounded-2xl h-full">
       <CardContent>
-        {icon ? <div className="h-6 w-6 text-slate-700">{icon}</div> : null}
-        <h3 className="mt-3 text-xl font-semibold">{title}</h3>
-        <p className="mt-2 text-slate-600">{text}</p>
+        {icon ? (
+          <div className="h-6 w-6 text-slate-700">
+            {icon}
+          </div>
+        ) : null}
+
+        <h3 className="mt-3 text-xl font-semibold">
+          {title}
+        </h3>
+
+        <p className="mt-2 text-slate-600">
+          {text}
+        </p>
       </CardContent>
     </Card>
   );

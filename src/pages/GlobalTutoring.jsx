@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 import global1 from "../assets/partners/building-blocks/bb2.jpeg";
 import global2 from "../assets/partners/building-blocks/bb3.png";
+import global3 from "../assets/partners/building-blocks/bb4.jpeg";
 
 const Card = ({ className = "", children }) => (
     <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -138,6 +139,7 @@ export default function GlobalTutoring() {
                             images={[
                                 { src: global1, label: "Online tutoring support" },
                                 { src: global2, label: "English learning practice" },
+                                { src: global3, label: "English learning practice" },
                             ]}
                         />
                     </motion.div>

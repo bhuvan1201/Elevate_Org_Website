@@ -277,8 +277,8 @@ export default function MeetTheTeam() {
             <FounderProfile
               name="Vihaan Ganganala"
               role="Founder & Youth Executive Director"
-              schoolLine="High school sophomore at Wichita Collegiate School • Interests: public health, youth advocacy, sports medicine"
-              bio="Vihaan Ganganala is a high school sophomore at Wichita Collegiate School with a strong interest in public health, youth advocacy, and sports medicine. He founded ELEVATE Foundation to turn student-led research and service into real-world impact for underserved communities. With experience in health science research, community engagement, and nonprofit leadership, Vihaan leads ELEVATE’s health advocacy initiatives while also helping drive its sports access and education programs."
+              schoolLine="High school Junior at Wichita Collegiate School • Interests: public health, youth advocacy, sports medicine"
+              bio="Vihaan Ganganala is a high school Junior at Wichita Collegiate School with a strong interest in public health, youth advocacy, and sports medicine. He founded ELEVATE Foundation to turn student-led research and service into real-world impact for underserved communities. With experience in health science research, community engagement, and nonprofit leadership, Vihaan leads ELEVATE’s health advocacy initiatives while also helping drive its sports access and education programs."
               mission="I believe students can lead meaningful change when research, service, and education come together. My goal is to make health information accessible and to use sports as a pathway to opportunity."
               achievements={[
                 "Founder, ELEVATE Foundation",
@@ -300,8 +300,8 @@ export default function MeetTheTeam() {
             <FounderProfile
               name="Hitha Ganganala"
               role="Co-Founder & Youth Program Director"
-              schoolLine="High school freshman at Wichita Collegiate School • Focus: public health research, nutrition equity, education access"
-              bio="Hitha Ganganala is a high school freshman at Wichita Collegiate School with a passion for public health research, nutrition equity, and education access. As co-founder of ELEVATE Foundation, she leads initiatives focused on poverty, food access, and adolescent health. Hitha combines data-driven research with community service, tutoring, and sports outreach to address health disparities affecting low-income youth."
+              schoolLine="High school sophomore at Wichita Collegiate School • Focus: public health research, nutrition equity, education access"
+              bio="Hitha Ganganala is a high school sophomore at Wichita Collegiate School with a passion for public health research, nutrition equity, and education access. As co-founder of ELEVATE Foundation, she leads initiatives focused on poverty, food access, and adolescent health. Hitha combines data-driven research with community service, tutoring, and sports outreach to address health disparities affecting low-income youth."
               mission="Health outcomes should not be determined by income or access. I want to create solutions that help families and students overcome systemic barriers."
               achievements={[
                 "Co-Founder, ELEVATE Foundation",

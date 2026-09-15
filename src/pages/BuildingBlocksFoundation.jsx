@@ -7,6 +7,8 @@ import bbFlyer from "../assets/bb-flyer.pdf";
 
 import bb1 from "../assets/partners/building-blocks/bb1.jpeg";
 import bb2 from "../assets/partners/building-blocks/bb2.jpeg";
+import bb3 from "../assets/partners/building-blocks/bb3.png";
+import bb4 from "../assets/partners/building-blocks/bb4.jpeg";
 
 /* ---------- UI helpers ---------- */
 const Card = ({ className = "", children }) => (
@@ -141,7 +143,7 @@ function StatsAndVideo({ embedUrl }) {
 
 /* ---------- PAGE ---------- */
 export default function BuildingBlocksFoundation() {
-  const images = [bb1, bb2];
+  const images = [bb1, bb2, bb3, bb4];
   const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/SxglA4_N1H4";
 
   const primaryBtn =
