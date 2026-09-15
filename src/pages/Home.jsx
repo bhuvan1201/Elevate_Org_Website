@@ -494,40 +494,44 @@ function RallyBanner() {
     <section className="bg-gradient-to-r from-teal-600 via-cyan-600 to-teal-700 py-10">
       <div className="mx-auto max-w-7xl px-4">
         <div className="overflow-hidden rounded-3xl bg-white shadow-2xl">
-          <div className="grid lg:grid-cols-[2fr_1fr]">
-            <div className="p-8 md:p-10">
-              <span className="inline-flex items-center rounded-full bg-yellow-100 px-4 py-1 text-sm font-bold text-yellow-800">
-                🎾 Upcoming Community Event
+
+          <div className="grid lg:grid-cols-[1.45fr_0.55fr]">
+
+            {/* LEFT SIDE */}
+            <div className="p-8 md:p-10 lg:p-12">
+
+              {/* STATUS */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-700">
+                ✓ Event Completed
               </span>
 
-              <h2 className="mt-5 text-4xl font-extrabold text-slate-900 md:text-5xl">
+              <p className="mt-5 text-sm font-bold uppercase tracking-wider text-teal-700">
+                Tennis for Good
+              </p>
+
+              <h2 className="mt-2 text-4xl font-extrabold text-slate-900 md:text-5xl">
                 Rally for Change
               </h2>
 
               <p className="mt-3 text-2xl font-bold text-teal-700">
-                Free Tennis Event for Kids
+                Tennis, teamwork, confidence, and community.
               </p>
 
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-600">
-                Join ELEVATE's Tennis for Good initiative for a fun evening of
-                tennis instruction, cool elevate t-shirts, racquet giveaways,
-                snacks, and community. Open to students in Grades 1–12.
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600">
+                Rally for Change brought together 20+ young participants for
+                an evening of tennis, learning, teamwork, and community
+                connection. Youth volunteers helped participants build skills,
+                confidence, and a positive connection with the sport.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-5 text-slate-700">
+              {/* EVENT DETAILS */}
+              <div className="mt-7 flex flex-wrap gap-x-7 gap-y-4 text-slate-700">
+
                 <div className="flex items-center gap-2">
                   <CalendarDays className="h-5 w-5 text-teal-600" />
 
                   <span className="font-semibold">
-                    Saturday, September 26, 2026
-                  </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <Clock3 className="h-5 w-5 text-teal-600" />
-
-                  <span className="font-semibold">
-                    5:00–7:00 PM
+                    September 12, 2026
                   </span>
                 </div>
 
@@ -538,62 +542,99 @@ function RallyBanner() {
                     Eastview Park, Wichita
                   </span>
                 </div>
+
+                <div className="flex items-center gap-2">
+                  <Users className="h-5 w-5 text-teal-600" />
+
+                  <span className="font-semibold">
+                    20+ Young Participants
+                  </span>
+                </div>
+
               </div>
 
+              {/* BUTTONS */}
               <div className="mt-8 flex flex-wrap gap-4">
+
                 <Link
-                  to="/rally-for-change"
+                  to="/projects/tennis-for-good"
                   className="inline-flex items-center gap-2 rounded-2xl bg-teal-600 px-7 py-4 text-lg font-bold text-white transition hover:bg-teal-700"
                 >
-                  Register Now
+                  See Event Highlights
                   <ArrowRight className="h-5 w-5" />
                 </Link>
 
                 <Link
-                  to="/projects/tennis-for-good"
-                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 px-7 py-4 text-lg font-bold text-slate-900 transition hover:bg-slate-50"
+                  to="/partners/genesis-foundation"
+                  className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 bg-white px-7 py-4 text-lg font-bold text-slate-900 transition hover:bg-slate-50"
                 >
-                  Learn More
+                  Explore the GFFT Partnership
                 </Link>
+
               </div>
+
             </div>
 
-            <div className="flex flex-col items-center justify-center bg-gradient-to-br from-teal-700 to-cyan-700 p-10 text-center text-white">
-              <div className="text-6xl">🎾</div>
 
-              <h3 className="mt-4 text-3xl font-bold">
-                Rally for Change
-              </h3>
+            {/* RIGHT IMPACT PANEL */}
+            {/* RIGHT IMPACT PANEL */}
+            <div className="flex flex-col justify-center bg-slate-900 p-8 text-white md:p-10">
 
-              <p className="mt-2 text-teal-100">
-                Free Tennis Event
+              <p className="text-sm font-bold uppercase tracking-wider text-teal-400">
+                Event Impact
               </p>
 
-              <div className="mt-8 w-full rounded-2xl bg-white/10 px-8 py-6 backdrop-blur">
-                <div className="text-5xl font-extrabold">
-                  FREE
-                </div>
+              <h3 className="mt-3 text-3xl font-bold text-white">
+                Rally at a Glance
+              </h3>
 
-                <div className="mt-2 text-lg">
-                  Grades 1–12
-                </div>
+              <div className="mt-8 grid gap-4">
 
-                <div className="mt-5 border-t border-white/20 pt-5">
-                  <div className="text-2xl font-bold">
-                    Choose Your Session
+                {/* PARTICIPANTS */}
+                <div className="rounded-2xl border border-white/10 bg-white/10 p-5">
+                  <div className="text-4xl font-extrabold text-white">
+                    20+
                   </div>
 
-                  <div className="mt-2 text-sm">
-                    5:00–6:00 PM
-                    <br />
-                    or
-                    <br />
-                    6:00–7:00 PM
-                  </div>
+                  <p className="mt-1 text-sm font-semibold text-teal-200">
+                    Kids Participated
+                  </p>
                 </div>
+
+                {/* EVENT */}
+                <div className="rounded-2xl border border-white/10 bg-white/10 p-5">
+                  <div className="text-3xl font-extrabold text-white">
+                    Youth-Led
+                  </div>
+
+                  <p className="mt-1 text-sm font-semibold text-teal-200">
+                    Community Tennis Event
+                  </p>
+                </div>
+
+                {/* FOCUS */}
+                <div className="rounded-2xl border border-white/10 bg-white/10 p-5">
+                  <div className="text-2xl font-extrabold text-white">
+                    Sports + Service
+                  </div>
+
+                  <p className="mt-1 text-sm font-semibold text-teal-200">
+                    Building Confidence &amp; Opportunity
+                  </p>
+                </div>
+
               </div>
+
+              <div className="mt-7 border-t border-white/15 pt-6">
+                <p className="text-sm leading-relaxed text-slate-300">
+                  Part of ELEVATE&apos;s Tennis for Good initiative.
+                </p>
+              </div>
+
             </div>
+
           </div>
+
         </div>
       </div>
     </section>

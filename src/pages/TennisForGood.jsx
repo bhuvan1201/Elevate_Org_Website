@@ -859,7 +859,7 @@ export default function TennisForGood() {
           RALLY FOR CHANGE DETAILS
       ====================================================== */}
 
-            <RallyForChangeEvent />
+            {/* <RallyForChangeEvent /> */}
 
 
             {/* =====================================================
