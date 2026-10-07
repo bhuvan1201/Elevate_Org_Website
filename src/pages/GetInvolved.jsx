@@ -1,3 +1,5 @@
+import useFormSubmission from "../hooks/useFormSubmission";
+import FormFeedback, { Honeypot } from "../components/FormFeedback";
 import { useState } from "react";
 import {
     ArrowRight,
@@ -6,7 +8,6 @@ import {
     Users,
     Megaphone,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Card = ({ className = "", children }) => (
     <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -29,12 +30,6 @@ const Button = ({ className = "", children, ...props }) => (
         {children}
     </button>
 );
-
-function encode(data) {
-    return Object.keys(data)
-        .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
-        .join("&");
-}
 
 function ActionCard({ icon, title, text, href }) {
     return (
@@ -67,7 +62,6 @@ export default function GetInvolved() {
         condition: "",
         preference: "",
         message: "",
-        "bot-field": "",
     });
 
     const [volunteerForm, setVolunteerForm] = useState({
@@ -77,35 +71,10 @@ export default function GetInvolved() {
         interest: "",
         availability: "",
         message: "",
-        "bot-field": "",
     });
 
-    const [status, setStatus] = useState("");
-
-    async function submitForm(e, formName, data, resetFn) {
-        e.preventDefault();
-        setStatus("Sending...");
-
-        try {
-            const body = encode({
-                "form-name": formName,
-                ...data,
-            });
-
-            const res = await fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body,
-            });
-
-            if (!res.ok) throw new Error("Form failed");
-
-            setStatus("Thanks! We received your submission.");
-            resetFn();
-        } catch {
-            setStatus("Something went wrong. Please try again.");
-        }
-    }
+    const gearSubmission = useFormSubmission("Thanks! We received your gear donation details.");
+    const volunteerSubmission = useFormSubmission("Thanks! We received your volunteer details.");
 
     return (
         <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
@@ -161,12 +130,14 @@ export default function GetInvolved() {
 
                             <form
                                 name="gear-donation"
+                                aria-describedby="gear-donation-status"
                                 method="POST"
+                                action="/netlify-forms.html"
                                 data-netlify="true"
                                 netlify-honeypot="bot-field"
-                                className="mt-6 grid md:grid-cols-2 gap-4"
+                                className="mt-6"
                                 onSubmit={(e) =>
-                                    submitForm(e, "gear-donation", gearForm, () =>
+                                    gearSubmission.submit(e, () =>
                                         setGearForm({
                                             name: "",
                                             email: "",
@@ -176,44 +147,46 @@ export default function GetInvolved() {
                                             condition: "",
                                             preference: "",
                                             message: "",
-                                            "bot-field": "",
                                         })
                                     )
                                 }
                             >
-                                <input type="hidden" name="form-name" value="gear-donation" />
-                                <input type="hidden" name="bot-field" value={gearForm["bot-field"]} />
+                                <fieldset disabled={gearSubmission.isSubmitting} className="grid md:grid-cols-2 gap-4">
+                                    <input type="hidden" name="form-name" value="gear-donation" />
+                                    <Honeypot />
 
-                                <Input label="Name" value={gearForm.name} onChange={(e) => setGearForm({ ...gearForm, name: e.target.value })} />
-                                <Input label="Email" type="email" value={gearForm.email} onChange={(e) => setGearForm({ ...gearForm, email: e.target.value })} />
-                                <Input label="Phone" value={gearForm.phone} onChange={(e) => setGearForm({ ...gearForm, phone: e.target.value })} />
-                                <Input label="Gear Type" placeholder="Rackets, shoes, balls, bags..." value={gearForm.gearType} onChange={(e) => setGearForm({ ...gearForm, gearType: e.target.value })} />
-                                <Input label="Quantity" value={gearForm.quantity} onChange={(e) => setGearForm({ ...gearForm, quantity: e.target.value })} />
+                                    <Input label="Name" name="name" value={gearForm.name} onChange={(e) => setGearForm({ ...gearForm, name: e.target.value })} />
+                                    <Input label="Email" name="email" type="email" value={gearForm.email} onChange={(e) => setGearForm({ ...gearForm, email: e.target.value })} />
+                                    <Input label="Phone" name="phone" value={gearForm.phone} onChange={(e) => setGearForm({ ...gearForm, phone: e.target.value })} />
+                                    <Input label="Gear Type" name="gearType" placeholder="Rackets, shoes, balls, bags..." value={gearForm.gearType} onChange={(e) => setGearForm({ ...gearForm, gearType: e.target.value })} />
+                                    <Input label="Quantity" name="quantity" value={gearForm.quantity} onChange={(e) => setGearForm({ ...gearForm, quantity: e.target.value })} />
 
-                                <Select label="Condition" value={gearForm.condition} onChange={(e) => setGearForm({ ...gearForm, condition: e.target.value })}>
-                                    <option value="">Select condition</option>
-                                    <option>New</option>
-                                    <option>Like New</option>
-                                    <option>Good</option>
-                                    <option>Used but playable</option>
-                                </Select>
+                                    <Select label="Condition" name="condition" value={gearForm.condition} onChange={(e) => setGearForm({ ...gearForm, condition: e.target.value })}>
+                                        <option value="">Select condition</option>
+                                        <option>New</option>
+                                        <option>Like New</option>
+                                        <option>Good</option>
+                                        <option>Used but playable</option>
+                                    </Select>
 
-                                <Select label="Pickup / Drop-off Preference" value={gearForm.preference} onChange={(e) => setGearForm({ ...gearForm, preference: e.target.value })}>
-                                    <option value="">Select preference</option>
-                                    <option>Pickup preferred</option>
-                                    <option>Drop-off preferred</option>
-                                    <option>Either works</option>
-                                </Select>
+                                    <Select label="Pickup / Drop-off Preference" name="preference" value={gearForm.preference} onChange={(e) => setGearForm({ ...gearForm, preference: e.target.value })}>
+                                        <option value="">Select preference</option>
+                                        <option>Pickup preferred</option>
+                                        <option>Drop-off preferred</option>
+                                        <option>Either works</option>
+                                    </Select>
 
-                                <div className="md:col-span-2">
-                                    <Textarea label="Message" value={gearForm.message} onChange={(e) => setGearForm({ ...gearForm, message: e.target.value })} />
-                                </div>
+                                    <div className="md:col-span-2">
+                                        <Textarea label="Message" name="message" value={gearForm.message} onChange={(e) => setGearForm({ ...gearForm, message: e.target.value })} />
+                                    </div>
 
-                                <div className="md:col-span-2">
-                                    <Button type="submit" className="bg-teal-600 hover:bg-teal-700">
-                                        Submit Gear Donation
-                                    </Button>
-                                </div>
+                                    <div className="md:col-span-2">
+                                        <Button type="submit" disabled={gearSubmission.isSubmitting} className="bg-teal-600 hover:bg-teal-700 disabled:cursor-wait disabled:opacity-60">
+                                            {gearSubmission.isSubmitting ? "Sending…" : "Submit Gear Donation"}
+                                        </Button>
+                                    </div>
+                                </fieldset>
+                                <FormFeedback id="gear-donation-status" status={gearSubmission.status} />
                             </form>
                         </CardContent>
                     </Card>
@@ -231,12 +204,14 @@ export default function GetInvolved() {
 
                             <form
                                 name="volunteer"
+                                aria-describedby="volunteer-status"
                                 method="POST"
+                                action="/netlify-forms.html"
                                 data-netlify="true"
                                 netlify-honeypot="bot-field"
-                                className="mt-6 grid md:grid-cols-2 gap-4"
+                                className="mt-6"
                                 onSubmit={(e) =>
-                                    submitForm(e, "volunteer", volunteerForm, () =>
+                                    volunteerSubmission.submit(e, () =>
                                         setVolunteerForm({
                                             name: "",
                                             email: "",
@@ -244,43 +219,44 @@ export default function GetInvolved() {
                                             interest: "",
                                             availability: "",
                                             message: "",
-                                            "bot-field": "",
                                         })
                                     )
                                 }
                             >
-                                <input type="hidden" name="form-name" value="volunteer" />
-                                <input type="hidden" name="bot-field" value={volunteerForm["bot-field"]} />
+                                <fieldset disabled={volunteerSubmission.isSubmitting} className="grid md:grid-cols-2 gap-4">
+                                    <input type="hidden" name="form-name" value="volunteer" />
+                                    <Honeypot />
 
-                                <Input label="Name" value={volunteerForm.name} onChange={(e) => setVolunteerForm({ ...volunteerForm, name: e.target.value })} />
-                                <Input label="Email" type="email" value={volunteerForm.email} onChange={(e) => setVolunteerForm({ ...volunteerForm, email: e.target.value })} />
-                                <Input label="Phone" value={volunteerForm.phone} onChange={(e) => setVolunteerForm({ ...volunteerForm, phone: e.target.value })} />
+                                    <Input label="Name" name="name" value={volunteerForm.name} onChange={(e) => setVolunteerForm({ ...volunteerForm, name: e.target.value })} />
+                                    <Input label="Email" name="email" type="email" value={volunteerForm.email} onChange={(e) => setVolunteerForm({ ...volunteerForm, email: e.target.value })} />
+                                    <Input label="Phone" name="phone" value={volunteerForm.phone} onChange={(e) => setVolunteerForm({ ...volunteerForm, phone: e.target.value })} />
 
-                                <Select label="Volunteer Interest" value={volunteerForm.interest} onChange={(e) => setVolunteerForm({ ...volunteerForm, interest: e.target.value })}>
-                                    <option value="">Select option</option>
-                                    <option>Tutoring</option>
-                                    <option>Gear collection</option>
-                                    <option>Videos</option>
-                                    <option>Social media</option>
-                                    <option>Campaigns</option>
-                                    <option>School drives</option>
-                                    <option>Events</option>
-                                </Select>
+                                    <Select label="Volunteer Interest" name="interest" value={volunteerForm.interest} onChange={(e) => setVolunteerForm({ ...volunteerForm, interest: e.target.value })}>
+                                        <option value="">Select option</option>
+                                        <option>Tutoring</option>
+                                        <option>Gear collection</option>
+                                        <option>Videos</option>
+                                        <option>Social media</option>
+                                        <option>Campaigns</option>
+                                        <option>School drives</option>
+                                        <option>Events</option>
+                                    </Select>
 
-                                <Input label="Availability" value={volunteerForm.availability} onChange={(e) => setVolunteerForm({ ...volunteerForm, availability: e.target.value })} />
+                                    <Input label="Availability" name="availability" value={volunteerForm.availability} onChange={(e) => setVolunteerForm({ ...volunteerForm, availability: e.target.value })} />
 
-                                <div className="md:col-span-2">
-                                    <Textarea label="Message" value={volunteerForm.message} onChange={(e) => setVolunteerForm({ ...volunteerForm, message: e.target.value })} />
-                                </div>
+                                    <div className="md:col-span-2">
+                                        <Textarea label="Message" name="message" value={volunteerForm.message} onChange={(e) => setVolunteerForm({ ...volunteerForm, message: e.target.value })} />
+                                    </div>
 
-                                <div className="md:col-span-2">
-                                    <Button type="submit" className="bg-teal-600 hover:bg-teal-700">
-                                        Submit Volunteer Form
-                                    </Button>
-                                </div>
+                                    <div className="md:col-span-2">
+                                        <Button type="submit" disabled={volunteerSubmission.isSubmitting} className="bg-teal-600 hover:bg-teal-700 disabled:cursor-wait disabled:opacity-60">
+                                            {volunteerSubmission.isSubmitting ? "Sending…" : "Submit Volunteer Form"}
+                                        </Button>
+                                    </div>
+                                </fieldset>
+                                <FormFeedback id="volunteer-status" status={volunteerSubmission.status} />
                             </form>
 
-                            {status && <p className="mt-4 text-sm text-teal-700">{status}</p>}
                         </CardContent>
                     </Card>
                 </div>
@@ -289,11 +265,12 @@ export default function GetInvolved() {
     );
 }
 
-function Input({ label, value, onChange, type = "text", placeholder = "" }) {
+function Input({ label, name, value, onChange, type = "text", placeholder = "" }) {
     return (
         <label className="block">
             <span className="text-sm text-slate-700">{label}</span>
             <input
+                name={name}
                 required
                 type={type}
                 placeholder={placeholder}
@@ -305,11 +282,12 @@ function Input({ label, value, onChange, type = "text", placeholder = "" }) {
     );
 }
 
-function Select({ label, value, onChange, children }) {
+function Select({ label, name, value, onChange, children }) {
     return (
         <label className="block">
             <span className="text-sm text-slate-700">{label}</span>
             <select
+                name={name}
                 required
                 className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900 bg-white"
                 value={value}
@@ -321,11 +299,12 @@ function Select({ label, value, onChange, children }) {
     );
 }
 
-function Textarea({ label, value, onChange }) {
+function Textarea({ label, name, value, onChange }) {
     return (
         <label className="block">
             <span className="text-sm text-slate-700">{label}</span>
             <textarea
+                name={name}
                 required
                 rows={5}
                 className="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900"

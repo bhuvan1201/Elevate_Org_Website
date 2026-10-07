@@ -1,11 +1,48 @@
 <!doctype html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="elevate-form-definitions" content="static form detection" />
+    <title>ELEVATE form definitions</title>
+  </head>
   <body>
-    <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+    <!-- Netlify detects these forms at deploy time. Keep names and fields in
+         sync with the React forms and src/lib/netlifyForms.js. -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
       <input name="name" />
-      <input name="email" />
+      <input name="email" type="email" />
+      <input name="category" />
       <input name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="newsletter" />
+      <input name="bot-field" />
+      <input name="email" type="email" />
+    </form>
+    <form name="gear-donation" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="gear-donation" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="phone" />
+      <input name="gearType" />
+      <input name="quantity" />
+      <input name="condition" />
+      <input name="preference" />
+      <textarea name="message"></textarea>
+    </form>
+    <form name="volunteer" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="volunteer" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="email" type="email" />
+      <input name="phone" />
+      <input name="interest" />
+      <input name="availability" />
       <textarea name="message"></textarea>
     </form>
   </body>

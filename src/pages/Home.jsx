@@ -1,3 +1,5 @@
+import ContactForm from "../components/ContactForm";
+import NewsletterForm from "../components/NewsletterForm";
 import { Link } from "react-router-dom";
 
 //import h1 from "../assets/home/hero/h1.jpg";
@@ -106,16 +108,6 @@ const Button = ({ className = "", children, type = "button", ...props }) => (
 );
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    category: "",
-    subject: "",
-    message: "",
-  });
-
   return (
     <main className="min-h-screen bg-white text-slate-900">
       <Hero />
@@ -129,8 +121,8 @@ export default function Home() {
       <ElevateIntroduction />
       <GetInvolved />
       <FinalCTA />
-      <Newsletter email={email} setEmail={setEmail} />
-      <Contact form={form} setForm={setForm} />
+      <Newsletter />
+      <Contact />
       <Footer />
     </main>
   );
@@ -1169,10 +1161,7 @@ function FinalCTA() {
   );
 }
 
-function Newsletter({
-  email,
-  setEmail,
-}) {
+function Newsletter() {
   return (
     <section
       id="newsletter"
@@ -1184,41 +1173,16 @@ function Newsletter({
         </h3>
 
         <p className="mt-2 text-slate-600">
-          Monthly updates and impact stories. No spam.
+          Sign up to receive ELEVATE updates and impact stories. No spam.
         </p>
 
-        <form
-          className="mt-6 flex flex-col sm:flex-row gap-2 justify-center"
-          onSubmit={(e) => {
-            e.preventDefault();
-            alert("Subscribed: " + email);
-          }}
-        >
-          <input
-            type="email"
-            required
-            placeholder="you@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full max-w-md rounded-2xl border px-4 py-3 outline-none focus:ring-2 focus:ring-slate-900 bg-white"
-          />
-
-          <Button
-            type="submit"
-            className="rounded-2xl"
-          >
-            Subscribe
-          </Button>
-        </form>
+        <NewsletterForm />
       </div>
     </section>
   );
 }
 
-function Contact({
-  form,
-  setForm,
-}) {
+function Contact() {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8">
@@ -1272,120 +1236,7 @@ function Contact({
         {/* RIGHT CARD */}
         <Card className="rounded-2xl">
           <CardContent>
-            <form
-              className="space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-
-                alert("Thanks! We'll get back to you.");
-
-                setForm({
-                  name: "",
-                  email: "",
-                  category: "",
-                  subject: "",
-                  message: "",
-                });
-              }}
-            >
-              <Input
-                label="Name"
-                value={form.name || ""}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    name: e.target.value,
-                  })
-                }
-              />
-
-              <Input
-                label="Email"
-                type="email"
-                value={form.email || ""}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    email: e.target.value,
-                  })
-                }
-              />
-
-              <label className="block">
-                <span className="text-sm">
-                  Contact Category
-                </span>
-
-                <select
-                  required
-                  className="mt-1 w-full rounded-2xl border px-4 py-3 bg-white"
-                  value={form.category || ""}
-                  onChange={(e) =>
-                    setForm({
-                      ...form,
-                      category: e.target.value,
-                    })
-                  }
-                >
-                  <option value="">
-                    Select a category
-                  </option>
-
-                  <option>
-                    Donate gear
-                  </option>
-
-                  <option>
-                    Volunteer
-                  </option>
-
-                  <option>
-                    Partner
-                  </option>
-
-                  <option>
-                    Sponsor
-                  </option>
-
-                  <option>
-                    Media / speaking request
-                  </option>
-
-                  <option>
-                    General question
-                  </option>
-                </select>
-              </label>
-
-              <Input
-                label="Subject"
-                value={form.subject || ""}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    subject: e.target.value,
-                  })
-                }
-              />
-
-              <Textarea
-                label="Message"
-                value={form.message || ""}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    message: e.target.value,
-                  })
-                }
-              />
-
-              <Button
-                type="submit"
-                className="rounded-2xl w-full"
-              >
-                Send Message
-              </Button>
-            </form>
+            <ContactForm />
           </CardContent>
         </Card>
       </div>
@@ -1484,51 +1335,6 @@ function ActionCard({
         </p>
       </CardContent>
     </Card>
-  );
-}
-
-function Input({
-  label,
-  value,
-  onChange,
-  type = "text",
-}) {
-  return (
-    <label className="block">
-      <span className="text-sm">
-        {label}
-      </span>
-
-      <input
-        type={type}
-        required
-        className="mt-1 w-full rounded-2xl border px-4 py-3 bg-white"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
-  );
-}
-
-function Textarea({
-  label,
-  value,
-  onChange,
-}) {
-  return (
-    <label className="block">
-      <span className="text-sm">
-        {label}
-      </span>
-
-      <textarea
-        required
-        rows={5}
-        className="mt-1 w-full rounded-2xl border px-4 py-3 bg-white"
-        value={value}
-        onChange={onChange}
-      />
-    </label>
   );
 }
 

@@ -1,3 +1,4 @@
+import GFFTCommunityUpdate from "../components/GFFTCommunityUpdate";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -291,6 +292,8 @@ export default function GenesisFoundation() {
           </motion.div>
         </div>
       </section>
+
+      <GFFTCommunityUpdate />
 
       <DonationStoryVideo />
 
