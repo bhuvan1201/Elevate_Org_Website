@@ -18,22 +18,8 @@ import photo9 from "../assets/partners/gfft/tennis-community/gfft-tennis-communi
 import thumbnail9 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-09-thumb.webp";
 import photo10 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-10.webp";
 import thumbnail10 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-10-thumb.webp";
-import video1 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-01.mp4";
-import poster1 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-01-poster.webp";
-import video2 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-02.mp4";
-import poster2 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-02-poster.webp";
-import video3 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-03.mp4";
-import poster3 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-03-poster.webp";
-import video4 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-04.mp4";
-import poster4 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-04-poster.webp";
-import video5 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-05.mp4";
-import poster5 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-05-poster.webp";
 import video6 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-06.mp4";
 import poster6 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-06-poster.webp";
-import video7 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-07.mp4";
-import poster7 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-07-poster.webp";
-import video8 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-08.mp4";
-import poster8 from "../assets/partners/gfft/tennis-community/gfft-tennis-community-video-08-poster.webp";
 
 export const communityPhotos = [
   { src: photo9, thumbnail: thumbnail9, alt: "Hitha and Vihaan packing event materials after the program." },
@@ -48,13 +34,9 @@ export const communityPhotos = [
   { src: photo10, thumbnail: thumbnail10, alt: "Hitha and Vihaan folding the GFFT event backdrop." },
 ];
 
-export const communityVideos = [
-  { src: video1, poster: poster1, caption: "Players gathering for the tennis program.", duration: "0:02" },
-  { src: video2, poster: poster2, caption: "Prizes and event supplies.", duration: "0:02" },
-  { src: video3, poster: poster3, caption: "The tennis program on the indoor courts.", duration: "0:02" },
-  { src: video4, poster: poster4, caption: "Players and volunteers in the event lobby.", duration: "0:03" },
-  { src: video5, poster: poster5, caption: "Hitha and Vihaan folding the GFFT backdrop.", duration: "0:02" },
-  { src: video6, poster: poster6, caption: "Packing prizes and event materials.", duration: "0:07" },
-  { src: video7, poster: poster7, caption: "Vihaan and Hitha organizing event supplies.", duration: "0:02" },
-  { src: video8, poster: poster8, caption: "Hitha and Vihaan helping with event cleanup.", duration: "0:02" },
-];
+export const communityVideo = {
+  src: video6,
+  poster: poster6,
+  caption: "Packing prizes and event materials.",
+  duration: "0:07",
+};

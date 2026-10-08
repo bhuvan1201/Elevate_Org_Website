@@ -1,13 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Camera, ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
-import { communityPhotos, communityVideos } from "./gfftCommunityMedia";
+import { communityPhotos, communityVideo } from "./gfftCommunityMedia";
 
 const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-4";
 
 export default function GFFTCommunityUpdate() {
   const [photoIndex, setPhotoIndex] = useState(0);
-  const videoRefs = useRef([]);
   const photo = communityPhotos[photoIndex];
 
   function changePhoto(offset) {
@@ -22,12 +21,6 @@ export default function GFFTCommunityUpdate() {
     if (event.key === "ArrowRight") { event.preventDefault(); changePhoto(1); }
     if (event.key === "Home") { event.preventDefault(); setPhotoIndex(0); }
     if (event.key === "End") { event.preventDefault(); setPhotoIndex(communityPhotos.length - 1); }
-  }
-
-  function playOneVideo(index) {
-    videoRefs.current.forEach((video, otherIndex) => {
-      if (video && otherIndex !== index) video.pause();
-    });
   }
 
   return (
@@ -124,44 +117,30 @@ export default function GFFTCommunityUpdate() {
           </div>
         </div>
 
-        <div className="mt-12">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h3 className="inline-flex items-center gap-2 text-2xl font-bold text-slate-900">
-                <PlayCircle className="h-6 w-6 text-teal-700" aria-hidden="true" />
-                Moments from the Program
-              </h3>
-              <p className="mt-2 text-slate-600">Watch short clips from the tennis program, with their original event audio.</p>
-            </div>
-            <span className="rounded-full border border-teal-100 bg-white px-3 py-1 text-sm font-semibold text-teal-800">{communityVideos.length} video clips</span>
-          </div>
+        <div className="mx-auto mt-12 max-w-3xl">
+          <h3 className="inline-flex items-center gap-2 text-2xl font-bold text-slate-900">
+            <PlayCircle className="h-6 w-6 text-teal-700" aria-hidden="true" />
+            A Moment from the Program
+          </h3>
+          <p className="mt-2 text-slate-600">Vihaan and Hitha helping with event cleanup.</p>
 
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-            {communityVideos.map((clip, index) => (
-              <figure key={clip.src} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                <video
-                  ref={(element) => { videoRefs.current[index] = element; }}
-                  src={clip.src}
-                  poster={clip.poster}
-                  controls
-                  playsInline
-                  preload="none"
-                  aria-label={`GFFT tennis community clip ${index + 1}: ${clip.caption}`}
-                  onPlay={() => playOneVideo(index)}
-                  className={`aspect-video w-full bg-slate-950 object-contain ${focusRing}`}
-                >
-                  Your browser does not support video playback. <a href={clip.src}>Open this video</a>.
-                </video>
-                <figcaption className="p-4">
-                  <div className="flex items-center justify-between gap-2 text-xs font-bold uppercase tracking-wide text-teal-700">
-                    <span>Clip {index + 1}</span>
-                    <span>{clip.duration}</span>
-                  </div>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-700">{clip.caption}</p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <figure className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <video
+              src={communityVideo.src}
+              poster={communityVideo.poster}
+              controls
+              playsInline
+              preload="none"
+              aria-label={`GFFT tennis community: ${communityVideo.caption}`}
+              className={`aspect-video w-full bg-slate-950 object-contain ${focusRing}`}
+            >
+              Your browser does not support video playback. <a href={communityVideo.src}>Open this video</a>.
+            </video>
+            <figcaption className="flex items-center justify-between gap-4 p-4 text-sm">
+              <span className="text-slate-700">{communityVideo.caption}</span>
+              <span className="shrink-0 font-semibold text-teal-700">{communityVideo.duration}</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>

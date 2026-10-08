@@ -97,7 +97,7 @@ function ImageCarouselCard({ images = [], caption = "Community impact in action"
         <img
           src={slides[idx]}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain"
           draggable="false"
         />
 
