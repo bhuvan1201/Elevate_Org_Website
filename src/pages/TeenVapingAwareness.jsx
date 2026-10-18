@@ -6,10 +6,14 @@ import {
   HeartPulse,
   ShieldCheck,
   ExternalLink,
+  Instagram,
+  PlayCircle,
 } from "lucide-react";
 
 import flyerPdf from "../assets/elevate-foundation-pitch.pdf";
 import posterImg from "../assets/posters/vaping-poster.jpeg"; // ✅ your poster
+
+const AWARENESS_REEL_URL = "https://www.instagram.com/reel/Defj9VMt32_/";
 
 const Card = ({ className = "", children }) => (
   <div className={"rounded-2xl border border-slate-200 bg-white " + className}>
@@ -58,6 +62,74 @@ function Stat({ value, label }) {
   );
 }
 
+function AwarenessReel() {
+  return (
+    <section
+      id="awareness-reel"
+      aria-labelledby="awareness-reel-title"
+      className="scroll-mt-32 px-4 pt-16"
+    >
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl border border-teal-100 bg-slate-900 shadow-xl">
+        <div className="grid items-center gap-10 px-5 py-8 sm:p-10 lg:grid-cols-2 lg:gap-16 lg:p-12">
+          <div className="max-w-xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-teal-300/25 bg-teal-300/10 px-3 py-1.5 text-sm font-semibold text-teal-200">
+              <Instagram className="h-4 w-4" aria-hidden="true" />
+              From awareness to action
+            </span>
+            <h2 id="awareness-reel-title" className="mt-5 text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+              Meet Breathe: Quit Vaping
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-300">
+              See how ELEVATE’s teen vaping research inspired Breathe: Quit
+              Vaping. Watch the introduction, then share it with a friend,
+              family member, or school community to keep the conversation going.
+            </p>
+            <a
+              href={AWARENESS_REEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex min-h-11 items-center gap-2 rounded-2xl bg-teal-500 px-5 py-3 font-semibold text-slate-950 transition hover:bg-teal-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-900"
+            >
+              Watch on Instagram
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              Opens the reel on Instagram in a new tab.
+            </p>
+          </div>
+
+          <a
+            href={AWARENESS_REEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the Breathe: Quit Vaping reel on Instagram (opens in a new tab)"
+            className="group relative mx-auto flex aspect-[4/5] w-full min-w-0 max-w-[380px] flex-col justify-between overflow-hidden rounded-3xl border border-teal-200/20 bg-gradient-to-br from-teal-700 via-teal-900 to-slate-950 p-7 shadow-2xl transition hover:border-teal-200/60 hover:shadow-teal-950/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300 focus-visible:ring-offset-4 focus-visible:ring-offset-slate-900"
+          >
+            <div aria-hidden="true" className="pointer-events-none absolute -right-16 top-16 h-72 w-72 rounded-full border border-teal-200/15" />
+            <div aria-hidden="true" className="pointer-events-none absolute -right-6 top-28 h-48 w-48 rounded-full border border-teal-200/15 bg-teal-300/5" />
+            <div className="relative flex items-center gap-2 text-sm font-medium text-teal-100">
+              <Instagram className="h-5 w-5" aria-hidden="true" />
+              ELEVATE · Instagram Reel
+            </div>
+            <div className="relative py-8">
+              <span className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition group-hover:bg-white/20">
+                <PlayCircle className="h-9 w-9" aria-hidden="true" />
+              </span>
+              <p className="text-5xl font-extrabold tracking-tight text-white">Breathe</p>
+              <p className="mt-2 text-xl font-medium text-teal-100">Quit Vaping</p>
+              <p className="mt-4 text-sm leading-relaxed text-teal-100/80">An introduction from ELEVATE</p>
+            </div>
+            <div className="relative flex items-center justify-between gap-3 border-t border-white/20 pt-5 font-semibold text-white">
+              <span>Play on Instagram</span>
+              <ExternalLink className="h-5 w-5 shrink-0" aria-hidden="true" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function TeenVapingAwareness() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
@@ -82,6 +154,13 @@ export default function TeenVapingAwareness() {
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition"
               >
                 Ways to Help <ArrowRight className="h-4 w-4" />
+              </a>
+
+              <a
+                href="#awareness-reel"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl border border-slate-300 bg-white text-slate-800 font-semibold hover:bg-slate-50 transition"
+              >
+                Watch the Reel <PlayCircle className="h-4 w-4" aria-hidden="true" />
               </a>
 
 
@@ -130,6 +209,8 @@ export default function TeenVapingAwareness() {
           </motion.div>
         </div>
       </section>
+
+      <AwarenessReel />
 
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4 space-y-6">
